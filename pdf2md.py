@@ -22,6 +22,11 @@ REF_HEAD = re.compile(r"^(?:#{1,4}\s*|\*\*)(references|bibliography|literature c
 CAPTION = re.compile(r"^(fig(ure)?\.?|table)\s*\.?\s*\d+[a-z]?\s*[.:|]", re.I)
 FIG_ID = re.compile(r"^(fig(?:ure)?\.?\s*\d+[a-z]?|table\s*\d+)", re.I)
 PRIMARY = re.compile(r"^(?:\d+\.)*\s*(methods?|participants|materials|results)\b", re.I)
+# Some PDFs render section headings in small caps and emit them shredded:
+# "MA D ME TH ODS", "FIG URE 1", "UL TS". Body prose is unaffected. Matching
+# against the de-spaced form recovers the heading without touching any text.
+PRIMARY_FLAT = re.compile(r"(methods|participants|results)", re.I)
+SHRED = re.compile(r"\b\w{1,2}\b(?:\s+\w{1,2}\b)+")
 HEADING = re.compile(r"^#{1,4}\s+(.+?)\s*$")
 BOLD_HEAD = re.compile(r"^\*\*((?:\d+\.)*\s*[A-Z][^*\n]{0,80}?)\*\*")
 
@@ -73,10 +78,13 @@ def index_figures(body_pages):
     for pno, md in enumerate(body_pages, 1):
         lines = [" ".join(l.replace("*", "").lstrip("# ").split()) for l in md.splitlines()]
         for i, line in enumerate(lines):
-            if not CAPTION.match(line):
+            # The delimiter after the number still guards against in-text
+            # mentions, so probing the de-spaced line adds no false positives.
+            probe = line if CAPTION.match(line) else line.replace(" ", "")
+            if not CAPTION.match(probe):
                 continue
-            m = FIG_ID.match(line)
-            fid = m.group(1).rstrip(".") if m else line[:12]
+            m = FIG_ID.match(probe)
+            fid = m.group(1).rstrip(".") if m else probe[:12]
             if fid.lower() in seen:
                 continue
             seen.add(fid.lower())
@@ -118,6 +126,26 @@ def run(pdf_path, outroot, force=False):
             m = HEADING.match(line) or BOLD_HEAD.match(line)
             if m and not CAPTION.match(m.group(1)):
                 headings.append(m.group(1).strip())
+    shredded = [h for h in headings if SHRED.search(h)]
+    primary = any(PRIMARY.match(h) for h in headings)
+    if not primary and shredded:
+        # Only when the clean path already failed, so normal papers keep the
+        # stricter anchored test.
+        primary = any(PRIMARY_FLAT.search(h.replace(" ", "")) for h in headings)
+
+    warnings = []
+    if not refs.strip():
+        warnings.append("references were not split; refs.md is empty and body.md "
+                        "still carries them (~30-40% more tokens in stage 2)")
+    if not figures:
+        warnings.append("no figures or tables indexed")
+    if not primary:
+        warnings.append("has_primary_data is False; confirm by hand before trusting the branch")
+    # A stray one or two is normal noise; a real font problem hits a quarter of them.
+    if len(shredded) >= 3 and len(shredded) > 0.15 * len(headings):
+        warnings.append(f"{len(shredded)} of {len(headings)} headings look shredded by the "
+                        "PDF font encoding; every heading-derived field is unreliable")
+
     meta = {
         "pdf_path": str(pdf_path), "pdf_sha256": digest,
         "n_pages": cls.page_count, "pdf_kind": cls.pdf_type,
@@ -125,7 +153,8 @@ def run(pdf_path, outroot, force=False):
         "pages_needing_ocr": list(cls.pages_needing_ocr),
         "pages_with_columns": list(res.pages_with_columns),
         "pages_with_tables": list(res.pages_with_tables),
-        "has_primary_data": any(PRIMARY.match(h) for h in headings),
+        "has_primary_data": primary,
+        "warnings": warnings,
         "headings": headings,
         "dropped_running_lines": sorted(junk),
         "figures": len(figures),
@@ -133,6 +162,8 @@ def run(pdf_path, outroot, force=False):
     meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1), "utf-8")
     print(f"{dest}: {cls.page_count}p kind={cls.pdf_type} figs_indexed={len(figures)} "
           f"primary={meta['has_primary_data']}")
+    for w in warnings:
+        print(f"  !! {w}")
     return dest
 
 
