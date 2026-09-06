@@ -1,148 +1,245 @@
-# Reading Guide
+# Childhood Dyslexia at 27
 
-**Sorsa, A., Tretow, A., Xu, W., Gerike, G., Lohvansuu, K., Hämäläinen, J. A., & Leppänen, P. H. T. (2026).** Development of brain responses to speech sounds and associations with reading and reading related skills in adults with childhood dyslexia. *International Journal of Psychophysiology, 222*, 113339.
+**Sorsa, A., Tretow, A., Xu, W., Gerike, G., Lohvansuu, K., Hämäläinen, J. A., & Leppänen, P. H. T. (2026).**
+Development of brain responses to speech sounds and associations with reading and reading related skills in adults with childhood dyslexia.
+*International Journal of Psychophysiology, 222*, 113339.
 
-Page numbers below are **PDF pages**. The PDF opens with a repository cover sheet, so the article itself starts on PDF page 2. Open the paper alongside this guide — the figures are not reproduced here on purpose.
+| | |
+|---|---|
+| **What it asks** | Finnish children whose brain responses to speech differed at 9.5 years are now 26–28. Are those differences still there — and do they still track how well the person reads? |
+| **What it found** | A group difference survives, but it has moved to a different speech feature. The link between brain response and reading ability has not survived at all. |
+| **Why it is unusual** | Two of the three headline results are absences, and the one positive result runs opposite to most of the dyslexia literature: responses in the dyslexia group are *larger*, not smaller. |
 
----
+**Two conventions used throughout.** `→ Fig. 5 · p. 9` marks a place to stop and open the PDF — figures are not reproduced here on purpose. Statistics appear as `F(2, 88) = 24.87` so they stay findable in the prose. Page numbers are **PDF pages**; the file opens with a repository cover sheet, so the article starts on PDF page 2.
 
-## Before You Read
-
-This paper asks whether a brain difference that showed up in children with dyslexia is still there when those same children are 26–28 years old.
-
-Three things are worth knowing before the argument will land.
-
-**The sample is unusual and it is the reason the paper exists.** The Jyväskylä Longitudinal Study of Dyslexia (JLD) has followed the same Finnish participants from birth into adulthood. Because of that, this paper is not comparing adults with dyslexia to strangers; it is comparing adults to *their own younger selves* as measured in earlier JLD papers. Groups are therefore defined by **childhood** reading status, not adult status — a point that quietly shapes everything else.
-
-**The measurement is an ERP, recorded in a passive oddball task.** Participants watched a silent film and ignored a stream of speech sounds. One sound repeated 80% of the time (the *standard*); two rarer sounds (the *deviants*) broke the pattern. Averaging the EEG time-locked to each sound type yields an event-related potential — a waveform whose bumps (N1, P2, MMN, P3a, LDN) index successive stages of auditory processing. The key one is the **mismatch negativity (MMN)**: a response the brain produces automatically when a repeated pattern is violated, without the listener attending. A group difference in the MMN is usually read as a difference in how sharply the brain encodes that speech contrast.
-
-**Two deviants, two different phonetic features.** The standard was the Finnish pseudoword /at:a/. One deviant, /ata/, differed in **phonemic length** (a shorter silent gap before the consonant). The other, /ap:a/, differed in **place of articulation** (/p/ instead of /t/). Finnish uses phonemic length to distinguish word meanings, which is why the length contrast matters here more than it would in English. Keep the two deviants apart in your head: the paper's central finding is that the groups differ on *one* of them and not the other, and that this has flipped since childhood.
-
-One more expectation to set. **Most of what this paper reports is an absence.** Two of its three headline claims are null results. That is not a flaw in itself, but it changes how you should read the Discussion, and it is where the guide will slow down.
+Evaluation is confined to Part three and labelled there. Parts one and two report what the paper says.
 
 ---
 
-## Understanding the Paper
+## Part one · Before You Read
 
-### The question, and why it is not obvious
+*Background you need that the paper assumes you already have.*
 
-Earlier JLD work found that at 9.5 years, children with dyslexia produced *enhanced* ERP responses to the length deviant /ata/ compared to typical readers (Lohvansuu et al., 2014). Note the direction: enhanced, not reduced. Most of the dyslexia literature reports attenuated MMN — a blunter response to speech contrasts. The JLD sample has consistently gone the other way, and the authors have previously explained this as compensation: more neurons recruited, working harder, to encode the same contrast.
+### The sample is the reason the paper exists
 
-So the question in this paper (§1.4, p. 5) splits in two:
+The **Jyväskylä Longitudinal Study of Dyslexia** (JLD) has followed the same Finnish participants from birth into adulthood.
 
-- **RQ1** — Do those childhood group differences in ERPs persist into adulthood?
-- **RQ2** — In adulthood, do these brain responses still track reading ability, as they did in childhood?
+So this paper is not comparing adults with dyslexia against strangers. It is comparing them against *their own younger selves*, as measured in earlier JLD papers. Groups are therefore defined by **childhood** reading status, not adult status — a decision that quietly shapes everything downstream.
 
-Both questions only make sense against the longitudinal backdrop. A single-timepoint study could ask neither.
+### The measurement
+
+Participants watched a silent film and ignored a stream of speech sounds. One sound repeated 80% of the time (the **standard**); two rarer sounds (the **deviants**) broke the pattern. Averaging the EEG time-locked to each sound type yields an **event-related potential** (ERP): a waveform whose successive peaks — N1, P2, MMN, P3a, LDN — index stages of auditory processing.
+
+The one to know is the **mismatch negativity** (MMN): a response the brain produces automatically when a repeated pattern is violated, whether or not the listener is paying attention. A group difference in the MMN is normally read as a difference in how sharply the brain encodes that particular speech contrast.
+
+### Two deviants, two phonetic features
+
+The standard was the Finnish pseudoword `/at:a/`.
+
+- `/ata/` — differs in **phonemic length**, a shorter silent gap before the consonant.
+- `/ap:a/` — differs in **place of articulation**, a `/p/` instead of a `/t/`.
+
+Finnish uses phonemic length to distinguish word meanings, which is why the length contrast carries more weight here than it would in English.
+
+Keep the two deviants apart in your head. The paper's central finding is that the groups differ on one of them and not the other, and that which one has changed since childhood.
+
+---
+
+## Part two · Understanding the Paper
+
+*What the paper argues, and how each step is supported.*
+
+### The literature the paper is arguing with
+
+The paper's own Introduction (§1.1–1.3, pp. 2–4) is a compact review, and it is worth reading as one, because the result only registers as surprising against it.
+
+The starting proposal is that speech perception deficits may *precede* and feed into phonological deficits, so that accurate phonological representations never form properly (Goswami, 2002). Behavioural work has documented these deficits extensively — trouble discriminating consonants, vowels and phonemic length, syllable stress, lexical tone, speech in noise.
+
+The authors then make a specific criticism of that body of work: it establishes the deficit as a phenomenon but leaves the underlying **processing stages** unexamined. That criticism is what licenses an ERP study. Watch how much work one sentence of criticism does here — it converts a well-studied topic into an open question.
+
+The ERP evidence itself splits by age, and the split matters:
+
+| Population | What the literature reports |
+|---|---|
+| **Children with dyslexia** | Fairly consistent *attenuated* MMN, across length contrasts (`/ba/`–`/ba:/`) and place contrasts (`/ba/`–`/da/`, `/da/`–`/ga/`, `/ba/`–`/ga/`) |
+| **Infants at familial risk** | Mostly smaller or absent mismatch responses; at least one study reports larger ones; newborn studies find no group effect at all |
+| **Adults with dyslexia** | Genuinely fragmented — diminished MMN for some place contrasts, no group effect for vowel length, and *enhanced* N100m and N1 in two studies |
+| **The JLD sample itself** | Has gone against the field: at 6.5 and 9.5 years these participants showed *enhanced* responses (Hämäläinen et al., 2013; Lohvansuu et al., 2014) |
+
+The authors attribute the adult inconsistency to methodology as much as biology: differing dyslexia criteria, participant numbers, age ranges and stimuli.
+
+A second strand (§1.3, p. 4) links brain responses to later reading. Larger mismatch responses in infancy are reasonably consistently associated with better later reading and pre-reading skills. Closer to school entry the picture loosens — both larger and smaller amplitudes have been linked to better outcomes, along with stronger left lateralisation, so the direction of the association is not settled. Evidence in adulthood is thin, which is the gap this paper occupies.
+
+### The question
+
+Two questions, stated in §1.4 (p. 5):
+
+1. **RQ1** — do the childhood group differences in ERPs persist into adulthood?
+2. **RQ2** — in adulthood, do these responses still track reading and reading-related skills?
+
+Neither can be asked from a single timepoint. Both depend on the longitudinal backdrop above.
 
 ### How the design answers it
 
-**Grouping (§2.1 and Table 1, p. 5).** Adults were split by their *childhood* status into RDFR (childhood reading difficulty plus familial risk, **N = 17**), TRFR (typical readers with familial risk, N = 37), and TRC (typical readers, no risk, N = 37). This retrospective grouping is deliberate: it reproduces the grouping used in the 9.5-year paper so the two ages can be compared. It also means the dyslexia cell is small — hold on to that number, it becomes decisive later.
+**Grouping** (§2.1 and `→ Table 1 · p. 5`). Adults were split by *childhood* status:
 
-The two research questions ran on slightly different samples: RQ1 on EEG from 91 participants, RQ2 on combined M/EEG from 84, after seven were dropped for MEG data quality.
+| Group | Who | N |
+|---|---|---|
+| RDFR | childhood reading difficulty + familial risk | `17` |
+| TRFR | typical readers with familial risk | `37` |
+| TRC | typical readers, no familial risk | `37` |
 
-**Task and stimuli (§2.3, Fig. 2 on p. 7 and Fig. 3 on p. 8).** Open Fig. 2 now — it shows the oddball structure in one picture, and nothing downstream makes sense without it. Then look at Fig. 3 and find the silent gap in the middle of each waveform: that gap (95 ms vs 255 ms) *is* the length contrast. Notice also that the deviant feature sits in the **middle** of the pseudoword, not at its onset. Most comparable adult studies put the contrast at the onset. The authors return to this in the Limitations, and you should file it as a reason that comparisons with other studies are indirect.
+The grouping deliberately reproduces the one used in the 9.5-year paper so the two ages can be compared. RQ1 ran on EEG from 91 participants; RQ2 on combined M/EEG from 84, after seven were dropped for MEG data quality.
 
-**Statistics (§2.4.3, p. 9).** Group differences were tested with threshold-free cluster enhancement plus permutation testing — a data-driven method that finds clusters of effect across time and sensors without the researcher choosing a time window in advance. This is a real strength: it removes one common route to a false positive. Nine comparisons were run (three group pairs × three stimuli), and twelve correlations for RQ2 (three stimuli × four behavioural measures). **No correction was applied across either family.**
+**Task and stimuli** (§2.3). Open `→ Fig. 2 · p. 7` now — it shows the oddball structure in one picture, and nothing downstream makes sense without it.
+
+Then in `→ Fig. 3 · p. 8`, find the silent gap in the middle of each waveform. That gap, `95 ms` against `255 ms`, *is* the length contrast. Note also that the deviant feature sits in the **middle** of the pseudoword rather than at its onset, unlike most comparable adult studies.
+
+**Statistics** (§2.4.3, p. 9). Group differences were tested with threshold-free cluster enhancement plus permutation testing — a data-driven method that locates clusters of effect across time and sensors without the researcher choosing a time window in advance. Nine comparisons were run (three group pairs × three stimuli), and twelve correlations for RQ2 (three stimuli × four behavioural measures). No correction was applied across either family.
 
 ### What was observed
 
 Read the results in three layers.
 
-**Layer 1 — behaviour is still different.** In adulthood, the childhood-dyslexia group still scored lower on reading fluency (F(2, 88) = 24.87, p < .001, η² = 0.36), reading accuracy (F(2, 88) = 9.67, p < .001, η² = 0.18), and rapid naming (F(2, 86) = 7.70, p < .001, η² = 0.15). Those are large effects. Whatever else changed, the reading difficulty did not go away.
+#### Layer 1 — behaviour is still different
 
-**Fig. 1 (p. 6)** plots fluency and accuracy from 9.5 years to adulthood for all three groups. Look at whether the three lines stay *parallel* rather than fanning out. That parallelism is the entire basis of the paper's claim about the Matthew effect — the idea that early reading gaps widen over time. Here they did not widen; the time × group interaction was non-significant for both measures (p = .743 and p = .236).
+In adulthood the childhood-dyslexia group still scored lower on reading fluency `F(2, 88) = 24.87, p < .001, η² = 0.36`, reading accuracy `F(2, 88) = 9.67, p < .001, η² = 0.18`, and rapid naming `F(2, 86) = 7.70, p < .001, η² = 0.15`. The two typical-reading groups did not differ from each other.
 
-**Layer 2 — the brain difference is still there, but it has moved.** For the place-of-articulation deviant /ap:a/, the childhood-dyslexia group showed **stronger** responses than both other groups: versus TRFR from 152 ms to 800 ms across midline and both hemispheres, and versus TRC in the left hemisphere around 300 ms and 600 ms. The two typical-reading groups did not differ from each other, so familial risk alone did not produce the effect.
+`→ Fig. 1 · p. 6` plots fluency and accuracy from 9.5 years to adulthood for all three groups. **Look at whether the three lines stay parallel rather than fanning out.**
 
-**Fig. 5 (p. 9)** is the result figure. The masked colour boxes mark significant clusters and the yellow stars in panels C and D mark which channels. The thing to verify with your own eyes: the effect appears only in the /ap:a/ row. **Fig. 7 (p. 11)** regroups the same data by speech sound — go to panel B, the length deviant /ata/, and see that the three group curves now sit on top of one another. In the 9.5-year paper, that panel was where the group difference lived.
+Statistically: a main effect of group for fluency `F(2, 79) = 29.56, p < .001` and accuracy `F(2, 79) = 16.69, p < .001`, accuracy improving with time `F(1, 79) = 5.57, p = .021`, and no time × group interaction for either (`p = .743`, `p = .236`).
 
-**Layer 3 — the brain–behaviour link is gone.** No significant correlations were found between source-level M/EEG activity and any of the four behavioural measures, across all twelve combinations.
+#### Layer 2 — the brain difference has moved
 
-This is where the paper does something worth imitating. A null correlation is easy to dismiss as a failure to measure well. So the authors went further (§3.1.3, p. 10; **Fig. 9 on p. 13**): they plotted the full distribution of point-wise correlations for each of the twelve tests. The distributions were roughly normal and centred near zero (mean r between −0.05 and +0.09), and the proportion of correlations passing the uncorrected threshold ran from 1.4% to 11.8% — around what chance alone would produce. That converts "we found nothing" into "the thing we were looking for is not there in a form this method could see." When you look at Fig. 9, check the red dashed lines at ±0.215 and the inset statistics; those are what carry the argument.
+For the place-of-articulation deviant `/ap:a/`, the childhood-dyslexia group showed **stronger** responses than both other groups: against TRFR from `152 ms` to `800 ms` across midline and both hemispheres, and against TRC in the left hemisphere around the `300 ms` and `600 ms` windows. TRFR and TRC did not differ, so familial risk alone did not produce the effect.
+
+No group differences appeared for the length deviant `/ata/` or for the standard — although at 9.5 years, in a largely overlapping sample, `/ata/` was exactly where the difference lived.
+
+`→ Fig. 5 · p. 9` is the result figure. Masked colour boxes mark significant clusters; yellow stars in panels C and D mark the channels. **Verify with your own eyes that the effect appears only in the `/ap:a/` row.**
+
+Then `→ Fig. 7 · p. 11`, panel B, which shows the length deviant: the three group curves now sit on top of one another.
+
+#### Layer 3 — the brain–behaviour link is gone
+
+No significant correlations were found between source-level M/EEG activity and any of the four behavioural measures, across all twelve combinations. Source activity was where it should be, in left and right auditory cortices (`→ Fig. 8 · p. 12`).
+
+The authors did not stop at the null. In §3.1.3 (p. 10) they plotted the full distribution of point-wise correlations for each of the twelve tests: distributions were roughly normal and centred near zero, mean `r` between `−0.05` and `+0.09`, with the share crossing the uncorrected threshold running `1.4%–11.8%` against a `5%` chance expectation.
+
+In `→ Fig. 9 · p. 13`, **the red dashed lines at `±0.215` and the inset statistics are what carry that argument.**
 
 ### How the authors explain it
 
-The interpretation is developmental (§4.1, pp. 12–13): the *feature* that separates the groups shifts with age. Length separated them at 9.5 years; place of articulation separates them at 27. The authors attribute this to maturation plus continued exposure to speech, which makes different linguistic features salient at different stages.
+The account is developmental (§4.1, pp. 12–13): the *feature* that separates the groups shifts with age — length at 9.5 years, place of articulation at 27 — driven by maturation plus continued exposure to speech making different linguistic features salient at different stages.
 
-For RQ2 they argue (§4.2, p. 13) that adult reading is shaped by so many other things — reading exposure, learned strategies — that a childhood link between speech encoding and reading would be expected to wash out.
+For RQ2 (§4.2, p. 13) they argue that adult reading is shaped by so much else, exposure and learned strategies among it, that a childhood link between speech encoding and reading would be expected to wash out.
 
-And they name a genuine conflict rather than smoothing it over, which is the most interesting paragraph in the paper. In the wider literature, *enhanced* responses to native speech deviancy are taken to reflect **better** speech processing and better reading. In the JLD sample, enhancement is what the dyslexia group shows. The same directional finding therefore carries opposite meanings in the two literatures. The authors have themselves given it two different mechanistic readings at different ages — maturational (larger, less specific neuronal populations) at 6.5 years, compensatory (more neurons working harder) at 9.5 years — and neither is tested here.
+They also name a conflict rather than smoothing it. Elsewhere in the literature, *enhanced* responses to native speech deviancy are read as reflecting **better** speech processing and better reading. In the JLD sample, enhancement is what the dyslexia group shows. The same direction of effect therefore carries opposite meanings in the two literatures.
 
----
-
-## What the Evidence Supports
-
-Separating what was measured from what it was taken to mean.
-
-**Well supported.** The behavioural group differences in adulthood (large effects, three converging measures). The presence of a group difference for /ap:a/ in the direction of enhancement. The absence of detectable brain–behaviour correlations *within the sensitivity of this method and sample* — the Fig. 9 histograms make this a positive demonstration rather than a bare null.
-
-**Supported but with the direction assumed.** That the group difference has "moved" from length to place of articulation. This compares a significant result here against a significant result in a different paper, and a null here against a significant result there. No age × feature interaction was tested, even though 79 participants have EEG at both ages. The claim is a reasonable reading of two studies; it is not a tested effect.
-
-**Interpretation, not result.** The maturation-plus-exposure account, and the compensation account of why the dyslexia group's responses are enhanced. Both are stories fitted to a direction of effect. Nothing in this design distinguishes "more neurons recruited to compensate" from "less sharply tuned populations responding more broadly" — the authors have used both, at different ages, for the same observation.
-
-**Boundaries the authors state (§4.3, pp. 13–14).** The stimulus setup changed between the infant/6.5-year measurements and the later ones. Nine comparisons inflate Type I error, and no correction was applied — the authors say choosing one is not straightforward given longitudinal priors and non-independent effects. The mid-word placement of the deviant feature may cause masking and makes comparison with other adult studies indirect. Difference waves could not be computed because the stimuli differ in physical length; the authors argue that since the standard showed no group difference, the deviant effect is likely stimulus-specific.
-
-**Concerns I would add as a reader — these are mine, not the authors'.**
-
-1. **The nulls rest on 17 people.** Both central developmental claims — no /ata/ difference, no brain–behaviour correlation — depend on the RDFR cell. No power analysis or equivalence test is reported, so "the childhood difference is gone" and "we could not detect it with N = 17" are not distinguished. The Fig. 9 histograms partly answer this for RQ2; nothing answers it for RQ1.
-2. **The uncorrected comparisons cut one way only.** Type I inflation threatens the single positive finding (/ap:a/), not the nulls. The authors raise it as a general caveat, but it applies asymmetrically to their own results.
-3. **The two questions ran on different samples** (N = 91 vs N = 84). Reading the group difference and the correlation null as one developmental story is slightly looser than it appears.
-4. **The Matthew-effect contrast is low-powered too.** "No widening" comes from a non-significant interaction across three groups totalling 82, one group holding 17. Non-significance is the expected outcome here whether or not widening occurred.
-5. **The joint analysis seems available and was not run.** With 79 participants measured at both ages, a within-subject test of the age × feature shift appears possible from what the Methods describe.
-
-None of these make the paper wrong. They mark where its confidence should sit lower than a fast reading would put it.
+The authors have themselves given it two different mechanistic readings at different ages — maturational (larger, less specific neuronal populations) at 6.5 years, compensatory (more neurons working harder) at 9.5 years.
 
 ---
 
-## Learning to Write
+## Part three · What the Evidence Supports
 
-Four moves from this paper that transfer to your own Methods and Results sections. The originals are pointed to rather than reproduced; open the page and read the sentence in place.
+*Separating what was measured from what it was taken to mean. All evaluation in this guide lives here.*
 
-**1. Turning a null into a demonstration.** §3.1.3 (p. 10), the sentences after the correlation result. The authors do not stop at "no significant correlations were found." They report the shape of the whole correlation distribution and compare the observed rate of threshold-crossing against chance. The move is: *when your result is an absence, characterise the absence quantitatively instead of asserting it.*
+### Well supported
 
-Transferable pattern (my example, not the authors'):
+The behavioural group differences in adulthood — large effects across three converging measures. The presence of a group difference for `/ap:a/` in the direction of enhancement. The absence of detectable brain–behaviour correlations *within the sensitivity of this method and sample*; the `→ Fig. 9 · p. 13` histograms make this a positive demonstration rather than a bare null.
 
+### Supported, but the direction is assumed
+
+That the group difference has "moved" from length to place of articulation. This sets a significant result here against a significant result in a different paper, and a null here against a significant result there. No age × feature interaction was tested, although 79 participants have EEG at both ages.
+
+### Interpretation, not result
+
+The maturation-plus-exposure account, and the compensation account of the enhanced responses. Both are stories fitted to a direction of effect. Nothing in this design distinguishes "more neurons recruited to compensate" from "less sharply tuned populations responding more broadly" — the same authors have used both, at different ages, for the same observation.
+
+> **BOUNDARIES THE AUTHORS STATE** — §4.3, pp. 13–14
+>
+> The stimulus setup changed between the infant and 6.5-year measurements and the later ones. Nine comparisons inflate Type I error, and no correction was applied — choosing one is said to be not straightforward given longitudinal priors and non-independent effects. The mid-word placement of the deviant feature may cause masking and makes comparison with other adult studies indirect. Difference waves could not be computed because the stimuli differ in physical length; the authors argue that since the standard showed no group difference, the deviant effect is likely stimulus-specific.
+
+> **READER'S NOTES — MINE, NOT THE AUTHORS'**
+>
+> **1. The nulls rest on 17 people.** Both central developmental claims — no `/ata/` difference, no brain–behaviour correlation — depend on the RDFR cell. No power analysis or equivalence test is reported, so "the childhood difference is gone" and "we could not detect it with `N = 17`" are not distinguished. The Fig. 9 histograms partly answer this for RQ2; nothing answers it for RQ1.
+>
+> **2. The uncorrected comparisons cut one way only.** Type I inflation threatens the single positive finding, not the nulls. It is raised as a general caveat but applies asymmetrically to the paper's own results.
+>
+> **3. The two questions ran on different samples** — `N = 91` against `N = 84`. Reading the group difference and the correlation null as one developmental story is looser than it appears.
+>
+> **4. The Matthew-effect contrast is low-powered too.** "No widening" comes from a non-significant interaction across three groups totalling 82, one of which holds 17. Non-significance is the expected outcome here whether or not widening occurred.
+>
+> **5. A joint analysis seems available and was not run.** With 79 participants measured at both ages, a within-subject test of the age × feature shift appears possible from what the Methods describe.
+>
+> None of these make the paper wrong. They mark where its confidence should sit lower than a fast reading would put it.
+
+---
+
+## Part four · Learning to Write
+
+*Four moves from this paper, for your own Methods and Results. Originals are pointed to, not reproduced — open the page and read the sentence in place.*
+
+### 1 · Turning a null into a demonstration
+
+§3.1.3, p. 10, the sentences after the correlation result. The authors do not stop at "no significant correlations were found": they report the shape of the whole correlation distribution and compare the observed rate of threshold-crossing against chance.
+
+The move is — **when your result is an absence, characterise the absence quantitatively instead of asserting it.**
+
+> **PATTERN — my example, not the authors'**
+>
 > No significant association was found between X and Y. Across all N tests, the coefficient distributions were centred near zero (mean r = …, SD = …), and the proportion exceeding the uncorrected threshold (…) was …%, consistent with chance expectation.
 
-Use it whenever a null is load-bearing for your argument. Do not use it to dress up a null you did not predict and do not need.
+Use it when a null is load-bearing for the argument. Do not use it to dress up a null you neither predicted nor need.
 
-**2. Justifying a design choice by naming what it protects against.** §2.4.3 (p. 9), where TFCE is introduced. The method is not just named; the sentence says what it buys — clusters found across time and sensors *without a predefined threshold*, with permutation testing controlling multiple comparisons.
+### 2 · Justifying a method by naming what it protects against
 
-Transferable pattern (my example):
+§2.4.3, p. 9, where TFCE is introduced. The method is not merely named; the sentence says what it buys — clusters found across time and sensors *without a predefined threshold*, with permutation testing controlling multiple comparisons.
 
+> **PATTERN — my example, not the authors'**
+>
 > We used [method], which [does X] without requiring [the researcher choice that would otherwise bias the result], while [second method] provides control for [specific threat].
 
-The habit worth copying is the subordinate clause. A method sentence that only names the method leaves the reader to guess why; one clause converts it into an argument.
+The habit worth copying is the subordinate clause. A method sentence that only names the method leaves the reader to guess why; one clause turns it into an argument.
 
-**3. Stating a limitation and then bounding it.** §4.3 (p. 14), the passage on difference waves. The authors explain why difference waves could not be computed, and then immediately argue that the standard stimulus showed no group difference, so the deviant effect is likely stimulus-specific. The limitation is admitted and then fenced.
+### 3 · Stating a limitation, then bounding it
 
-Transferable pattern (my example):
+§4.3, p. 14, the passage on difference waves. The authors explain why difference waves could not be computed, then immediately argue that the standard stimulus showed no group difference, so the deviant effect is likely stimulus-specific. The limitation is admitted and then fenced.
 
+> **PATTERN — my example, not the authors'**
+>
 > [Constraint] meant that [analysis] could not be performed, because [reason]. However, [independent observation from the same data], and therefore [the specific inference that survives].
 
-This is the difference between a limitations section that erodes the paper and one that delimits it. Note what makes it work: the fence is built from evidence already reported, not from reassurance.
+This is the difference between a limitations section that erodes a paper and one that delimits it. What makes it work: the fence is built from evidence already reported, not from reassurance.
 
-**4. Reporting a contrast with the literature without overclaiming.** §4.1 (pp. 12–13), where the authors set their enhanced responses against the field's attenuated ones. They do not argue the field is wrong, and they do not fold their result into it. They mark the conflict and leave it open — the paper describes it as an interesting conflict in interpreting the results.
+### 4 · Marking a conflict with the literature instead of hedging
 
-Transferable pattern (my example):
+§4.1, pp. 12–13, where the enhanced responses are set against the field's attenuated ones. The authors neither argue the field is wrong nor fold their result into it. They mark the conflict and leave it open.
 
-> In [other samples], [finding] has been interpreted as reflecting [meaning A]. This is partly in contrast to [our result], where [same direction] appears in [opposite population]. [One sentence on what would resolve it.]
+> **PATTERN — my example, not the authors'**
+>
+> In [other samples], [finding] has been interpreted as reflecting [meaning A]. This is partly in contrast to [our result], where [the same direction] appears in [the opposite population]. [One sentence on what would resolve it.]
 
 Reach for this when your result points the same way as prior work but cannot mean the same thing. Naming the tension is more publishable, and more honest, than a hedge that hopes the reviewer will not notice.
 
-**One thing not to copy.** The Discussion opens by restating the two research questions and then re-narrating the results before interpreting them (§4, p. 11). By that point the reader has just finished the Results. A Discussion that begins with the *interpretation* and pulls in results as evidence is shorter and does more work.
+---
+
+## Part five · Key Takeaways
+
+**The finding is a shift, not a disappearance.**
+A brain difference remains in adults with childhood dyslexia, but it now attaches to place of articulation rather than phonemic length. That claim rests on comparing two papers, not on a tested interaction.
+
+**Direction matters as much as significance.**
+This sample shows enhanced responses in the dyslexia group where most of the field reports attenuation. Whether enhancement means compensation or blunter tuning is unresolved — and the same authors have argued both.
+
+**Behaviour and brain came apart.**
+Reading difficulty persisted with large effects while the brain–behaviour correlation vanished. This is the paper's most consequential result, and it is a null.
+
+**A null can be argued for.**
+Characterise the distribution of your non-effect against chance rather than asserting absence. The single most reusable technique in the paper.
+
+**Read `N = 17` into every conclusion.**
+Small-cell nulls and non-significant interactions carry less information than they appear to, and the uncorrected comparisons threaten the one positive finding rather than the nulls.
 
 ---
 
-## Key Takeaways
-
-- **The finding is a shift, not a disappearance.** A brain difference remains in adults with childhood dyslexia, but it now attaches to place of articulation rather than phonemic length. The strength of that claim depends on comparing across two papers, not on a tested interaction.
-- **Direction matters as much as significance.** This sample shows *enhanced* responses in the dyslexia group where most of the field reports attenuation. Whether enhancement means compensation or blunter tuning is unresolved, and the same authors have argued both.
-- **Behaviour and brain came apart.** Reading difficulty persisted with large effects while the brain–behaviour correlation vanished — the paper's most consequential result, and a null.
-- **A null can be argued for.** Fig. 9 (p. 13) is the technique: characterise the distribution of your non-effect against chance rather than asserting absence. This is the single most reusable thing in the paper.
-- **Read N = 17 into every conclusion.** Small-cell nulls and non-significant interactions carry less information than they appear to, and the uncorrected comparisons threaten the one positive finding rather than the nulls.
-
----
-
-*Sources are given as PDF page numbers in this file. Statistical values are quoted from the paper as reported. Where this guide adds an evaluation that the authors did not make, it is marked as such.*
+*Sources are given as PDF page numbers. Statistics are reproduced as reported in the paper. Blockquotes labelled READER'S NOTES are this guide's own evaluation and are not claims the authors made; the block labelled BOUNDARIES THE AUTHORS STATE is theirs.*
