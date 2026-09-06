@@ -16,9 +16,10 @@ import pdf_inspector as pi
 
 # pdf-inspector emits section headings as bold runs (**3. Results**), not ATX headings.
 REF_HEAD = re.compile(r"^(?:#{1,4}\s*|\*\*)(references|bibliography|literature cited)\**\s*$", re.I)
-# ponytail: a caption is "Fig. 1." -- the trailing period is what separates it from an
-# in-text mention ("as shown in Fig. 1, ..."). Journals that omit it will need a looser rule.
-CAPTION = re.compile(r"^(fig(ure)?\.?|table)\s*\.?\s*\d+[a-z]?\s*[.:]", re.I)
+# A caption is "Fig. 1." (Elsevier) or "FIGURE 1 |" (Frontiers). The delimiter after the
+# number is what separates it from an in-text mention ("as shown in Fig. 1, ..."), which is
+# followed by a comma or a word. Add delimiters here as new publishers turn up.
+CAPTION = re.compile(r"^(fig(ure)?\.?|table)\s*\.?\s*\d+[a-z]?\s*[.:|]", re.I)
 FIG_ID = re.compile(r"^(fig(?:ure)?\.?\s*\d+[a-z]?|table\s*\d+)", re.I)
 PRIMARY = re.compile(r"^(?:\d+\.)*\s*(methods?|participants|materials|results)\b", re.I)
 HEADING = re.compile(r"^#{1,4}\s+(.+?)\s*$")
@@ -70,7 +71,7 @@ def index_figures(body_pages):
     """
     out, seen = [], set()
     for pno, md in enumerate(body_pages, 1):
-        lines = [" ".join(l.replace("*", "").split()) for l in md.splitlines()]
+        lines = [" ".join(l.replace("*", "").lstrip("# ").split()) for l in md.splitlines()]
         for i, line in enumerate(lines):
             if not CAPTION.match(line):
                 continue

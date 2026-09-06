@@ -17,10 +17,12 @@ assert all("101722" not in p for p in out)
 figs = index_figures([
     "some prose\n**Fig. 1.**\nDevelopment of reading fluency by group.",
     "Fig. 1, childhood grouping still appears relevant here\n**Table 2.** Group demographics.",
+    "## FIGURE 3 | Grand average ERPs broken down by age group.",
 ])
 ids = [f["id"] for f in figs]
-assert ids == ["Fig. 1", "Table 2"], ids
+assert ids == ["Fig. 1", "Table 2", "FIGURE 3"], ids
 assert figs[0]["page"] == 1 and figs[1]["page"] == 2
+assert "Grand average" in figs[2]["caption"], "Frontiers pipe captions must parse"
 assert "reading fluency" in figs[0]["caption"], "split caption must pull the next line"
 assert not any("childhood grouping" in f["caption"] for f in figs), \
     "in-text mention ('Fig. 1, ...') must not be taken as the caption"
