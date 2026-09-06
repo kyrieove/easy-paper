@@ -11,3 +11,4 @@ out/**
 __pycache__/
 tmp/
 tmp_deck_inspect/
+output/skill-maintenance/

@@ -1,0 +1,371 @@
+<title>Childhood Dyslexia at 27</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --paper:#F5F6F8;
+    --surface:#FFFFFF;
+    --ink:#151A21;
+    --ink-soft:#4C5563;
+    --ink-faint:#6E7787;
+    --rule:#DCE0E7;
+    --rule-soft:#E8EBF0;
+    /* the paper's own Fig. 1 legend: red = dyslexia group, black = risk, blue = control */
+    --red:#A4231C;
+    --red-wash:#FBEEEC;
+    --blue:#2C5A87;
+    --blue-wash:#EBF1F7;
+    --amber:#8A6410;
+    --amber-wash:#FAF3E3;
+    --sans:"IBM Plex Sans Condensed",-apple-system,"Segoe UI",sans-serif;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+    --measure:66ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101318;
+      --surface:#171B22;
+      --ink:#E6E9EE;
+      --ink-soft:#AAB3C0;
+      --ink-faint:#8A93A1;
+      --rule:#2A303A;
+      --rule-soft:#232932;
+      --red:#E98078;
+      --red-wash:#241A19;
+      --blue:#8CB6DC;
+      --blue-wash:#161D25;
+      --amber:#D7B166;
+      --amber-wash:#221D14;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101318;
+    --surface:#171B22;
+    --ink:#E6E9EE;
+    --ink-soft:#AAB3C0;
+    --ink-faint:#8A93A1;
+    --rule:#2A303A;
+    --rule-soft:#232932;
+    --red:#E98078;
+    --red-wash:#241A19;
+    --blue:#8CB6DC;
+    --blue-wash:#161D25;
+    --amber:#D7B166;
+    --amber-wash:#221D14;
+  }
+
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.66;
+       -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--measure);margin:0 auto;padding:0 24px 96px;}
+  @media(max-width:520px){body{font-size:17px}.wrap{padding:0 18px 64px}}
+
+  /* ---------- masthead ---------- */
+  .masthead{border-bottom:2px solid var(--ink);padding:56px 0 20px;margin-bottom:28px;}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+          color:var(--ink-faint);margin:0 0 18px;}
+  h1{font-family:var(--sans);font-weight:700;font-size:clamp(34px,7vw,50px);line-height:1.04;
+     letter-spacing:-.015em;margin:0 0 16px;text-wrap:balance;}
+  .cite{font-size:15px;line-height:1.5;color:var(--ink-soft);margin:0;}
+  .cite em{font-style:italic;}
+  .cite b{font-weight:600;color:var(--ink);}
+
+  /* ---------- orientation card ---------- */
+  .orient{background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--red);
+          padding:26px 28px;margin:0 0 14px;}
+  .orient dl{margin:0;display:grid;gap:16px;}
+  .orient dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+             color:var(--ink-faint);margin-bottom:3px;}
+  .orient dd{margin:0;font-size:17px;line-height:1.55;}
+  .howto{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 44px;
+         font-family:var(--sans);font-weight:500;}
+  .howto .fig{vertical-align:baseline;}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 52px;}
+  h2{font-family:var(--sans);font-weight:700;font-size:27px;letter-spacing:-.01em;line-height:1.15;
+     margin:0 0 6px;text-wrap:balance;}
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+           color:var(--red);margin:0 0 4px;}
+  .sec-head{border-top:1px solid var(--ink);padding-top:14px;margin-bottom:26px;}
+  .sec-head p.role{font-family:var(--sans);font-weight:500;font-size:14.5px;color:var(--ink-faint);margin:0;}
+  h3{font-family:var(--sans);font-weight:600;font-size:19.5px;letter-spacing:-.005em;
+     margin:34px 0 10px;color:var(--ink);text-wrap:balance;}
+  h4{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+     color:var(--ink-faint);margin:26px 0 8px;}
+  p{margin:0 0 16px;}
+  strong{font-weight:600;}
+  em.term{font-style:normal;font-weight:600;color:var(--red);}
+
+  /* ---------- inline instruments ---------- */
+  .stat{font-family:var(--mono);font-size:.86em;font-variant-numeric:tabular-nums;
+        background:var(--rule-soft);color:var(--ink);padding:1px 5px;border-radius:2px;white-space:nowrap;}
+  .fig{display:inline-flex;align-items:baseline;gap:6px;font-family:var(--sans);font-weight:600;
+       font-size:14px;background:var(--red-wash);color:var(--red);border:1px solid transparent;
+       padding:1px 8px;border-radius:3px;white-space:nowrap;}
+  .fig span{font-family:var(--mono);font-weight:400;font-size:11.5px;opacity:.85;}
+  .sound{font-family:var(--mono);font-size:.88em;color:var(--ink);}
+
+  /* ---------- marked voices ---------- */
+  .note{margin:26px 0;padding:18px 22px;border-left:3px solid;background:var(--surface);}
+  .note .tag{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+             text-transform:uppercase;margin:0 0 8px;}
+  .note p:last-child{margin-bottom:0;}
+  .note--reader{border-color:var(--blue);background:var(--blue-wash);}
+  .note--reader .tag{color:var(--blue);}
+  .note--author{border-color:var(--amber);background:var(--amber-wash);}
+  .note--author .tag{color:var(--amber);}
+
+  ol.reader{list-style:none;counter-reset:r;margin:0;padding:0;display:grid;gap:14px;}
+  ol.reader li{counter-increment:r;position:relative;padding-left:34px;}
+  ol.reader li::before{content:counter(r);position:absolute;left:0;top:2px;font-family:var(--mono);
+    font-size:12px;color:var(--blue);border:1px solid var(--blue);border-radius:50%;
+    width:21px;height:21px;display:grid;place-items:center;}
+
+  ul.plain{margin:0 0 16px;padding-left:20px;}
+  ul.plain li{margin-bottom:9px;}
+
+  /* ---------- evidence tiers ---------- */
+  .tier{border-top:1px solid var(--rule);padding-top:14px;margin:22px 0;}
+  .tier .lab{font-family:var(--sans);font-weight:600;font-size:15px;margin:0 0 6px;}
+  .tier--strong .lab{color:var(--ink);}
+  .tier--weak .lab{color:var(--amber);}
+  .tier p{margin:0;font-size:17px;}
+
+  /* ---------- writing patterns ---------- */
+  .pattern{background:var(--surface);border:1px solid var(--rule);padding:18px 20px;margin:14px 0 18px;}
+  .pattern .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+                color:var(--blue);display:block;margin-bottom:9px;}
+  .pattern q{font-family:var(--mono);font-size:14.5px;line-height:1.62;color:var(--ink);
+             quotes:none;display:block;}
+
+  .takeaways{display:grid;gap:2px;background:var(--rule);border:1px solid var(--rule);}
+  .takeaways div{background:var(--surface);padding:18px 20px;}
+  .takeaways h5{font-family:var(--sans);font-weight:600;font-size:16px;margin:0 0 5px;color:var(--red);}
+  .takeaways p{margin:0;font-size:16px;line-height:1.55;}
+
+  footer{border-top:1px solid var(--rule);margin-top:56px;padding-top:18px;
+         font-family:var(--sans);font-weight:500;font-size:13.5px;color:var(--ink-faint);}
+  footer p{margin:0 0 7px;}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;}
+  .swatch{width:11px;height:11px;border-radius:2px;display:inline-block;}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="kicker">Reading guide · experimental paper</p>
+  <h1>Childhood Dyslexia at 27</h1>
+  <p class="cite"><b>Sorsa, A., Tretow, A., Xu, W., Gerike, G., Lohvansuu, K., Hämäläinen, J. A., &amp; Leppänen, P. H. T. (2026).</b> Development of brain responses to speech sounds and associations with reading and reading related skills in adults with childhood dyslexia. <em>International Journal of Psychophysiology, 222</em>, 113339.</p>
+</header>
+
+<div class="orient">
+  <dl>
+    <div>
+      <dt>What it asks</dt>
+      <dd>Finnish children whose brain responses to speech differed at 9.5 years are now 26–28. Are those differences still there — and do they still track how well the person reads?</dd>
+    </div>
+    <div>
+      <dt>What it found</dt>
+      <dd>A group difference survives, but it has moved to a different speech feature. The link between brain response and reading ability has not survived at all.</dd>
+    </div>
+    <div>
+      <dt>Why it is unusual</dt>
+      <dd>Two of the three headline results are absences, and the one positive result runs opposite to most of the dyslexia literature: responses in the dyslexia group are <strong>larger</strong>, not smaller.</dd>
+    </div>
+  </dl>
+</div>
+
+<p class="howto">Page numbers are <strong>PDF pages</strong>; the file opens with a repository cover sheet, so the article starts on PDF page&nbsp;2. Figures are not reproduced here — every <span class="fig">Fig. n <span>p. n</span></span> is a place to open the paper and look.</p>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Part one</p>
+    <h2>Before You Read</h2>
+    <p class="role">Background you need that the paper assumes you already have.</p>
+  </div>
+
+  <h3>The sample is the reason the paper exists</h3>
+  <p>The <em class="term">Jyväskylä Longitudinal Study of Dyslexia</em> (JLD) has followed the same Finnish participants from birth into adulthood. So this paper is not comparing adults with dyslexia against strangers; it is comparing them against <em>their own younger selves</em>, as measured in earlier JLD papers. Groups are therefore defined by <strong>childhood</strong> reading status, not adult status — a decision that quietly shapes everything downstream.</p>
+
+  <h3>The measurement</h3>
+  <p>Participants watched a silent film and ignored a stream of speech sounds. One sound repeated 80% of the time (the <em class="term">standard</em>); two rarer sounds (the <em class="term">deviants</em>) broke the pattern. Averaging the EEG time-locked to each sound type yields an <em class="term">event-related potential</em> (ERP): a waveform whose successive peaks — N1, P2, MMN, P3a, LDN — index stages of auditory processing.</p>
+  <p>The one to know is the <em class="term">mismatch negativity</em> (MMN): a response the brain produces automatically when a repeated pattern is violated, whether or not the listener is paying attention. A group difference in the MMN is normally read as a difference in how sharply the brain encodes that particular speech contrast.</p>
+
+  <h3>Two deviants, two phonetic features</h3>
+  <p>The standard was the Finnish pseudoword <span class="sound">/at:a/</span>. One deviant, <span class="sound">/ata/</span>, differed in <strong>phonemic length</strong> — a shorter silent gap before the consonant. The other, <span class="sound">/ap:a/</span>, differed in <strong>place of articulation</strong> — a <span class="sound">/p/</span> instead of a <span class="sound">/t/</span>. Finnish uses phonemic length to distinguish word meanings, which is why the length contrast carries more weight here than it would in English.</p>
+  <p>Keep the two deviants apart in your head. The paper's central finding is that the groups differ on one of them and not the other, and that which one has changed since childhood.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Part two</p>
+    <h2>Understanding the Paper</h2>
+    <p class="role">What the paper argues, and how each step is supported. Evaluation is held back to Part three.</p>
+  </div>
+
+  <h3>The literature the paper is arguing with</h3>
+  <p>The paper's own Introduction (§1.1–1.3, pp. 2–4) is a compact review, and it is worth reading as one, because the result only registers as surprising against it.</p>
+  <p>The starting proposal is that speech perception deficits may <em>precede</em> and feed into phonological deficits, so that inaccurate phonological representations never form properly (Goswami, 2002). Behavioural work has documented these deficits extensively — trouble discriminating consonants, vowels and phonemic length, syllable stress, lexical tone, speech in noise. The authors make a specific criticism of that body of work: it establishes the deficit as a phenomenon but leaves the underlying <strong>processing stages</strong> unexamined. That criticism is what licenses an ERP study.</p>
+  <p>The ERP evidence itself splits by age, and the split matters:</p>
+  <ul class="plain">
+    <li><strong>Children with dyslexia</strong> — fairly consistent <em>attenuated</em> MMN, across length contrasts <span class="sound">/ba/–/ba:/</span> and place contrasts <span class="sound">/ba/–/da/</span>, <span class="sound">/da/–/ga/</span>, <span class="sound">/ba/–/ga/</span>.</li>
+    <li><strong>Infants at familial risk</strong> — mostly smaller or absent mismatch responses, though at least one study reports larger ones, and newborn studies find no group effect at all.</li>
+    <li><strong>Adults with dyslexia</strong> — genuinely fragmented. Diminished MMN for some place contrasts; no group effect for vowel-length contrasts; and <em>enhanced</em> N100m and N1 in two studies. The authors attribute the inconsistency to methodology as much as biology: differing dyslexia criteria, participant numbers, age ranges and stimuli.</li>
+    <li><strong>The JLD sample itself</strong> — has gone against the field. At 6.5 and 9.5 years these participants showed <em>enhanced</em> responses, not attenuated ones (Hämäläinen et al., 2013; Lohvansuu et al., 2014).</li>
+  </ul>
+  <p>A second strand (§1.3, p. 4) links brain responses to later reading. Larger mismatch responses in infancy are reasonably consistently associated with better later reading and pre-reading skills. Closer to school entry the picture loosens — both larger and smaller amplitudes have been linked to better outcomes, along with stronger left lateralisation, so the direction of the association is not settled. Evidence in adulthood is thin, which is the gap this paper occupies.</p>
+
+  <h3>The question</h3>
+  <p>Two questions, stated in §1.4 (p. 5):</p>
+  <ul class="plain">
+    <li><strong>RQ1</strong> — do the childhood group differences in ERPs persist into adulthood?</li>
+    <li><strong>RQ2</strong> — in adulthood, do these responses still track reading and reading-related skills?</li>
+  </ul>
+  <p>Neither question can be asked from a single timepoint; both depend on the longitudinal backdrop above.</p>
+
+  <h3>How the design answers it</h3>
+  <p><strong>Grouping</strong> (§2.1 and <span class="fig">Table 1 <span>p. 5</span></span>). Adults were split by <em>childhood</em> status: RDFR — childhood reading difficulty plus familial risk, <span class="stat">N = 17</span>; TRFR — typical readers with familial risk, <span class="stat">N = 37</span>; TRC — typical readers, no risk, <span class="stat">N = 37</span>. The grouping deliberately reproduces the one used in the 9.5-year paper so the two ages can be compared. RQ1 ran on EEG from 91 participants; RQ2 on combined M/EEG from 84, after seven were dropped for MEG data quality.</p>
+  <p><strong>Task and stimuli</strong> (§2.3). Open <span class="fig">Fig. 2 <span>p. 7</span></span> now — it shows the oddball structure in one picture, and nothing downstream makes sense without it. Then in <span class="fig">Fig. 3 <span>p. 8</span></span>, find the silent gap in the middle of each waveform: that gap, <span class="stat">95 ms</span> against <span class="stat">255 ms</span>, <em>is</em> the length contrast. Note also that the deviant feature sits in the <strong>middle</strong> of the pseudoword rather than at its onset, unlike most comparable adult studies.</p>
+  <p><strong>Statistics</strong> (§2.4.3, p. 9). Group differences were tested with threshold-free cluster enhancement plus permutation testing — a data-driven method that locates clusters of effect across time and sensors without the researcher choosing a time window in advance. Nine comparisons were run (three group pairs × three stimuli), and twelve correlations for RQ2 (three stimuli × four behavioural measures). No correction was applied across either family.</p>
+
+  <h3>What was observed</h3>
+  <h4>Layer 1 — behaviour is still different</h4>
+  <p>In adulthood the childhood-dyslexia group still scored lower on reading fluency <span class="stat">F(2, 88) = 24.87, p &lt; .001, η² = 0.36</span>, reading accuracy <span class="stat">F(2, 88) = 9.67, p &lt; .001, η² = 0.18</span>, and rapid naming <span class="stat">F(2, 86) = 7.70, p &lt; .001, η² = 0.15</span>. The two typical-reading groups did not differ from each other.</p>
+  <p><span class="fig">Fig. 1 <span>p. 6</span></span> plots fluency and accuracy from 9.5 years to adulthood for all three groups. Look at whether the three lines stay <strong>parallel</strong> rather than fanning out. Statistically: a main effect of group for fluency <span class="stat">F(2, 79) = 29.56, p &lt; .001</span> and accuracy <span class="stat">F(2, 79) = 16.69, p &lt; .001</span>, accuracy improving with time <span class="stat">F(1, 79) = 5.57, p = .021</span>, and no time × group interaction for either <span class="stat">p = .743</span>, <span class="stat">p = .236</span>.</p>
+
+  <h4>Layer 2 — the brain difference has moved</h4>
+  <p>For the place-of-articulation deviant <span class="sound">/ap:a/</span>, the childhood-dyslexia group showed <strong>stronger</strong> responses than both other groups: against TRFR from <span class="stat">152 ms</span> to <span class="stat">800 ms</span> across midline and both hemispheres, and against TRC in the left hemisphere around the <span class="stat">300 ms</span> and <span class="stat">600 ms</span> windows. TRFR and TRC did not differ, so familial risk alone did not produce the effect.</p>
+  <p>No group differences appeared for the length deviant <span class="sound">/ata/</span> or for the standard — although at 9.5 years, in a largely overlapping sample, <span class="sound">/ata/</span> was exactly where the difference lived.</p>
+  <p><span class="fig">Fig. 5 <span>p. 9</span></span> is the result figure: masked colour boxes mark significant clusters, yellow stars in panels C and D mark the channels. Verify with your own eyes that the effect appears only in the <span class="sound">/ap:a/</span> row. Then go to <span class="fig">Fig. 7 <span>p. 11</span></span>, panel B, which shows the length deviant: the three group curves now sit on top of one another.</p>
+
+  <h4>Layer 3 — the brain–behaviour link is gone</h4>
+  <p>No significant correlations were found between source-level M/EEG activity and any of the four behavioural measures, across all twelve combinations. Source activity was where it should be, in left and right auditory cortices (<span class="fig">Fig. 8 <span>p. 12</span></span>).</p>
+  <p>The authors did not stop at the null. In §3.1.3 (p. 10) they plotted the full distribution of point-wise correlations for each of the twelve tests: distributions were roughly normal and centred near zero, mean <span class="stat">r</span> between <span class="stat">−0.05</span> and <span class="stat">+0.09</span>, with the share crossing the uncorrected threshold running <span class="stat">1.4%–11.8%</span> against a <span class="stat">5%</span> chance expectation. In <span class="fig">Fig. 9 <span>p. 13</span></span>, the red dashed lines at <span class="stat">±0.215</span> and the inset statistics are what carry that argument.</p>
+
+  <h3>How the authors explain it</h3>
+  <p>The account is developmental (§4.1, pp. 12–13): the <em>feature</em> that separates the groups shifts with age — length at 9.5 years, place of articulation at 27 — driven by maturation plus continued exposure to speech making different linguistic features salient at different stages. For RQ2 (§4.2, p. 13) they argue that adult reading is shaped by so much else, exposure and learned strategies among it, that a childhood link between speech encoding and reading would be expected to wash out.</p>
+  <p>They also name a conflict rather than smoothing it. Elsewhere in the literature, <em>enhanced</em> responses to native speech deviancy are read as reflecting <strong>better</strong> speech processing and better reading. In the JLD sample, enhancement is what the dyslexia group shows. The same direction of effect therefore carries opposite meanings in the two literatures. The authors have themselves given it two different mechanistic readings at different ages — maturational (larger, less specific neuronal populations) at 6.5 years, compensatory (more neurons working harder) at 9.5 years.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Part three</p>
+    <h2>What the Evidence Supports</h2>
+    <p class="role">Separating what was measured from what it was taken to mean. All evaluation in this guide lives here.</p>
+  </div>
+
+  <div class="tier tier--strong">
+    <p class="lab">Well supported</p>
+    <p>The behavioural group differences in adulthood — large effects across three converging measures. The presence of a group difference for <span class="sound">/ap:a/</span> in the direction of enhancement. The absence of detectable brain–behaviour correlations <em>within the sensitivity of this method and sample</em>; the <span class="fig">Fig. 9 <span>p. 13</span></span> histograms make this a positive demonstration rather than a bare null.</p>
+  </div>
+
+  <div class="tier tier--weak">
+    <p class="lab">Supported, but the direction is assumed</p>
+    <p>That the group difference has "moved" from length to place of articulation. This sets a significant result here against a significant result in a different paper, and a null here against a significant result there. No age × feature interaction was tested, although 79 participants have EEG at both ages.</p>
+  </div>
+
+  <div class="tier tier--weak">
+    <p class="lab">Interpretation, not result</p>
+    <p>The maturation-plus-exposure account, and the compensation account of the enhanced responses. Both are stories fitted to a direction of effect. Nothing in this design distinguishes "more neurons recruited to compensate" from "less sharply tuned populations responding more broadly" — the same authors have used both, at different ages, for the same observation.</p>
+  </div>
+
+  <div class="note note--author">
+    <span class="tag">Boundaries the authors state · §4.3, pp. 13–14</span>
+    <p>The stimulus setup changed between the infant and 6.5-year measurements and the later ones. Nine comparisons inflate Type I error, and no correction was applied — choosing one is said to be not straightforward given longitudinal priors and non-independent effects. The mid-word placement of the deviant feature may cause masking and makes comparison with other adult studies indirect. Difference waves could not be computed because the stimuli differ in physical length; the authors argue that since the standard showed no group difference, the deviant effect is likely stimulus-specific.</p>
+  </div>
+
+  <div class="note note--reader">
+    <span class="tag">Reader's notes — mine, not the authors'</span>
+    <ol class="reader">
+      <li><strong>The nulls rest on 17 people.</strong> Both central developmental claims — no <span class="sound">/ata/</span> difference, no brain–behaviour correlation — depend on the RDFR cell. No power analysis or equivalence test is reported, so "the childhood difference is gone" and "we could not detect it with <span class="stat">N = 17</span>" are not distinguished. The Fig. 9 histograms partly answer this for RQ2; nothing answers it for RQ1.</li>
+      <li><strong>The uncorrected comparisons cut one way only.</strong> Type I inflation threatens the single positive finding, not the nulls. It is raised as a general caveat but applies asymmetrically to the paper's own results.</li>
+      <li><strong>The two questions ran on different samples</strong> — <span class="stat">N = 91</span> against <span class="stat">N = 84</span>. Reading the group difference and the correlation null as one developmental story is looser than it appears.</li>
+      <li><strong>The Matthew-effect contrast is low-powered too.</strong> "No widening" comes from a non-significant interaction across three groups totalling 82, one of which holds 17. Non-significance is the expected outcome here whether or not widening occurred.</li>
+      <li><strong>A joint analysis seems available and was not run.</strong> With 79 participants measured at both ages, a within-subject test of the age × feature shift appears possible from what the Methods describe.</li>
+    </ol>
+    <p>None of these make the paper wrong. They mark where its confidence should sit lower than a fast reading would put it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Part four</p>
+    <h2>Learning to Write</h2>
+    <p class="role">Four moves from this paper, for your own Methods and Results. Originals are pointed to, not reproduced — open the page and read the sentence in place.</p>
+  </div>
+
+  <h3>1 · Turning a null into a demonstration</h3>
+  <p>§3.1.3, p. 10, the sentences after the correlation result. The authors do not stop at "no significant correlations were found": they report the shape of the whole correlation distribution and compare the observed rate of threshold-crossing against chance. The move is — <strong>when your result is an absence, characterise the absence quantitatively instead of asserting it.</strong></p>
+  <div class="pattern">
+    <span class="tag">Transferable pattern — my example, not the authors'</span>
+    <q>No significant association was found between X and Y. Across all N tests, the coefficient distributions were centred near zero (mean r = …, SD = …), and the proportion exceeding the uncorrected threshold (…) was …%, consistent with chance expectation.</q>
+  </div>
+  <p>Use it when a null is load-bearing for the argument. Do not use it to dress up a null you neither predicted nor need.</p>
+
+  <h3>2 · Justifying a method by naming what it protects against</h3>
+  <p>§2.4.3, p. 9, where TFCE is introduced. The method is not merely named; the sentence says what it buys — clusters found across time and sensors <em>without a predefined threshold</em>, with permutation testing controlling multiple comparisons.</p>
+  <div class="pattern">
+    <span class="tag">Transferable pattern — my example, not the authors'</span>
+    <q>We used [method], which [does X] without requiring [the researcher choice that would otherwise bias the result], while [second method] provides control for [specific threat].</q>
+  </div>
+  <p>The habit worth copying is the subordinate clause. A method sentence that only names the method leaves the reader to guess why; one clause turns it into an argument.</p>
+
+  <h3>3 · Stating a limitation, then bounding it</h3>
+  <p>§4.3, p. 14, the passage on difference waves. The authors explain why difference waves could not be computed, then immediately argue that the standard stimulus showed no group difference, so the deviant effect is likely stimulus-specific. The limitation is admitted and then fenced.</p>
+  <div class="pattern">
+    <span class="tag">Transferable pattern — my example, not the authors'</span>
+    <q>[Constraint] meant that [analysis] could not be performed, because [reason]. However, [independent observation from the same data], and therefore [the specific inference that survives].</q>
+  </div>
+  <p>This is the difference between a limitations section that erodes a paper and one that delimits it. What makes it work: the fence is built from evidence already reported, not from reassurance.</p>
+
+  <h3>4 · Marking a conflict with the literature instead of hedging</h3>
+  <p>§4.1, pp. 12–13, where the enhanced responses are set against the field's attenuated ones. The authors neither argue the field is wrong nor fold their result into it. They mark the conflict and leave it open.</p>
+  <div class="pattern">
+    <span class="tag">Transferable pattern — my example, not the authors'</span>
+    <q>In [other samples], [finding] has been interpreted as reflecting [meaning A]. This is partly in contrast to [our result], where [the same direction] appears in [the opposite population]. [One sentence on what would resolve it.]</q>
+  </div>
+  <p>Reach for this when your result points the same way as prior work but cannot mean the same thing. Naming the tension is more publishable, and more honest, than a hedge that hopes the reviewer will not notice.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <p class="eyebrow">Part five</p>
+    <h2>Key Takeaways</h2>
+    <p class="role">What to carry away if you remember nothing else.</p>
+  </div>
+  <div class="takeaways">
+    <div>
+      <h5>The finding is a shift, not a disappearance</h5>
+      <p>A brain difference remains in adults with childhood dyslexia, but it now attaches to place of articulation rather than phonemic length. That claim rests on comparing two papers, not on a tested interaction.</p>
+    </div>
+    <div>
+      <h5>Direction matters as much as significance</h5>
+      <p>This sample shows enhanced responses in the dyslexia group where most of the field reports attenuation. Whether enhancement means compensation or blunter tuning is unresolved — and the same authors have argued both.</p>
+    </div>
+    <div>
+      <h5>Behaviour and brain came apart</h5>
+      <p>Reading difficulty persisted with large effects while the brain–behaviour correlation vanished. This is the paper's most consequential result, and it is a null.</p>
+    </div>
+    <div>
+      <h5>A null can be argued for</h5>
+      <p>Characterise the distribution of your non-effect against chance rather than asserting absence. The single most reusable technique in the paper.</p>
+    </div>
+    <div>
+      <h5>Read N = 17 into every conclusion</h5>
+      <p>Small-cell nulls and non-significant interactions carry less information than they appear to, and the uncorrected comparisons threaten the one positive finding rather than the nulls.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Sources are given as PDF page numbers. Statistics are reproduced as reported in the paper. Blue blocks are this guide's own evaluation and are not claims the authors made; amber blocks are limitations the authors state themselves.</p>
+  <div class="legend">
+    <span><i class="swatch" style="background:var(--red)"></i>dyslexia group (RDFR)</span>
+    <span><i class="swatch" style="background:var(--ink)"></i>risk group (TRFR)</span>
+    <span><i class="swatch" style="background:var(--blue)"></i>control group (TRC)</span>
+  </div>
+  <p style="margin-top:12px">Palette taken from the legend of Fig. 1.</p>
+</footer>
+
+</div>
