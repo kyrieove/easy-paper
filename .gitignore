@@ -1,0 +1,13 @@
+# Source PDFs live locally; the corpus is ~200 files and does not belong in git.
+*.pdf
+
+# Stage-1 output is regenerated from the PDF in ~2s. The evidence card is not:
+# it costs a full-text model pass, so it is kept.
+out/**
+!out/*/
+!out/*/evidence-card.json
+
+.agy-staff/
+__pycache__/
+tmp/
+tmp_deck_inspect/
