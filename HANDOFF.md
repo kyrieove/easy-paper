@@ -15,7 +15,7 @@ Full requirements: [paper-learning-skill-design-for-review.md](paper-learning-sk
 | Stage 1 — local preprocessing | **Done**, run on 4 papers, self-checked. Now emits `warnings` — read them |
 | Stage 2 — evidence card | **Done by hand** (model pass), 2 papers, no automation |
 | Stage 3 — English guide | **Done by hand**, 2 papers |
-| SKILL.md | **Not started — this is the next task** |
+| SKILL.md | **Written 2026-09-07** — 212 lines, all three stages. Never executed as a skill |
 | End-to-end token cost | **Measured** in a clean session, 2026-09-07 (see Verification of the card-only route) |
 
 ## The pipeline
@@ -90,6 +90,8 @@ All are already written into the design doc; sections given for the reasoning.
    - **Convention:** inline thoughts as `> [!note] 我` directly under the paragraph they answer; paper-level thoughts appended under a `## My Notes` heading at the end. Do **not** reuse a bare `>` — decision 7 already spends plain blockquotes on two marked voices.
    - **The protecting rule, for SKILL.md:** stage 3 never overwrites an existing guide. If the target `.md` exists, write `<name>-r2.md` and let the user merge. One sentence, no code, and it makes regeneration safe now that stage 3 costs only ~7.7k tokens and will be re-run often.
    - Explicitly **not** a sixth section and **not** a comprehension quiz (§2.5 killed that). The five-part structure is unchanged; `## My Notes` is user-created, appended after Key Takeaways.
+
+10. **Decisions 6 and 8 contradicted each other on Part 4; resolved while writing SKILL.md (2026-09-07).** Decision 8 assigns Methods/Results moves to primary-data papers, decision 6 says a primary-data paper's Introduction is a mini-review and the place the user most needs to learn. The card-only run then produced a Part 4 that taught Introduction moves on a primary-data paper, which read fine and violated 8. **The ruling in SKILL.md: the branch sets the emphasis, it does not ban a section.** A primary-data paper may teach a gap-building move from its Introduction, but a Part 4 that is *only* Introduction phrases is wrong, because Methods and Results are what the user cannot learn from a review. This has not been checked against user reading feedback.
 
 ## Measured numbers
 
@@ -173,16 +175,30 @@ worked example for SKILL.md.
 
 ## Next task
 
-Write `SKILL.md`. Roughly half of it is the output spec, and the two guides in `output/reading-guides/` are the worked examples of that spec:
+**Run the synthesis branch end to end, following `SKILL.md` and nothing else.** It is the largest
+open risk in the project (open question 3) and the only test of the rules that were written for it:
+the (a)/(b)/(c) tier tagging, the synthesis card schema — which `SKILL.md` specifies but which has
+never been written even once — and the review spine for Part two.
+
+Paper to use: `The interplay between executive function and learning disabilities.pdf`
+(Horowitz-Kraus 2026, Elsevier, `has_primary_data=False`). Stage 1 already done:
+`out/the-interplay-between-executive-function-and-learning-disabi/`. There is an old guide for it
+(`horowitz-kraus-2026-reading-guide.md`) that predates every current rule — do not read it before
+writing, and do not overwrite it; the never-clobber rule sends the new one to `-r2.md`.
+
+Also pending, cheaper: stages 2–3 for Rieger 2016 (meta-analysis, `out/15-years-of-microstate-.../`)
+— it is the case decision 1's branching rule was written for, and stage 1 flags that its references
+were never split, so budget ~40% wasted tokens or fix trap 8 first.
+
+Worked examples of the output spec, both current:
 
 - `sorsa-2026-reading-guide.md` — primary-data branch, Elsevier
 - `kropotov-2016-reading-guide.md` — primary-data branch, Frontiers, includes an extraction warning and eight analyst notes
 
-Both are current. `horowitz-kraus-2026-reading-guide.md` is **not** — do not use it as a model.
-
 ## File map
 
 ```
+SKILL.md                      the skill itself; install = copy this folder to ~/.claude/skills/paper-reading-guide/
 pdf2md.py                     stage 1, ~110 lines, one dependency
 test_pdf2md.py                self-check: running-head filter + caption parsing
 paper-learning-skill-design-for-review.md   requirements and design (current)
