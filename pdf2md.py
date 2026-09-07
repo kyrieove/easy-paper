@@ -1,18 +1,29 @@
-"""PDF -> body.md / refs.md / figs/ / figs.json / meta.json.
+"""PDF -> body.md / refs.md / figures.json / meta.json.
 
-Deterministic local preprocessing for the paper-reading pipeline.
-No model calls, no network. Text via pdf-inspector, figures via PyMuPDF.
+Stage 1 of the easy-paper pipeline: deterministic local preprocessing.
+No model calls, no network, no API key. Text extraction via pdf-inspector.
 
-Run with the interpreter that has both deps:  D:\\2\\software\\python.exe
+Writes to output/extracted/<slug>/ by default.
 """
 import argparse
 import hashlib
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
-import pdf_inspector as pi
+try:
+    import pdf_inspector as pi
+except ImportError:
+    sys.exit(
+        "pdf-inspector is not installed for this interpreter.\n\n"
+        f"  interpreter: {sys.executable}\n"
+        f"  fix:         \"{sys.executable}\" -m pip install pdf-inspector\n\n"
+        "If you believe it is installed, you are running a different Python than you "
+        "think. LibreOffice, Anaconda and the Windows Store stub all shadow the one on "
+        "PATH -- use the full path to the interpreter you installed it into."
+    )
 
 # pdf-inspector emits section headings as bold runs (**3. Results**), not ATX headings.
 REF_HEAD = re.compile(r"(?:^|(?<=\s))(?:#{1,4}\s*|\*\*)(references|bibliography|literature cited)\**\b", re.I)
@@ -174,7 +185,7 @@ def run(pdf_path, outroot, force=False):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("pdf")
-    ap.add_argument("--out", default="out")
+    ap.add_argument("--out", default="output/extracted")
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
     run(a.pdf, a.out, a.force)

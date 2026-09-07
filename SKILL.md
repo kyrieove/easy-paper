@@ -24,15 +24,28 @@ Stage 1 needs `pip install pdf-inspector` and nothing else.
 ## Stage 1 — extract (script, 0 model tokens)
 
 ```bash
-python pdf2md.py "<paper>.pdf" --out out
+python pdf2md.py "<paper>.pdf"
 ```
 
-**Check which interpreter you are actually running before blaming the script.** `pdf2md.py` needs
-the Python that has `pdf-inspector` installed, and on a machine with several Pythons the one first
-on `PATH` is often not it — LibreOffice, Anaconda and the Windows Store stub all shadow it. If the
-import fails, run it with the full path to the right interpreter rather than reinstalling.
+**On the first run, the script checks its own dependency.** If `pdf-inspector` is missing it exits
+with the interpreter path it is running under and the exact `pip install` line for that interpreter.
+Relay that message to the user and stop — do not try to install it yourself, and do not fall back to
+reading the PDF directly, which sends the whole document into context and defeats the pipeline.
 
-Writes `out/<slug>/`:
+The usual cause is not a missing package but the wrong Python: LibreOffice, Anaconda and the Windows
+Store stub all shadow the one on `PATH`. The error message says which interpreter ran, so compare it
+against the one the user installed into before advising a reinstall.
+
+Everything the skill produces lives under one `output/` folder:
+
+```
+output/
+  extracted/<slug>/      stage 1 -- body.md, refs.md, figures.json, meta.json
+                         stage 2 -- evidence-card.json lands here too
+  reading-guides/        stage 3 -- the deliverable
+```
+
+`output/extracted/<slug>/` holds:
 
 | File | Contents |
 |---|---|
@@ -57,7 +70,7 @@ primary-data; there is no third branch.
 
 ## Stage 2 — evidence card
 
-Read `body.md` in full, once. Write `out/<slug>/evidence-card.json`. This is an internal artifact;
+Read `body.md` in full, once. Write `output/extracted/<slug>/evidence-card.json`. This is an internal artifact;
 the reader never sees it.
 
 **It exists for accuracy, not for token savings.** Writing fluent English and holding citation
@@ -358,8 +371,7 @@ papers — did exactly that, then made a coherent synthesis guide worse when it 
 
 The two ceilings differ because the branches carry different obligations, measured not guessed: the
 methods sub-section runs about 520 words and the results-reporting move about 400, and a synthesis
-paper spends neither. Measured: an experimental paper landed at 3,150 words with both sections,
-a synthesis paper at 2,989 with neither.
+paper spends neither. Kropotov lands at 3,150 with both; Horowitz-Kraus at 2,989 with neither.
 **Do not shave a required section to hit the number** — cut in the order below, and if that is not
 enough, the guide is as long as the paper requires and the ceiling is the thing that is wrong.
 
@@ -374,6 +386,16 @@ When you are over the ceiling, cut in this order:
 **Never cut:** the methods parameters, the results-reporting format, the four coverage areas in
 Part four, the figure and section pointers, the extraction warnings, or the authors' stated
 boundaries. Those are why the guide is trustworthy; the prose around them is negotiable.
+
+### Worked examples
+
+- `output/reading-guides/kropotov-2016-reading-guide.md` — primary data, Frontiers, carries an
+  extraction warning and eight analyst notes
+- `output/reading-guides/sorsa-2026-reading-guide.md` — primary data, Elsevier
+
+- `output/reading-guides/horowitz-kraus-2026-reading-guide.md` — synthesis, Elsevier, a
+  multi-author workshop review with no figures and no tables at all. Worked example of the
+  disagreement table and of attributing positions to sections rather than to "the authors".
 
 ## Prose constraints
 

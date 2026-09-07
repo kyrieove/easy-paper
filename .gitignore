@@ -1,5 +1,5 @@
 # Stage-1 output is regenerated from the PDF in seconds.
-out/
+output/
 
 # Source PDFs are yours; they do not belong in the skill repo.
 *.pdf

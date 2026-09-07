@@ -60,12 +60,20 @@ read paper.pdf with easy-paper
 Or run stage 1 yourself and let the model pick up from there:
 
 ```bash
-python pdf2md.py "paper.pdf" --out out
+python pdf2md.py "paper.pdf"
 ```
 
-> If the import fails, check *which* Python you ran. On a machine with several, the one first on
-> `PATH` is often LibreOffice's, Anaconda's, or the Windows Store stub. Use the full path to the
-> interpreter that has `pdf-inspector`.
+> If `pdf-inspector` is missing, the script exits with the interpreter it ran under and the exact
+> `pip install` line for it. The usual cause is the wrong Python, not a missing package: LibreOffice,
+> Anaconda and the Windows Store stub all shadow the one on `PATH`.
+
+Everything lands under one folder:
+
+```
+output/
+  extracted/<slug>/    body.md, refs.md, figures.json, meta.json, evidence-card.json
+  reading-guides/      the guides
+```
 
 Self-check: `python test_pdf2md.py`.
 
