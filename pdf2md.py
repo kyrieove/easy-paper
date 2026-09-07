@@ -37,6 +37,15 @@ PRIMARY = re.compile(r"^(?:\d+\.)*\s*(methods?|participants|materials|results)\b
 # "MA D ME TH ODS", "FIG URE 1", "UL TS". Body prose is unaffected. Matching
 # against the de-spaced form recovers the heading without touching any text.
 PRIMARY_FLAT = re.compile(r"(methods|participants|results)", re.I)
+# Bibliography-entry shape, for when the References heading is shredded or absent.
+YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
+NUMBERED = re.compile(r"^\s*[\[(]?\d{1,3}[\].)]\s+[A-Z]")
+# "Smith, J. A." (APA) and "Blasi G," (Vancouver/PLoS) are the two common author forms.
+INITIALS = re.compile(r"[A-Z][a-z]+,\s*(?:[A-Z]\.\s*){1,3}|[A-Z][a-z]{2,}\s+[A-Z]{1,3}\s*[,;]")
+# A page range closes a citation; "a sample of 40-60 children" is prose. The trailing
+# lookahead is what separates them.
+PAGE_RANGE = re.compile(r"\b\d{1,4}\s*[–—-]\s*\d{1,4}\b(?!\s+[a-z])")
+DOI = re.compile(r"\b10\.\d{4,}/", re.I)
 SHRED = re.compile(r"\b\w{1,2}\b(?:\s+\w{1,2}\b)+")
 HEADING = re.compile(r"^#{1,4}\s+(.+?)\s*$")
 BOLD_HEAD = re.compile(r"^\*\*((?:\d+\.)*\s*[A-Z][^*\n]{0,80}?)\*\*")
@@ -67,8 +76,93 @@ def strip_running(pages, thresh=0.6):
     ], junk
 
 
+def cite_count(line):
+    """How many bibliography entries this line appears to hold. Usually 0 or 1.
+
+    Needs a year plus one other citation marker: the year alone matches in-text
+    citations all through the body, and the pair is what makes it specific.
+
+    It returns a count rather than a flag because two-column extraction sometimes
+    merges an entire reference list into one 4,000-character line. Counting those
+    as a single entry is what made 19 papers look like they had too few references
+    to be a reference list.
+    """
+    if len(line) < 30:
+        return 0
+    years = len(YEAR.findall(line))
+    if not years:
+        return 0
+    if not (NUMBERED.match(line) or INITIALS.search(line)
+            or DOI.search(line) or PAGE_RANGE.search(line)):
+        return 0
+    return years
+
+
+def cite_like(line):
+    return cite_count(line) > 0
+
+
+def refs_by_shape(pages):
+    """Find where the reference list starts, by content rather than by heading.
+
+    The heading approach fails whenever the PDF font encoding shreds it -- and
+    `REFERENCES` is small-caps often enough that this hit 35% of one real library.
+    A reference list has a shape no heading can hide: a long run of citation-shaped
+    lines at the end of the paper. Returns (page_index, line_index) or None.
+    """
+    flat = [(pi, li, line.strip())
+            for pi, md in enumerate(pages)
+            for li, line in enumerate(md.splitlines())]
+    if not flat:
+        return None
+    marks = [cite_like(l) for _, _, l in flat]
+
+    k = len(flat) - 1
+    while k >= 0 and not marks[k]:   # skip running feet and trailing sections
+        k -= 1
+    if k < 0:
+        return None
+
+    end, start, hits, gap = k, k, 0, 0
+    while k >= 0:
+        if marks[k]:
+            start, hits, gap = k, hits + 1, 0
+        else:
+            gap += 1
+            if gap > 3:              # a real list tolerates a stray wrapped line, not a paragraph
+                break
+        k -= 1
+
+    span = end - start + 1
+    # Thresholds measured over 221 papers, not guessed.
+    #   hits >= 8   -- one citation-shaped LINE per entry. Counting citations *within* a
+    #                  line instead was tried and eats body text: a Discussion paragraph
+    #                  citing five papers scores five, and 23 papers lost real prose.
+    #   density     -- real reference lists here bottom out at 0.39, because wrapped
+    #                  continuation lines carry no year. 0.60 rejected 19 genuine lists.
+    #   position    -- a reference list is never in the front half.
+    if hits < 8 or hits < 0.35 * span or start < 0.5 * len(flat):
+        return None
+    return flat[start][0], flat[start][1]
+
+
 def split_refs(pages):
-    """Return (body_pages, refs_text). Splits at the first References heading."""
+    """Return (body_pages, refs_text).
+
+    Two passes. The heading split is tried first and is exact when it works, but it
+    can be partial: when the list restarts after a page break or a column-order
+    glitch, the heading matches once and the tail stays in the body. The shape pass
+    then picks up what was left. Two papers in 221 needed exactly this.
+    """
+    body, refs = split_at_heading(pages)
+    tail_body, tail_refs = split_at_shape(body)
+    if tail_refs:
+        # The shape-detected block sits before the heading-detected one in the paper.
+        return tail_body, (tail_refs + "\n" + refs).strip()
+    return body, refs
+
+
+def split_at_heading(pages):
     for i, md in enumerate(pages):
         lines = md.splitlines()
         for j, line in enumerate(lines):
@@ -80,6 +174,17 @@ def split_refs(pages):
                 body = pages[:i] + ["\n".join(body_last)]
                 refs = after + "\n" + "\n".join(lines[j + 1:]) + "\n" + "\n".join(pages[i + 1:])
                 return body, refs
+    return pages, ""
+
+
+def split_at_shape(pages):
+    found = refs_by_shape(pages)
+    if found:
+        i, j = found
+        lines = pages[i].splitlines()
+        body = pages[:i] + (["\n".join(lines[:j])] if j else [])
+        refs = "\n".join(lines[j:]) + "\n" + "\n".join(pages[i + 1:])
+        return body, refs
     return pages, ""
 
 
