@@ -142,7 +142,7 @@ schema, note, paper{cite, doi, branch, sample}
 questions[]                       id, text, page, note
 methods[]                         id, stage, page, where, what_was_done, parameters,
                                   why_it_matters (optional), unclear (optional)
-results_reporting                 convention, example, what_is_omitted, where
+results_reporting{}               convention, example, what_is_omitted, where
 results[]                         id, layer:result, page, where, text, why_it_matters, supports[]
 author_interpretations[]          id, layer:author_interpretation, page, where, text,
                                   rests_on[], boundary
@@ -152,6 +152,16 @@ extraction_warnings[]             text, affects[]
 writing_samples[]                 see below
 figure_pointers[]                 id, page, use
 ```
+
+`[]` is an array, `{}` a single object. **The key names above are exact and the set is closed**,
+in both schemas. A card that shortens `limitations_author_acknowledged` to `limitations`, or folds
+`results[]` and `author_interpretations[]` into `results_reporting`, is a different schema wearing
+a v3 label: stage 3 reads the declared field names and finds nothing. The two arrays stay separate
+even though both carry a `layer` tag — that tag exists to keep them apart in the guide, not to
+merge them here.
+
+`page` is an integer. When an item spans pages, quote it — `"page": "10-12"`. A bare `10-12` is
+not JSON and the whole card fails to parse.
 
 ### Schema — synthesis (`evidence-card/synthesis/v3`)
 
@@ -211,10 +221,11 @@ covers 1 and 4 only, and the disagreement moves in place of 2 and 3.
 
 ### `results_reporting` — how this literature writes a result
 
-An optional object, and for a primary-data paper it is not optional in practice:
+One object, not an array. Required on the primary-data branch; omit it only on a synthesis paper
+that reports no results of its own:
 
 ```
-results_reporting  convention, example (verbatim), what_is_omitted, where
+results_reporting{}  convention, example (verbatim), what_is_omitted, where
 ```
 
 The reader is about to write their own Results section and does not know what a result sentence in
@@ -228,6 +239,17 @@ for each fixed effect and reports the random-effects structure separately; a met
 pooled estimate with its confidence interval and a heterogeneity statistic. **Name the convention
 this paper follows and quote one sentence of it.** Naming an alternative convention as background is
 allowed and useful, but label it as background — it did not come from this paper.
+
+### Before stage 3, on a batch run
+
+```
+python check_guides.py <run-dir>
+```
+
+Checks every card's key set against the two schemas above, flags cards that are not valid JSON or
+that are byte-identical to another card, and traces every statistic in a finished guide back to
+`body.md` or `refs.md`. A card written by an agent that never opened this file is fluent, correctly
+structured, in the right language, and wrong; the key set is the only thing it cannot fake.
 
 ## Stage 3 — the reading guide
 

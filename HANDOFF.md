@@ -98,6 +98,19 @@ Model reads the card (plus targeted re-reads of `body.md`), writes `output/readi
 
 10. **`pdf_inspector.extract_structure_elements` exists and is unused.** Tested: the two Elsevier PDFs are tagged (real `H2`/`H3` roles, `TD`/`TH` table cells, ~800 elements); the Frontiers one returns 2 elements, i.e. nothing. Deliberately not adopted — the `BOLD_HEAD` regex extracts Kropotov's 36 headings correctly and no failure has been observed. Reach for this only when heading detection actually breaks.
 
+13. **The schema block's own formatting made two independent agents build the same wrong card.** Found 2026-09-07 in the first run of this skill outside Claude Code — the user pointed agy at 30 papers in `Dropbox/.../key_articles`. Nine of thirty cards failed structurally. Two of them, `09-serrallach-2016` and `13-van-der-schoot-2002`, failed *identically*: `results_reporting` became a `list[6]` / `list[5]`, `results[]` and `author_interpretations[]` vanished into it, and `limitations_author_acknowledged` was shortened to `limitations`. Three things in SKILL.md invited all of that, and none of them is agent sloppiness:
+
+    - `results_reporting` was the only field in a fifteen-line block written without `[]`, so it read as an omission to be corrected;
+    - `results[]` sat on the very next line, reading as that field's expansion rather than a sibling;
+    - both `results[]` and `author_interpretations[]` carry a `layer:` discriminator, which is exactly how you write *one* array with a type tag;
+    - and `limitations_author_acknowledged` is the longest name in the schema at 33 characters, shortened the same way by both agents.
+
+    **Fixed** by marking objects `{}`, stating that the key set is exact and closed in both schemas, saying the `layer` tag exists to keep the arrays apart rather than to merge them, and deleting the word "optional" from `results_reporting` on the primary-data branch (three more cards had dropped it entirely). **When two independent agents converge on the same deviation, the spec is ambiguous — it is not a discipline problem, and no amount of prompt-hardening fixes it.**
+
+14. **`"page": 10-12` is not JSON, and the schema had no way to say it.** `05-kaiser-2020`'s card died at line 275 on a figure pointer spanning three pages. `page` was documented as a page and used as an integer everywhere, so a genuinely multi-page item has no legal value; the model wrote the honest thing and destroyed the file. A 1,928-word guide was then produced from a card no parser could read. **Fixed**: `page` is an integer, or a quoted string like `"10-12"` when the item spans pages. Any model will hit this again on any paper with a table continued across a page break.
+
+15. **A card can be *copied* between directories and nothing notices.** In the same run, `20-willcutt-2010` and `etiology-and-neuropsychology-of-comorbidity` hold byte-identical cards while their `body.md` files differ by 32 KB — so one of the two cards describes a source it was never read from, and reads as a normal card. `check_guides.py` now hashes every card and reports collisions. Distinguish this from the benign case in the same run: `14-child-2019` and `a-cognitive-dimensional-approach` have identical cards *and* identical bodies, which is just the same PDF filed twice in the library.
+
 ## Design decisions made this session
 
 All are already written into the design doc; sections given for the reasoning.
