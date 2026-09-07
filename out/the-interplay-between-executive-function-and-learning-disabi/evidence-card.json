@@ -1,0 +1,604 @@
+{
+  "schema": "evidence-card/synthesis/v2",
+  "note": "Internal artifact for stage 3. Not shown to the reader. Pages are PDF pages of body.md. read_source is false throughout: no cited original was opened, so every tier-a entry is this review's account of that study, not independent verification.",
+  "paper": {
+    "cite": "Horowitz-Kraus, T., Cirino, P. T., Cutting, L. E., Hughes-Berheim, S. S., Wilkey, E. D., Barnes, M. A., Rosch, K. S., & Church, J. A. (2026). The interplay between executive function and learning disabilities: Developmental cognitive neuroscience perspectives on reading, math, and ADHD. Developmental Cognitive Neuroscience, 79, 101722.",
+    "doi": "10.1016/j.dcn.2026.101722",
+    "branch": "synthesis",
+    "sample": "No new data. An invited review of a pre-conference workshop at Flux 2024 (Baltimore). Eight authors; sections 2-8 are each written by one workshop speaker summarising their own talk, and each section's evidence base is dominated by that speaker's own lab. There is no search strategy, no inclusion criteria and no claim of comprehensiveness."
+  },
+  "structure_note": "This is not a single-voice review. Sections 2-8 have named individual authors and they do not agree with each other: Cirino (2) argues EF is one process, Cutting (4) frames her own work in the three-component model Cirino argues against, Wilkey (6) argues the domain-general/domain-specific split is where the action is. Section 9 names the disagreement as a 'theme' and does not resolve it. Tier (b) in this card therefore means 'the position of the author of that section', not 'the position of the review'. Stage 3 must attribute positions to sections, never to 'the authors'.",
+  "questions": [
+    {
+      "id": "RQ1",
+      "text": "How does executive function interact with reading, mathematics and ADHD across brain and behaviour, and can it be used as a lever for intervention in learning disabilities?",
+      "page": 1,
+      "note": "Framed in the abstract as a roadmap, not as a question with an answer. The paper's own stated output is 'a synthesis of cross-cutting challenges and future directions'."
+    },
+    {
+      "id": "RQ2",
+      "text": "Prior question the review keeps returning to: what is EF, and does the field's failure to agree on a definition block the empirical work?",
+      "page": 2,
+      "note": "Raised in the Introduction, argued in section 2, and named again in the Discussion as the workshop's consistent theme. Never settled."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "page": 2,
+      "where": "1. Introduction",
+      "text": "There is no universal consensus on the definition of EF, and this hampers understanding of how EF relates to academic skills. Even within one model, different component solutions emerge at different ages.",
+      "tier": "field_consensus",
+      "cited_as": "Karr et al., 2018",
+      "read_source": false
+    },
+    {
+      "id": "C2",
+      "page": 2,
+      "where": "1. Introduction",
+      "text": "EF is slow to mature, activates the brain's control system, and directs a potentially malleable set of processes that could be harnessed to improve academic skills.",
+      "tier": "review_author_position",
+      "cited_as": "Porter et al., 2023; Tervo-Clemmens et al., 2022 (support the slow-maturation half only)",
+      "read_source": false,
+      "note": "The citations support slow maturation. 'Could be harnessed to improve academic skills' is the review's framing and is the premise the whole paper rests on; sections 4.1 and 8 later report that harnessing it has mostly failed."
+    },
+    {
+      "id": "C3",
+      "page": 2,
+      "where": "1. Introduction",
+      "text": "Math and reading difficulties are strongly related and often co-occur; particular math domains such as word problems rely on reading comprehension, and EF contributes to success in both.",
+      "tier": "field_consensus",
+      "cited_as": "Cirino, Child, et al., 2018; Peterson et al., 2017; Fuchs et al., 2015; Carriedo et al., 2024; Cirino et al., 2015",
+      "read_source": false
+    },
+    {
+      "id": "C4",
+      "page": 2,
+      "where": "2. Cirino",
+      "text": "Two approaches to EF have historically competed: EF as an individual-difference psychological construct, and EF as an anatomical/biological construct. This overview covers only the psychological approach.",
+      "tier": "review_author_position",
+      "cited_as": null,
+      "read_source": false,
+      "note": "An explicit scope declaration, and one of the few in the paper. Section 3 (Church) then supplies the biological half, so the review as a whole covers both, but no one reconciles them."
+    },
+    {
+      "id": "C5",
+      "page": 2,
+      "where": "2. Cirino",
+      "text": "The Miyake framework (updating, shifting, inhibition) is the most widely used framework for measuring EF with performance measures.",
+      "tier": "field_consensus",
+      "cited_as": "Miyake et al., 2000; Karr et al., 2018",
+      "read_source": false
+    },
+    {
+      "id": "C6",
+      "page": 2,
+      "where": "2. Cirino",
+      "text": "EF should be construed as a singular managerial process, not a set of components: 'EF is a managerial process for coordinating domain general and domain specific resources during challenging goal-directed behavior'. The process has three phases - representation, planning, monitoring (the RPM model).",
+      "tier": "review_author_position",
+      "cited_as": "Cirino, 2023 (the section author's own prior review)",
+      "read_source": false,
+      "note": "This is a position, argued for, against the framework named in C5. It is the clearest tier-b claim in the paper and the easiest one to mistake for consensus because it is stated with a definition and a quotation."
+    },
+    {
+      "id": "C7",
+      "page": 3,
+      "where": "2. Cirino",
+      "text": "The componential approach has under-examined problems: it is unclear how components work together mechanistically or give rise to EF, unclear why attention and processing speed are excluded, and a componential view sits awkwardly with treating EF as an individual difference.",
+      "tier": "review_author_position",
+      "cited_as": null,
+      "read_source": false
+    },
+    {
+      "id": "C8",
+      "page": 3,
+      "where": "2. Cirino",
+      "text": "The main difficulty with a process account is measuring it. Existing EF rating scales do not take a process perspective and often overlap heavily with behavioural inattention. A new parent rating scale instantiating RPM has strong psychometric properties and better discriminant validity against inattention.",
+      "tier": "review_author_position",
+      "cited_as": "Cirino et al., 2026 (own instrument); existing scales: Barkley, 2012; Gioia et al., 2015",
+      "read_source": false,
+      "note": "The author states the limitation himself in the next sentence: needs evaluation in additional samples and with different raters. Self-report of one's own instrument's validity."
+    },
+    {
+      "id": "C9",
+      "page": 3,
+      "where": "3. Church",
+      "text": "Controlled processing engages lateral frontal and parietal regions plus anterior cingulate and bilateral frontal operculum/anterior insula; at rest these separate into a fronto-parietal network and a cingulo-opercular (action mode) network. The pattern is consistent with lesion, intracranial and non-human primate data.",
+      "tier": "field_consensus",
+      "cited_as": "Posner and Petersen, 1990; Power and Petersen, 2013; Dosenbach et al., 2008, 2025; Aron et al., 2004; Bunge et al., 2005; Gratton et al., 2018",
+      "read_source": false,
+      "note": "Explicitly marked in the text as 'in general, it is agreed' - one of the few places the review flags its own tier."
+    },
+    {
+      "id": "C10",
+      "page": 3,
+      "where": "3. Church",
+      "text": "There is active debate about whether these EF-related regions form one network or several, how far they overlap across tasks, which cognitive processes they support, and whether their engagement tracks behavioural EF at all.",
+      "tier": "field_consensus",
+      "cited_as": "Engelhardt et al., 2019; Friedman and Robbins, 2022; Nugiel et al., 2020; Ribeiro et al., 2024",
+      "read_source": false,
+      "note": "Consensus that there is disagreement. Reported plainly rather than smoothed over - contrast with the Discussion's handling of the same problem."
+    },
+    {
+      "id": "C11",
+      "page": 3,
+      "where": "3. Church",
+      "text": "In upper elementary students, engagement of a fronto-parietal parietal region and a cingulo-opercular anterior cingulate region during a sentence comprehension task related to out-of-scanner reading, but engagement of the same regions during a non-lexical inhibition task did not.",
+      "tier": "original_result",
+      "cited_as": "Roe et al., 2018 (section author's lab)",
+      "read_source": false
+    },
+    {
+      "id": "C12",
+      "page": 3,
+      "where": "3. Church",
+      "text": "A later study of bilingual middle schoolers complicates C11: differences on a non-lexical cognitive-flexibility task did relate to reading ability.",
+      "tier": "original_result",
+      "cited_as": "Nugiel et al., 2023 (section author's lab)",
+      "read_source": false,
+      "note": "The section author reports her own contradicting result and labels it as complicating her own earlier summary. Rare and worth showing the reader."
+    },
+    {
+      "id": "C13",
+      "page": 4,
+      "where": "4. Cutting and Hughes-Berheim",
+      "text": "EF plays a 'behind the scenes' role in reading: it influences reading comprehension indirectly, through word-level and oral-language processes, rather than directly. In an SEM of 271 children aged 9-14, working memory and cognitive flexibility related to comprehension indirectly via decoding and oral language respectively.",
+      "tier": "original_result",
+      "cited_as": "Spencer et al., 2020 (own lab); converging: Cartwright et al., 2020; Kieffer et al., 2021; Nouwens et al., 2021; Taboada Barber et al., 2021",
+      "read_source": false
+    },
+    {
+      "id": "C14",
+      "page": 4,
+      "where": "4. Cutting and Hughes-Berheim",
+      "text": "A longitudinal SEM across grades 1-3, 2-4 and 3-5 reproduces that pattern and adds a developmental shift: the EF-to-oral-language path grows in importance for comprehension over time.",
+      "tier": "original_result",
+      "cited_as": "Hughes-Berheim et al., in preparation",
+      "read_source": false,
+      "note": "Unpublished and unavailable. It carries the section's one developmental claim."
+    },
+    {
+      "id": "C15",
+      "page": 4,
+      "where": "4. Cutting and Hughes-Berheim",
+      "text": "Children with more efficient function in EF regions - more connectivity between fronto-parietal and reading networks - were more responsive to a reading tutoring intervention; and kindergarten EF was associated with right dlPFC activity during a pre-reading fMRI task, with right dlPFC-to-left vOTC connectivity predicting comprehension growth a year later.",
+      "tier": "original_result",
+      "cited_as": "Aboud et al., 2018; Burgess and Cutting, 2023 (both own lab)",
+      "read_source": false
+    },
+    {
+      "id": "C16",
+      "page": 4,
+      "where": "4. Cutting and Hughes-Berheim",
+      "text": "These findings suggest neuroimaging in poor or pre-readers may eventually yield biomarkers of future reading difficulty, identifying at-risk students long before difficulty appears.",
+      "tier": "review_author_position",
+      "cited_as": null,
+      "read_source": false,
+      "note": "Marked by the authors themselves as 'a far-reaching goal'. Two small studies to a screening biomarker is a long extrapolation, and the hedge is doing a lot of work."
+    },
+    {
+      "id": "C17",
+      "page": 5,
+      "where": "4.1 Implications for educational practice",
+      "text": "Integrating EF training with reading intervention has been tried and success has been elusive. Interest has shifted to context-specific EF - 'reading-specific EF' and 'math-specific EF' - and reading-specific EF measures outperformed general EF measures in predicting reading outcomes.",
+      "tier": "field_consensus",
+      "cited_as": "Kassai et al., 2019; Melby-Lervag et al., 2016; Takacs and Kassai, 2019; Cartwright and Palian, 2024; Wilkey, 2023a; Peng et al., 2024",
+      "read_source": false,
+      "note": "The most consequential negative result in the paper and it is stated in one clause of one sentence. Section 7 later disputes what these transfer meta-analyses license."
+    },
+    {
+      "id": "C18",
+      "page": 5,
+      "where": "5. Horowitz-Kraus",
+      "text": "Visual information reaches visual cortex about 70 ms post-onset while auditory information reaches auditory cortex about 30 ms, and orthographic output may arrive faster than phonological output; these timing mismatches make auditory-visual synchronisation necessary for fluent word reading.",
+      "tier": "review_author_position",
+      "cited_as": "Heil et al., 1999 (latencies); Breznitz, 2001; Breznitz and Leiken, 2001",
+      "read_source": false,
+      "note": "The latencies are tier a; the inference from millisecond arrival times to reading fluency is the section author's theoretical frame, built on Breznitz's asynchrony account. Read the leap, not just the numbers."
+    },
+    {
+      "id": "C19",
+      "page": 5,
+      "where": "5. Horowitz-Kraus",
+      "text": "Children with dyslexia show reduced functional connectivity between auditory and visual networks during contextual reading; a fast rhythmic presentation condition increased that connectivity toward typical-reader values, and the increase related to better comprehension.",
+      "tier": "original_result",
+      "cited_as": "Horowitz-Kraus et al., 2023 (own lab)",
+      "read_source": false
+    },
+    {
+      "id": "C20",
+      "page": 6,
+      "where": "5. Horowitz-Kraus",
+      "text": "Rhythm-based interventions improve reading fluency: an auditory-rhythmic training in Italian children with dyslexia improved fluency immediately and at three months, with the auditory component the primary driver; a visual rhythmic reading training (letters deleted one by one at an adaptive rate) improved fluency, accuracy and comprehension in Hebrew- and English-speaking children, and improved EF measures too.",
+      "tier": "original_result",
+      "cited_as": "Cancer et al., 2020, 2022; Horowitz-Kraus et al., 2014a, 2014b; Horowitz-Kraus and Breznitz, 2014; Horowitz-Kraus and Holland, 2015; Taran et al., 2023",
+      "read_source": false,
+      "note": "All but the Cancer studies are the section author's own. No control-group details, effect sizes or sample sizes are given for any of them."
+    },
+    {
+      "id": "C21",
+      "page": 6,
+      "where": "5. Horowitz-Kraus",
+      "text": "After the visual rhythmic training, functional connectivity increased between the cingulo-opercular network and left fusiform, within the cingulo-opercular network, and between sensory networks and both control networks, all related to improved word reading fluency; a moderation model linked changes in inhibition and processing speed to long-term fluency gains.",
+      "tier": "original_result",
+      "cited_as": "Taran et al., 2022, 2023; Horowitz-Kraus et al., 2015, 2025; Farah et al., 2024 (all own lab)",
+      "read_source": false
+    },
+    {
+      "id": "C22",
+      "page": 7,
+      "where": "6. Wilkey",
+      "text": "Two neuroimaging meta-analyses converge on over-activation of right IFG and under-activation of right anterior IPS in math difficulties, with one adding under-activation of ventral occipitotemporal cortex.",
+      "tier": "original_result",
+      "cited_as": "Martinez-Lincoln et al., 2023; Tablante et al., 2023",
+      "read_source": false
+    },
+    {
+      "id": "C23",
+      "page": 7,
+      "where": "6. Wilkey",
+      "text": "Regional specification does not answer the question: the tasks feeding those clusters are heterogeneous (math facts, ordinality, magnitude, colour comparison, spatial working memory, transitive reasoning) and the frontal and parietal regions serve attention, visuospatial working memory, grasping and general task difficulty as well as magnitude.",
+      "tier": "review_author_position",
+      "cited_as": "Sokolowski et al., 2017; Connolly et al., 2016; Klingberg, 2006; Silk et al., 2010; Grefkes and Fink, 2005",
+      "read_source": false,
+      "note": "A methodological argument, not a finding. It is the strongest analytic move in the paper: it takes a convergence everyone would report as progress and shows why it does not license the inference."
+    },
+    {
+      "id": "C24",
+      "page": 7,
+      "where": "6. Wilkey",
+      "text": "The largest fMRI study of developmental dyscalculia to date (n = 68, ages 8-10, three tasks, preregistered contrasts) found no consistent group differences on any task by Bayesian analysis, despite robust behavioural differences. Its authors proposed sample heterogeneity as the explanation.",
+      "tier": "original_result",
+      "cited_as": "Kwok et al., 2023",
+      "read_source": false,
+      "note": "Note the attribution: 'The authors proposed'. Wilkey reports the escape hatch without adopting it. Also note that n=68 is the field's largest - that is the size of the evidence base under every dyscalculia imaging claim in this review."
+    },
+    {
+      "id": "C25",
+      "page": 7,
+      "where": "6. Wilkey",
+      "text": "Individual differences in performance track activation in task-specific target regions rather than in domain-general EF regions (n = 546 adults); and in children, only the interference contrast of a magnitude task - not basic magnitude comparison - predicted math achievement, surviving control for a non-numerical interference task.",
+      "tier": "original_result",
+      "cited_as": "Reineberg et al., 2022; Wilkey and Price, 2019 (own)",
+      "read_source": false
+    },
+    {
+      "id": "C26",
+      "page": 7,
+      "where": "6. Wilkey",
+      "text": "Interpreting EF in any domain requires separating three things: the higher-order EF mechanism, the lower-level cognitive substrate it operates on, and their neurobiological interaction. Researchers must manipulate each deliberately.",
+      "tier": "review_author_position",
+      "cited_as": "Wilkey, 2023b (own)",
+      "read_source": false
+    },
+    {
+      "id": "C27",
+      "page": 7,
+      "where": "7. Barnes",
+      "text": "The EF-mathematics relationship is robust and stronger for math than for reading; but because every childhood neurological, clinical, psychiatric, neurodevelopmental and learning disorder involves EF perturbation, behavioural EF measures are neither sensitive nor specific for diagnosing math disability.",
+      "tier": "field_consensus",
+      "cited_as": "Peng et al., 2016; Morgan et al., 2019; Spiegel et al., 2021; Muller and Kerns, 2015",
+      "read_source": false,
+      "note": "The sensitivity/specificity point is the sharpest sentence in the review and it applies to every other section's use of EF."
+    },
+    {
+      "id": "C28",
+      "page": 8,
+      "where": "7.1 Barnes",
+      "text": "In a systematic review of math interventions, working memory was the most frequently and consistently tested EF moderator, and most moderation effects were synergistic: children starting higher in working memory gained more from the intervention. One fractions study reversed by practice type - computation-fluency practice favoured higher-WM students, conceptual practice favoured lower-WM students.",
+      "tier": "original_result",
+      "cited_as": "Barnes, 2023 (own systematic review); Fuchs et al., 2014, 2016; Swanson et al., 2013; Swanson, Moran, et al., 2014",
+      "read_source": false
+    },
+    {
+      "id": "C29",
+      "page": 8,
+      "where": "7.1 Barnes",
+      "text": "The preponderance of synergistic effects means several generally efficacious interventions carry extraneous cognitive load that taxes some children in ways not beneficial for learning. EF characteristics of the learner and cognitive-load characteristics of the intervention should both be engineered.",
+      "tier": "review_author_position",
+      "cited_as": "Barnes and Peng, 2025 (own); Sweller, 2010",
+      "read_source": false,
+      "note": "A reinterpretation, not a result. The same moderation pattern is normally read as a fact about children; Barnes reads it as a defect in her own field's interventions."
+    },
+    {
+      "id": "C30",
+      "page": 8,
+      "where": "7.2 Barnes",
+      "text": "Meta-analyses of working-memory training show a lack of far transfer to mathematics. Their relevance to students with math disabilities has been critiqued: few studies included participants with math disabilities, math outcomes were narrow (arithmetic, not word problems), and almost no study compares combined EF-plus-math intervention against math-only or EF-only.",
+      "tier": "review_author_position",
+      "cited_as": "Melby-Lervag et al., 2016; Sala and Gobet, 2020 (the meta-analyses); Fuchs et al., 2022 (the critique)",
+      "read_source": false,
+      "note": "Directly disputes what C17 and C39 treat as settled. Stage 3 must not present the no-far-transfer conclusion as undisputed within this paper."
+    },
+    {
+      "id": "C31",
+      "page": 8,
+      "where": "7.2 Barnes",
+      "text": "In an RCT with second graders at risk for math disability (working-memory intervention vs schema-based word-problem intervention vs the latter with embedded WM games, against business-as-usual), the WM intervention produced strong WM gains and significant smaller word-problem gains, and the math interventions produced large word-problem gains and significant smaller WM gains. Mediation held in both directions.",
+      "tier": "original_result",
+      "cited_as": "Fuchs et al., 2022",
+      "read_source": false,
+      "note": "The one experimental result in the review that bears directly on whether EF training transfers. Every treatment arm was followed by five minutes of math practice, which the section notes may itself have supplied the link for the WM group."
+    },
+    {
+      "id": "C32",
+      "page": 8,
+      "where": "7.2 Barnes",
+      "text": "The relationship between working memory and math word-problem solving is bidirectional: improving working memory improves word problems, and improving word problems improves working memory.",
+      "tier": "review_author_position",
+      "cited_as": "Fuchs et al., 2022; Doebel, 2020; Peng and Kievit, 2020",
+      "read_source": false
+    },
+    {
+      "id": "C33",
+      "page": 9,
+      "where": "8. Rosch",
+      "text": "ADHD affects about 10% of US school-aged children, frequently co-occurs with learning disorders (up to 50% of children with one diagnosis meet criteria for the other), and both are associated with worse outcomes when combined.",
+      "tier": "field_consensus",
+      "cited_as": "Danielson et al., 2022; DuPaul et al., 2013",
+      "read_source": false
+    },
+    {
+      "id": "C34",
+      "page": 9,
+      "where": "8. Rosch",
+      "text": "Shared variance of EF and processing speed explains most of the transdiagnostic risk for ADHD and LD, tested in a longitudinal twin sample under the multiple-deficit model.",
+      "tier": "original_result",
+      "cited_as": "McGrath et al., 2011, 2020; McGrath and Stoodley, 2019; framework: Pennington, 2006",
+      "read_source": false,
+      "note": "Variance decomposition in a twin sample. The section's conclusion later restates this as co-occurrence 'due in part to' shared deficits - correlational evidence, causal wording."
+    },
+    {
+      "id": "C35",
+      "page": 9,
+      "where": "8. Rosch",
+      "text": "The hope that neurocognitive performance patterns would become diagnostic has not been met: deficits are dimensional and probabilistic, heterogeneity within a diagnosis is well established, and some individuals show a single deficit or none. Diagnosis remains symptom-based.",
+      "tier": "field_consensus",
+      "cited_as": null,
+      "read_source": false,
+      "note": "A negative result about the whole enterprise, stated without hedging. It sits directly against C16's biomarker hope, in the same paper, and no one connects the two."
+    },
+    {
+      "id": "C36",
+      "page": 10,
+      "where": "8. Rosch",
+      "text": "Cognitive training programs for ADHD (CogMed, Endeavor Rx, Interactive Metronome, neurofeedback) appear to show only near transfer - improvement on the trained skill - and not far transfer to ADHD symptoms or learning difficulties. RCT evidence is needed.",
+      "tier": "review_author_position",
+      "cited_as": "Chacko et al., 2014; Enriquez-Geppert et al., 2019; Kollins et al., 2021; Park and Choi, 2017",
+      "read_source": false
+    },
+    {
+      "id": "C37",
+      "page": 10,
+      "where": "8. Rosch",
+      "text": "In children with reading difficulties with and without ADHD who completed the rhythmic reading training, the largest reading-comprehension gain was in the comorbid ADHD+RD group; both groups improved in inhibition to typical-reader levels, and the comorbid group showed changed connectivity in fronto-parietal and dorsal attention networks.",
+      "tier": "original_result",
+      "cited_as": "Rosch et al., 2025 (own lab, using Horowitz-Kraus's intervention)",
+      "read_source": false,
+      "note": "Cross-section link: this is section 5's intervention tested by section 8's author. It is also the paper's clearest instance of the 'intervention as experimentation' argument."
+    },
+    {
+      "id": "C38",
+      "page": 10,
+      "where": "9.1 Discussion",
+      "text": "The consistent theme across the workshop was that the field needs a better understanding of how the approaches to defining and studying EF fit together. EF relates strongly to reading and math variation however it is assessed, but the mechanisms by which it affects people with LD and ADHD, and how it affects intervention response, remain unclear.",
+      "tier": "review_author_position",
+      "cited_as": null,
+      "read_source": false,
+      "note": "This is the whole synthesis. It names the disagreement of sections 2, 4 and 6 as a shared theme rather than resolving it, and it is where a reader is most likely to absorb a false impression of consensus."
+    },
+    {
+      "id": "C39",
+      "page": 10,
+      "where": "9.2 Future directions",
+      "text": "It remains unclear how to convert the EF-academics relation into improved educational outcomes, but EF and academic interventions may be bidirectional and EF may determine who benefits most.",
+      "tier": "review_author_position",
+      "cited_as": "attributed in text to Barnes's section",
+      "read_source": false,
+      "note": "The bidirectionality claim rests on the single RCT at C31. Restating one trial as a future-directions generalisation is the tier (b)-as-(c) slip to watch for."
+    },
+    {
+      "id": "C40",
+      "page": 11,
+      "where": "9.2 Future directions",
+      "text": "Most studies of academic skills in youth are cross-sectional, or longitudinal but small. Large pooled longitudinal datasets, data sharing, and mobile technologies (fNIRS, portable EEG, low-field MRI) that move measurement into the classroom are the stated priorities.",
+      "tier": "review_author_position",
+      "cited_as": "Zhan et al., 2024; Poulsen et al., 2017; Kimberly et al., 2023",
+      "read_source": false
+    }
+  ],
+  "disagreements": [
+    {
+      "id": "D1",
+      "text": "Is EF one process or a set of components? Section 2 argues at length for a singular managerial process (RPM) and lists the componential model's unresolved problems. Section 4 then frames its own empirical programme in exactly that componential model (inhibition, working memory, cognitive flexibility as separate predictors), and section 8 uses components too. Neither cites the other's position. The Discussion calls this a theme rather than a disagreement.",
+      "sides": ["C6, C7 (Cirino, section 2)", "C13, C14 (Cutting and Hughes-Berheim, section 4)", "C38 (Discussion, does not resolve)"]
+    },
+    {
+      "id": "D2",
+      "text": "Does training EF transfer to academic outcomes? Section 4.1 says integration has been tried and success is elusive. Section 8 says cognitive training shows near transfer only. Section 7.2 reports the same no-far-transfer meta-analyses, then argues they do not apply to children with disabilities and presents an RCT in which a working-memory intervention did improve math word problems, with mediation in both directions. The review never adjudicates; the Discussion adopts the optimistic reading.",
+      "sides": ["C17 (Cutting), C36 (Rosch): elusive / near transfer only", "C30, C31, C32 (Barnes): the meta-analyses do not license that conclusion for this population", "C39 (Discussion): adopts Barnes's reading without noting the conflict"]
+    },
+    {
+      "id": "D3",
+      "text": "Is the useful construct domain-general EF or domain-specific EF? Section 4.1 reports that reading-specific EF measures outperform general ones. Section 6 shows individual differences tracking task-specific target regions rather than domain-general EF regions, and argues the interaction is the object of study. Section 2's definition keeps EF domain-general by construction. This is the most substantive open question in the paper and it is not named as one.",
+      "sides": ["C17, C25, C26: context-specific", "C6, C27: domain-general by definition"]
+    },
+    {
+      "id": "D4",
+      "text": "Can neurocognitive profiles be diagnostic or predictive? Section 4 hopes for early biomarkers of reading difficulty from EF connectivity measures. Section 8 states flatly that the analogous hope for ADHD and LD failed, because deficits are dimensional and probabilistic and heterogeneity within a diagnosis is well established. Section 6 adds the largest dyscalculia imaging study finding nothing at group level. The three sit in the same paper without cross-reference.",
+      "sides": ["C16 (Cutting): biomarkers may be possible", "C35 (Rosch): the mapping does not exist", "C24 (Wilkey): group-level differences may not be detectable at all"]
+    }
+  ],
+  "limitations_author_acknowledged": [
+    {
+      "id": "L1",
+      "page": 2,
+      "where": "2. Cirino",
+      "text": "The overview covers only the psychological approach to EF; a biological review would also be of benefit."
+    },
+    {
+      "id": "L2",
+      "page": 3,
+      "where": "2. Cirino",
+      "text": "The new RPM-based rating scale has only initial support and needs additional samples, other raters, and other outcome measures."
+    },
+    {
+      "id": "L3",
+      "page": 4,
+      "where": "4. Cutting and Hughes-Berheim",
+      "text": "Using neuroimaging metrics to choose interventions for different neurocognitive profiles is described as a far-reaching goal, not a current capability."
+    },
+    {
+      "id": "L4",
+      "page": 5,
+      "where": "4.1",
+      "text": "The mechanisms by which enhanced EF improves reading remain elusive, and attempts to combine EF training with reading intervention have not succeeded."
+    },
+    {
+      "id": "L5",
+      "page": 7,
+      "where": "6. Wilkey",
+      "text": "Current neuroimaging evidence offers an incomplete picture: meta-analyses identify candidate substrates but not the cognitive conditions under which they differ, and those conditions likely vary between individuals."
+    },
+    {
+      "id": "L6",
+      "page": 9,
+      "where": "8. Rosch",
+      "text": "Cognitive profiles cannot be mapped to diagnoses; diagnosis remains based on symptoms, history and functional impairment."
+    },
+    {
+      "id": "L7",
+      "page": 10,
+      "where": "9.1 / 10",
+      "text": "Mechanisms remain unclear, it is unclear whether and when incorporating EF into educational interventions helps, and it is 'somewhat early days' for cognitive neuroscience of EF and academics."
+    }
+  ],
+  "limitations_analyst_raised": [
+    {
+      "id": "A1",
+      "text": "There is no method. This is an invited write-up of a workshop in which each speaker summarised their own talk, and it inherits that structure: no search strategy, no inclusion criteria, no coverage claim, and no attempt to weigh studies against each other. Section 4's evidence is Cutting's lab, section 5's is Horowitz-Kraus's lab, section 7's is Barnes's, section 8's is Rosch's. That is not a flaw to hold against the paper - it is an invited review and says so - but nowhere does it tell the reader that the literature reaching them has been selected by the person who produced it.",
+      "targets": ["C13", "C15", "C19", "C20", "C21", "C28", "C37"]
+    },
+    {
+      "id": "A2",
+      "text": "The paper contains no numbers that let you judge any of it. Sixteen pages, zero figures, zero tables, and not one effect size, confidence interval or p value anywhere. Sample sizes appear three times in the whole review (271, 68, 546). Claims are carried by verbal grading - 'robust', 'strongly relates', 'consistent', 'significant but smaller' - which cannot be checked and cannot be compared across sections.",
+      "targets": ["C13", "C20", "C27", "C28", "C31"]
+    },
+    {
+      "id": "A3",
+      "text": "The Discussion does not synthesise; it lists. Four real disagreements run through sections 2 to 8 (see disagreements D1-D4), and section 9.1 converts the largest of them into 'the consistent theme was that we need a better understanding of how all the approaches fit together'. A reader who reads only the abstract, introduction and discussion will come away believing the field is converging. Reading the middle sections against each other is the only way to see that it is not.",
+      "targets": ["C38", "C39"]
+    },
+    {
+      "id": "A4",
+      "text": "The strongest negative results are placed where they do least damage. That EF-plus-reading integration has failed appears as a subordinate clause in section 4.1. That the largest dyscalculia imaging study found nothing appears mid-paragraph in section 6. That cognitive profiles never became diagnostic appears in section 8. None of the three reaches the Discussion, the Conclusion or the abstract, all of which are framed around EF as a promising lever.",
+      "targets": ["C17", "C24", "C35", "C38"]
+    },
+    {
+      "id": "A5",
+      "text": "Two claims rest on evidence a reader cannot obtain. C14's developmental shift is from a manuscript 'in preparation'. C8's psychometric properties are the section author's report of his own new instrument. Both are flagged honestly in the text; both are still load-bearing for their sections.",
+      "targets": ["C8", "C14"]
+    },
+    {
+      "id": "A6",
+      "text": "Section 5's inferential chain is the longest and the least marked. Cortical arrival latencies of 30 and 70 ms (from Heil et al., 1999) become an asynchrony account of dyslexia, which becomes a rationale for rhythmic training, which is then supported almost entirely by the section author's own intervention studies - reported without control conditions, sample sizes or effect sizes. Each link is plausible; the chain is presented as if it were one finding.",
+      "targets": ["C18", "C19", "C20", "C21"]
+    },
+    {
+      "id": "A7",
+      "text": "Correlational evidence is repeatedly reported in causal language. C34 is a variance decomposition in a twin sample; section 8's conclusion renders it as co-occurrence 'due in part to' shared EF and processing-speed deficits. C15 is cross-sectional connectivity predicting later growth; section 4 renders it as a step toward identifying children who will struggle. Watch the verbs.",
+      "targets": ["C15", "C16", "C34"]
+    },
+    {
+      "id": "A8",
+      "text": "Section 6 and section 7 are the two sections that argue rather than summarise, and they are the two worth reading twice. Wilkey takes a meta-analytic convergence everyone else would report as progress and shows why it does not license the inference. Barnes states which analysis answers which question - moderation for 'for whom', mediation for 'by what mechanism' - before reporting any result. If the reader takes one methodological habit from this paper, take one of those two.",
+      "targets": ["C23", "C24", "C26", "C28", "C29", "C30"]
+    },
+    {
+      "id": "A9",
+      "text": "The two sections that contradict each other most directly (4 and 8, on whether neurocognitive measures can identify at-risk children before difficulty appears) never cite each other, and section 8's negative verdict concerns exactly the population section 4 hopes to screen. This is a structural consequence of the one-speaker-per-section format: nobody had the job of reading the whole thing.",
+      "targets": ["C16", "C35"]
+    }
+  ],
+  "extraction_warnings": [
+    {
+      "text": "Stage 1 emitted 'no figures or tables indexed'. Checked against the PDF text: this is a true negative. The paper genuinely contains no figures and no tables. Stage 3 must not use the figure-pointer convention at all for this paper, and must not invent one.",
+      "affects": ["figure_pointers"]
+    },
+    {
+      "text": "Stage 1 emitted 'has_primary_data is False; confirm by hand'. Confirmed: headings are Introduction, seven named narrative sections, Discussion, Conclusion. No Methods, no Participants, no Results, no pooled statistics. Synthesis branch is correct.",
+      "affects": ["branch"]
+    },
+    {
+      "text": "Hyphenated line-break debris is heavy in this extraction ('un abilities derstanding', 'devel opment', 'Colo rado'). It affects readability of quotes only; every writing_samples quote below was reassembled and checked against the surrounding sentence. Verify any additional verbatim quote before using it.",
+      "affects": ["writing_samples"]
+    },
+    {
+      "text": "The Introduction on page 1 interleaves two columns in the extracted text (a sentence about career potential runs into a sentence about 4th-grade proficiency). Read page 1 from the PDF if the exact wording of the opening paragraph matters.",
+      "affects": ["page 1"]
+    }
+  ],
+  "writing_samples": [
+    {
+      "id": "W1",
+      "page": 2,
+      "section": "introduction",
+      "where": "1. Introduction",
+      "quote": "Critically, however, there is no universal consensus on the definition of executive function (EF), and this can hamper fully understanding relations between EF and academic skills.",
+      "move": "Turn a definitional dispute into an obstacle to the empirical question, so it becomes the paper's business rather than a quibble.",
+      "why_it_works": "Disagreement about a term is normally reported and then set aside. This sentence names the consequence in the same breath - it hampers understanding relations - which converts a piece of housekeeping into a reason for the paper to exist. 'Critically, however' is doing the pivot: the preceding sentences had been building EF up as a lever.",
+      "conditions": "Only when the definitional problem really does block the empirical work. If your measures would behave the same under either definition, this sentence is a decoration."
+    },
+    {
+      "id": "W2",
+      "page": 2,
+      "section": "introduction",
+      "where": "1. Introduction",
+      "quote": "Although math and reading may seem quite different on the surface, they are strongly related, and difficulties in both often co-occur (Cirino, Child, et al., 2018; Peterson et al., 2017).",
+      "move": "Put the reader's objection in the concessive clause and answer it in the main clause, with the citation attached to the answer.",
+      "why_it_works": "The paper needs to justify treating two literatures together, and the objection is obvious enough that ignoring it would cost credibility. Raising it yourself and closing it in one sentence costs less space than defending it later, and the citation lands on the claim that carries the weight, not on the concession.",
+      "conditions": "The main clause must be citable. Without the citation this is an assertion wearing the costume of an argument."
+    },
+    {
+      "id": "W3",
+      "page": 7,
+      "section": "discussion",
+      "where": "6. Wilkey",
+      "quote": "Ultimately, Bayesian analyses suggested that there were no consistent differences in any of the tasks with the preregistered fMRI contrasts despite robust behavioral differences in the tasks. The authors proposed that sample heterogeneity may account for the null findings.",
+      "move": "Report someone else's null result in full, then attribute their explanation of it to them rather than adopting it.",
+      "why_it_works": "Two sentences, two different epistemic statuses. The first is what was found - and it is given with the features that make it credible (Bayesian, preregistered, despite robust behavioural differences), not softened. The second could have been written as 'this is likely due to sample heterogeneity', which would have made the escape hatch the reviewer's own. 'The authors proposed' keeps it theirs. This is the single most useful sentence pattern in the paper for anyone writing about literature they did not produce.",
+      "conditions": "Use whenever you report an explanation you have not independently checked. The cost of the alternative is silent: you inherit a claim you never verified and your reader cannot tell."
+    },
+    {
+      "id": "W4",
+      "page": 7,
+      "section": "results",
+      "where": "6. Wilkey",
+      "quote": "In other words, it was magnitude processing under conditions of heightened EF demand, rather than magnitude processing alone, that explained variance in math performance.",
+      "move": "After a paragraph of design detail, one sentence stating the X-not-Y contrast the design actually bought.",
+      "why_it_works": "The preceding sentences describe conditions, stimuli and a control analysis; a reader can follow all of it and still not know what was learned. This sentence spends its whole structure on the contrast - 'under conditions of heightened EF demand, rather than ... alone' - and nothing on restating the method. Note it comes after the design, not before: the reader has to be able to see that the design could have come out the other way.",
+      "conditions": "Only if the design genuinely isolated X from Y. Here it did, and the sentence before it says how (the relation held after controlling for a non-numerical interference task). Without that, an 'in other words' sentence is an upgrade of your own result."
+    },
+    {
+      "id": "W5",
+      "page": 8,
+      "section": "discussion",
+      "where": "7.1 Barnes",
+      "quote": "The preponderance of synergistic effects means that the content and procedures of several of our generally efficacious interventions produce extraneous load that taxes some children's cognitive capacity in ways that are not beneficial for learning (Sweller, 2010).",
+      "move": "Re-read a consistent moderation pattern as a fact about your own field's interventions rather than about the children.",
+      "why_it_works": "The finding - interventions work better for children who start with better working memory - is normally reported as a property of learners. Turning it around requires naming what the pattern implies about the intervention design, and citing the theory (cognitive load) that licenses the turn. 'Our generally efficacious interventions' is what makes it land: she is describing her own field's products, so the reinterpretation reads as accountability rather than as criticism of a rival.",
+      "conditions": "Requires the moderation to be consistent in direction across studies. One synergistic effect is a study; a preponderance is a pattern you can argue from - and the sentence says 'preponderance', not 'studies show'."
+    },
+    {
+      "id": "W6",
+      "page": 6,
+      "section": "discussion",
+      "where": "5. Horowitz-Kraus, end of section",
+      "quote": "Taken together, these studies support the role of AVI and EF in reading fluency among children with dyslexia as well as in typical readers and highlight the role of both the sensory system and EF in reading fluency.",
+      "move": "AVOID. A 'taken together' sentence that restates the section's topic instead of stating what the studies established.",
+      "why_it_works": "It does not work, and it is worth studying because it is the most common way a good section ends badly. 'Support the role of' is unfalsifiable - no direction, no size, no boundary, and no evidence could contradict it. The second half repeats the first half with the nouns rearranged. Compare W3 and W4, which say what was found and what it rules out. A fix: name the strongest single result, then what it does not establish - here, that fluency improved after rhythmic training in several samples, but that no study separated the rhythmic component from the practice it delivered. The same failure mode runs through section 9.1, where 'the consistent theme was that we need a better understanding of how all the approaches fit together' is used to describe a disagreement.",
+      "conditions": "Whenever you write 'taken together', check that the sentence after it could be false. If nothing could contradict it, you have written a heading, not a conclusion."
+    }
+  ],
+  "figure_pointers": []
+}
