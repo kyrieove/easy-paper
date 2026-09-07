@@ -127,6 +127,7 @@ schema, note, paper{cite, doi, branch, sample}
 questions[]                       id, text, page, note
 methods[]                         id, stage, page, where, what_was_done, parameters,
                                   why_it_matters (optional), unclear (optional)
+results_reporting                 convention, example, what_is_omitted, where
 results[]                         id, layer:result, page, where, text, why_it_matters, supports[]
 author_interpretations[]          id, layer:author_interpretation, page, where, text,
                                   rests_on[], boundary
@@ -179,6 +180,39 @@ not become.
 
 Without this array Part four is impossible from the card and stage 3 has to re-read the whole body.
 Stage 2 already has it open, so this costs nothing.
+
+**Coverage, for a primary-data paper.** No fixed count, but four things must be covered, because
+these are the four the reader is trying to learn:
+
+1. **How the gap is built** — Introduction. Even on an experimental paper: its Introduction is a
+   mini-review and it is where the reader is weakest.
+2. **How a design or analysis choice is stated** — Methods.
+3. **How a result is reported** — the statistical format itself, see below.
+4. **How the paper gets from a result to an interpretation** — the Results→Discussion joint.
+
+One sample can cover two of these. If the paper does one of them badly, teach it as `AVOID`; if it
+genuinely does not do one at all, say so in a line rather than inventing a sample. A synthesis paper
+covers 1 and 4 only, and the disagreement moves in place of 2 and 3.
+
+### `results_reporting` — how this literature writes a result
+
+An optional object, and for a primary-data paper it is not optional in practice:
+
+```
+results_reporting  convention, example (verbatim), what_is_omitted, where
+```
+
+The reader is about to write their own Results section and does not know what a result sentence in
+this field contains. Record the paper's actual convention: which statistic, the degrees-of-freedom
+notation, whether effect sizes appear, whether the numbers sit in the prose or in a table, and what
+the field would normally include that this paper leaves out.
+
+Conventions differ sharply and the difference matters. An ERP paper may state direction verbally and
+push every `F` into a table; a mixed-model paper states `β`, `SE`, `t` or `z`, `df` and `p` inline
+for each fixed effect and reports the random-effects structure separately; a meta-analysis reports a
+pooled estimate with its confidence interval and a heterogeneity statistic. **Name the convention
+this paper follows and quote one sentence of it.** Naming an alternative convention as background is
+allowed and useful, but label it as background — it did not come from this paper.
 
 ## Stage 3 — the reading guide
 
@@ -246,13 +280,27 @@ and analysing their own data: this is the part of a paper they can use directly 
 summary destroys. Where the paper does not specify a step well enough to reproduce, say so plainly
 in one clause and move on. **When the guide runs long, this sub-section is the last thing you cut.**
 
-**Part four follows the branch, but the Introduction is always fair game.** Primary data → Methods
-and Results moves: reporting a statistic, reporting a null as a licence, stating a data-driven
-choice without defending it, bounding a conclusion. Synthesis → Introduction and Discussion moves:
-building a gap, attributing a claim to the literature, setting two positions side by side. The user
-is weakest on Introduction and Discussion, so reviews are the *main* source of writing material,
-not the secondary one — but never write a Part four for a primary-data paper that only collects
-Introduction phrases, because its Methods and Results are the part they cannot learn elsewhere.
+**Show the joint between result and interpretation, do not just report both.** For each substantive
+interpretation, name the result it rests on and the step the authors took to get there — an
+inference, an analogy to another literature, a label imported from earlier work. The card's
+`rests_on` and `boundary` fields hold this. A reader who sees a Results section and a Discussion
+section, with nothing linking them, learns that interpretations follow results automatically, which
+is the opposite of what they need.
+
+**Part four covers four things for a primary-data paper**, in this order, matching the coverage rule
+in stage 2. The reader is trying to learn how to write each of them:
+
+1. **Building the gap** — from the Introduction, which on an experimental paper is a mini-review.
+2. **Stating a design or analysis choice** — from the Methods.
+3. **Reporting a result** — with the paper's actual statistical format, from `results_reporting`.
+   Say which statistic, in what notation, with what omitted, and whether the numbers live in the
+   prose or in a table. This is the section the reader will imitate most literally.
+4. **Getting from a result to an interpretation** — the sentence where the paper crosses from what
+   it measured to what it means, and what that crossing costs.
+
+A synthesis paper covers 1 and 4, plus how a claim is attributed to the literature and how two
+positions are set side by side. No fixed number of moves: one sample may cover two of the four, and
+a move the paper performs badly is taught as `AVOID`.
 
 Per move: name it, point at `§Section, p. N`, quote the sentence verbatim in a blockquote labelled
 `> **THE AUTHORS' SENTENCE** — §N, p. N`, then say what it does and when it applies. One sentence
@@ -301,21 +349,28 @@ sends the reader to the paper, not a replacement for it.
 
 ### Length
 
-**Ceiling: 3,000 words. No target, and no lower bound.** A short guide for a thin paper is correct
-output. Padding to a number is how a guide starts inventing content, and the earlier
-2,900–3,250 *target* — calibrated on two single-experiment papers — did exactly that, then made a
-coherent synthesis guide worse when it was shaved to fit.
+**Ceiling: 3,300 words for a primary-data paper, 3,000 for a synthesis paper. No target, and no
+lower bound.** A short guide for a thin paper is correct output. Padding to a number is how a guide
+starts inventing content, and the original 2,900–3,250 *target* — calibrated on two single-experiment
+papers — did exactly that, then made a coherent synthesis guide worse when it was shaved to fit.
+
+The two ceilings differ because the branches carry different obligations, measured not guessed: the
+methods sub-section runs about 520 words and the results-reporting move about 400, and a synthesis
+paper spends neither. Kropotov lands at 3,150 with both; Horowitz-Kraus at 2,989 with neither.
+**Do not shave a required section to hit the number** — cut in the order below, and if that is not
+enough, the guide is as long as the paper requires and the ceiling is the thing that is wrong.
 
 When you are over the ceiling, cut in this order:
 
-1. Part four, down to two moves.
-2. Part one, anything the reader can get from the paper's own Introduction.
-3. Part three's prose, compressed into a claim → evidence → boundary table.
-4. Part two's narrative, but never its content.
+1. Part one, anything the reader can get from the paper's own Introduction.
+2. Part three's prose, compressed into a claim → evidence → boundary table.
+3. Part two's narrative, but never its content — and never the methods sub-section.
+4. Anything Part two says that Part four now quotes directly. Adding a writing move about the
+   Introduction makes Part two's account of the same paragraph redundant; point across instead.
 
-**Never cut:** the methods parameters, the figure and section pointers, the extraction warnings, or
-the authors' stated boundaries. Those four are why the guide is trustworthy; the prose around them
-is negotiable.
+**Never cut:** the methods parameters, the results-reporting format, the four coverage areas in
+Part four, the figure and section pointers, the extraction warnings, or the authors' stated
+boundaries. Those are why the guide is trustworthy; the prose around them is negotiable.
 
 ### Worked examples
 
@@ -323,13 +378,9 @@ is negotiable.
   extraction warning and eight analyst notes
 - `output/reading-guides/sorsa-2026-reading-guide.md` — primary data, Elsevier
 
-- `output/reading-guides/horowitz-kraus-2026-reading-guide-r2.md` — synthesis, Elsevier, a
-  multi-author workshop review. Worked example of the **structure** only: it was written before
-  *Prose constraints* existed and breaks them thirteen times. Use it for the shape of Part two and
-  the disagreement table, not for the sentences.
-
-`horowitz-kraus-2026-reading-guide.md` (the un-suffixed one) predates every rule above.
-**Do not use it as a model.**
+- `output/reading-guides/horowitz-kraus-2026-reading-guide.md` — synthesis, Elsevier, a
+  multi-author workshop review with no figures and no tables at all. Worked example of the
+  disagreement table and of attributing positions to sections rather than to "the authors".
 
 ## Prose constraints
 

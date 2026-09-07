@@ -1,0 +1,339 @@
+{
+ "schema": "evidence-card/primary-data/v2",
+ "note": "Internal artifact for stage 3. Pages are PDF pages of body.md. v2 adds writing_samples so stage 3 needs no re-read of body.md.",
+ "paper": {
+  "cite": "Zhu, J., Chen, H., Cong, F., & Ma, J. (2024). The role of executive control ability in second language metaphor comprehension: Evidence from ERPs and sLORETA. Journal of Neurolinguistics, 72, 101211.",
+  "doi": "10.1016/j.jneuroling.2024.101211",
+  "branch": "primary_data",
+  "sample": "30 native Mandarin Chinese speakers learning English as L2 (15 high executive control, 15 low executive control), university students"
+ },
+ "questions": [
+  {
+   "id": "RQ1",
+   "text": "Is the time course of English (L2) metaphor comprehension affected by executive control ability, and how does metaphor familiarity modulate this relationship?",
+   "page": 3,
+   "note": "Measured through ERP components N400 (300-500 ms) and P600 (600-900 ms) time-locked to the second word of word pairs."
+  },
+  {
+   "id": "RQ2",
+   "text": "Is the lateralized distribution of brain activity associated with executive control related to English (L2) metaphor comprehension, and how does metaphor familiarity modulate this relationship?",
+   "page": 3,
+   "note": "Measured via sLORETA source localization estimating cortical generators in N400 (450-500 ms) and P600 (850-900 ms) windows."
+  }
+ ],
+ "design": [
+  {
+   "id": "M1",
+   "layer": "method",
+   "page": 3,
+   "where": "Methods/Participants p.3",
+   "text": "31 undergraduate/graduate students recruited at Dalian University of Technology (1 excluded for EEG artifacts, final N=30). All right-handed native Mandarin speakers learning English >9 years, screened by CET-6 (mean 550) or TEM-4 (mean 70), and verified via Lextale vocabulary test (High ECG 68.5%, Low ECG 67.2%, p=0.256). Split into two equal groups (15 High ECG, 15 Low ECG) based on RT interference effect in a modified Chinese Stroop task.",
+   "why_it_matters": "Matching on L2 proficiency and vocabulary isolates general cognitive control from linguistic mastery, but N=15 per cell is small and splitting a continuous RT difference score into dichotomous groups discards variance and inflates error."
+  },
+  {
+   "id": "M2",
+   "layer": "method",
+   "page": 3,
+   "where": "Methods/Stroop task p.3-4",
+   "text": "Modified computerized Chinese Stroop task: 144 trials across neutral, congruent, and incongruent conditions (48 each) in three colors (red, green, blue). Fixation (500-1000 ms jittered), stimulus max 1500 ms, ITI 500 ms. Interference effect = RT(incongruent) - RT(congruent). High ECG showed smaller interference (93.83 ± 47.70 ms) than Low ECG (134.85 ± 42.70 ms), F(1,28) = 5.381, p < 0.05.",
+   "why_it_matters": "The entire group factor rests on this single task score. Stroop interference RT difference scores typically suffer from low test-retest reliability."
+  },
+  {
+   "id": "M3",
+   "layer": "method",
+   "page": 4,
+   "where": "Methods/Materials p.4",
+   "text": "90 English word-pair expressions: 30 High Familiar Metaphors (HM, e.g. lawyer-shark), 30 Low Familiar Metaphors (LM), 30 Literal pairs (LW), plus 30 unrelated fillers. Balanced for word length (5.95, 6.27, 6.12 letters). Three rounds of pretesting with 180 independent raters (60/round) for relatedness (>=90%), metaphoricity (>=90%), and 5-point familiarity: HM (4.41 ± 0.20), LM (2.81 ± 0.32), Literal (4.50 ± 0.25).",
+   "why_it_matters": "High familiar metaphors and literal pairs were matched on familiarity (p=0.117), cleanly isolating the familiarity gap to low familiar metaphors."
+  },
+  {
+   "id": "M4",
+   "layer": "method",
+   "page": 4,
+   "where": "Methods/Procedure p.4",
+   "text": "Semantic priming paradigm in sound-attenuated room. Word-by-word sequence: Fixation cross (800 ms), blank (500 ms), Word 1 (1000 ms), blank (500 ms), Word 2 (1000 ms), question mark '?' probe (3000 ms). Semantic relatedness judgment (yes/no buttons) upon '?' onset. 800 ms ITI. 4 blocks of 30 pairs with breaks.",
+   "why_it_matters": "Fixed slow presentation (1000 ms per word + 500 ms ISI) gives ample time for controlled processing and conscious search, which differs from rapid natural reading."
+  },
+  {
+   "id": "M5",
+   "layer": "method",
+   "page": 4,
+   "where": "Methods/Electrophysiological recording and analysis p.4",
+   "text": "64 Ag/AgCl electrodes (ANT Neuro), 500 Hz sampling, online CPz reference, offline re-referenced to averaged mastoids (M1, M2). Bandpass filtered 0.1-30 Hz, notch 50 Hz. Icasso ICA for artifact removal. Epochs -200 to 1000 ms time-locked to Word 2, correct trials only. Repeated-measures ANOVA on 9 pooled electrode positions (3 Anteriority: F, C, P x 3 Laterality: Left, Middle, Right) with Group as between-subjects factor. Windows: N400 (300-500 ms), P600 (600-900 ms).",
+   "why_it_matters": "Analyzing only correct trials ensures ERPs reflect successful comprehension rather than incomprehension errors."
+  },
+  {
+   "id": "M6",
+   "layer": "method",
+   "page": 4,
+   "where": "Methods/Source localization (sLORETA) p.4-5",
+   "text": "sLORETA on realistic head model with 6239 cortical gray-matter voxels at 5 mm spatial resolution. Statistical non-parametric mapping (SnPM) with 5000 random permutations; log-F-ratio thresholded at p < 0.05 corrected for multiple comparisons. Sub-windows analyzed: 450-500 ms and 850-900 ms.",
+   "why_it_matters": "Standard BEM head model without individual structural MRIs provides coarse spatial resolution, limiting anatomical claims to lobes/gyri rather than precise Brodmann areas."
+  }
+ ],
+ "results": [
+  {
+   "id": "R1",
+   "layer": "result",
+   "page": 5,
+   "where": "Results/Behavior results, Table 1 p.5",
+   "text": "Accuracy showed no significant difference between High and Low ECG groups across any condition (High: HM 90.4%, LM 85.0%, Literal 91.8%; Low: HM 88.6%, LM 83.6%, Literal 89.1%). RTs showed a significant group main effect (MANOVA F=3.612, p<0.05, eta^2=0.294) driven specifically by Low Familiar Metaphors (ANOVA F=7.335, p<0.05, eta^2=0.208), where Low ECG was ~155 ms slower (878.30 ms vs 722.97 ms). Literal (664.8 vs 585.5 ms) and HM (653.6 vs 617.1 ms) RT differences did not reach significance.",
+   "why_it_matters": "High accuracy in both groups proves participants comprehended the expressions, while the RT slowdown is specifically localized to low familiar metaphors.",
+   "supports": [
+    "I1",
+    "I3"
+   ]
+  },
+  {
+   "id": "R2",
+   "layer": "result",
+   "page": 5,
+   "where": "Results/ERP results/N400, Figures 1-3 p.5-7",
+   "text": "Low ECG elicited overall more negative N400 amplitudes across conditions compared to High ECG. Significant 3-way interactions: Group x Expression x Laterality [F(8,224)=2.903, p<0.05, eta^2=0.094] and Group x Expression x Anteriority [F(8,224)=3.801, p<0.01, eta^2=0.120]. Both groups showed graded N400 amplitudes (LM most negative, followed by Literal, HM most positive). In High ECG, Expression x Laterality was significant at anterior sites [F(4,56)=5.547, p<0.01, eta^2=0.284]. In Low ECG, Expression x Anteriority was significant [F(4,56)=4.918, p<0.01, eta^2=0.260].",
+   "why_it_matters": "Metaphor familiarity modulates semantic retrieval (N400) in both groups, but low executive control individuals spend greater semantic processing effort across all types.",
+   "supports": [
+    "I1",
+    "I2"
+   ]
+  },
+  {
+   "id": "R3",
+   "layer": "result",
+   "page": 5,
+   "where": "Results/ERP results/P600, Figures 1, 4, 5 p.5-8",
+   "text": "Low ECG elicited significantly more negative (reduced positive) P600 amplitudes than High ECG. 4-way interaction: Group x Expression x Laterality x Anteriority [F(8,224)=2.723, p<0.01, eta^2=0.089]. Crucially, metaphor familiarity modulated P600 ONLY in the Low ECG group (Expression x Anteriority F(4,56)=3.664, p<0.05, eta^2=0.207), where HM was more positive than LM. In High ECG, expression condition did NOT significantly modulate P600 amplitude.",
+   "why_it_matters": "This asymmetric modulation is the paper's key ERP finding: high executive control readers resolve both familiar and unfamiliar metaphors without extra late integration cost, whereas low control readers struggle with secondary integration specifically on unfamiliar metaphors.",
+   "supports": [
+    "I1",
+    "I2"
+   ]
+  },
+  {
+   "id": "R4",
+   "layer": "result",
+   "page": 9,
+   "where": "Results/sLORETA, Figure 6, Table 2 p.8-9",
+   "text": "For Low Familiar Metaphors, Low ECG showed significantly stronger cortical activation than High ECG in right Middle Frontal Gyrus (MFG, BA 10/11) and right Superior Frontal Gyrus (SFG, BA 10/11) during 450-500 ms (log-F = 2.20, p<0.05), and in right Medial FG (BA 10), right MFG (BA 10), and right SFG (BA 10/11) during 850-900 ms (log-F = 2.13, 2.11, p<0.05). In contrast, for High Familiar Metaphors, NO significant differences in source activation were found between groups anywhere in the brain.",
+   "why_it_matters": "Prefrontal right-hemisphere hyperactivation is restricted to low executive control readers processing unfamiliar metaphors, matching the behavioral RT gap.",
+   "supports": [
+    "I3",
+    "I4"
+   ]
+  }
+ ],
+ "author_interpretations": [
+  {
+   "id": "I1",
+   "layer": "author_interpretation",
+   "page": 9,
+   "where": "Discussion/Individual differences in time course p.9-10",
+   "text": "The more negative N400 and P600 in Low ECG reflect greater cognitive effort in semantic search and secondary integration. According to Kintsch's Predication model, unfamiliar metaphors require activating a broader semantic neighborhood and suppressing non-shared attributes. High ECG individuals have richer semantic networks and better inhibitory control, identifying target-source intersections faster and with fewer rounds of spreading activation.",
+   "rests_on": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "boundary": "The authors infer 'rounds of spreading activation' and 'inhibitory suppression' from static amplitude differences; no dynamic tracking of semantic neighbors was conducted."
+  },
+  {
+   "id": "I2",
+   "layer": "author_interpretation",
+   "page": 10,
+   "where": "Discussion/P600 secondary integration p.10",
+   "text": "P600 familiarity modulation in Low ECG reflects failure of the initial mapping route, forcing repeated shifting and secondary semantic integration. High ECG individuals resolve mapping efficiently during earlier stages, leading to no familiarity effect on P600.",
+   "rests_on": [
+    "R3"
+   ],
+   "boundary": "Labeling attenuated P600 positivity as 'more negative P600' confounds component reduction with an active negative-going process; alternative explanations like baseline drift or overlapping N400 spillover are not ruled out."
+  },
+  {
+   "id": "I3",
+   "layer": "author_interpretation",
+   "page": 10,
+   "where": "Discussion/Brain localization p.10-11",
+   "text": "Greater activation in right MFG and SFG for Low ECG during low familiar metaphor comprehension supports the Dynamic RH Spillover Hypothesis: when left-hemisphere neural resources are exhausted, coarser-grained compensatory resources in the right prefrontal cortex are recruited.",
+   "rests_on": [
+    "R4"
+   ],
+   "boundary": "Compensatory recruitment implies beneficial assistance, but Low ECG participants were 155 ms slower, which is equally consistent with inefficient cognitive struggle or neural noise rather than effective compensation."
+  },
+  {
+   "id": "I4",
+   "layer": "author_interpretation",
+   "page": 10,
+   "where": "Discussion/Familiarity threshold p.10-11",
+   "text": "The lack of group difference in familiar metaphors indicates a 'familiarity threshold': highly familiar metaphors have conventionalized or bidirectional mappings, requiring few neural resources and minimizing the role of executive control.",
+   "rests_on": [
+    "R1",
+    "R4"
+   ],
+   "boundary": "A null finding between groups in the familiar condition is interpreted as a positive theoretical construct ('familiarity threshold') rather than potential ceiling effects or limited sample power."
+  }
+ ],
+ "limitations_author_acknowledged": [
+  {
+   "id": "L1",
+   "page": 11,
+   "where": "Discussion p.11",
+   "text": "The study did not separate executive control into individual subcomponents (working memory vs inhibition vs shifting); only general Stroop interference was used."
+  },
+  {
+   "id": "L2",
+   "page": 11,
+   "where": "Discussion p.11",
+   "text": "Statistical analysis of time courses was coarse, relying on pre-selected ERP time windows rather than continuous or fine-grained time-frequency methods."
+  },
+  {
+   "id": "L3",
+   "page": 11,
+   "where": "Discussion p.11",
+   "text": "Only three discrete familiarity categories were used; testing the proposed familiarity threshold requires more fine-grained and exhaustive familiarity gradations."
+  }
+ ],
+ "limitations_analyst_raised": [
+  {
+   "id": "A1",
+   "text": "Small sample size (N=15 per group, total N=30) limits statistical power for detecting subtle higher-order interactions and increases risk of inflated effect sizes.",
+   "targets": [
+    "M1",
+    "R1",
+    "R3"
+   ]
+  },
+  {
+   "id": "A2",
+   "text": "Dichotomization of a continuous variable: splitting participants into High and Low ECG based on Stroop RT difference scores discards individual variance and risks spurious group differences. Continuous regression or linear mixed-effects modeling would be more rigorous.",
+   "targets": [
+    "M1",
+    "M2"
+   ]
+  },
+  {
+   "id": "A3",
+   "text": "Stroop RT difference scores have well-documented low test-retest reliability, which introduces measurement noise into the primary grouping factor.",
+   "targets": [
+    "M2"
+   ]
+  },
+  {
+   "id": "A4",
+   "text": "The 'Compensatory Spillover' narrative lacks behavioral mediation: right MFG/SFG hyperactivation in Low ECG was accompanied by slower RTs (+155 ms), not preserved speed. Without demonstrating that greater right PFC activation predicted faster RT within the Low ECG group, the data cannot distinguish true compensation from inefficient cognitive struggle.",
+   "targets": [
+    "I3",
+    "R1",
+    "R4"
+   ]
+  },
+  {
+   "id": "A5",
+   "text": "sLORETA localization on 64 electrodes without individual MRI anatomy: while standard, inverse solutions on template brains have coarse spatial resolution (~centimeters). Attributing effects to precise Brodmann areas (BA 10 vs BA 11) overstates anatomical specificity.",
+   "targets": [
+    "M6",
+    "R4"
+   ]
+  },
+  {
+   "id": "A6",
+   "text": "Polarity naming ambiguity: referring to 'more negative P600' conflates a reduction of a positive peak with an active negative-going component, obscuring whether the late effect is an extended N400 or genuine P600 attenuation.",
+   "targets": [
+    "R3",
+    "I2"
+   ]
+  }
+ ],
+ "extraction_warnings": [],
+ "writing_samples": [
+  {
+   "id": "W1",
+   "page": 4,
+   "section": "methods",
+   "where": "Methods/Materials p.4",
+   "quote": "Before the experiment, 180 raters, who did not participate in the ERP experiment but had the same background as those involved, participated in the three rounds of pretests (60 per round).",
+   "move": "Document rigorous multi-stage stimulus calibration using an independent rater cohort.",
+   "why_it_works": "Demonstrates stimulus validity and eliminates subjective experimenter bias by deploying separate normative panels for relatedness, metaphoricity, and familiarity.",
+   "conditions": "Use in psycholinguistic paradigms whenever stimuli are constructed or translated rather than pulled from standardized databases."
+  },
+  {
+   "id": "W2",
+   "page": 3,
+   "section": "introduction",
+   "where": "Introduction p.3",
+   "quote": "While some attention has been paid to the cognitive mechanism of L2 metaphor comprehension between different executive control abilities, there are still some limitations. First, most previous research has examined the effect of executive control based on results of behavioral tasks, lacking electrophysiological evidence.",
+   "move": "Carve out a methodological gap by demonstrating that existing behavioral evidence cannot resolve internal cognitive time courses.",
+   "why_it_works": "Directly licenses an ERP/neuroimaging study by framing behavioral measures as insufficient to separate real-time cognitive sub-stages.",
+   "conditions": "Essential when using neuroimaging (EEG/fMRI) on a topic where behavioral paradigms already show an effect."
+  },
+  {
+   "id": "W3",
+   "page": 10,
+   "section": "discussion",
+   "where": "Discussion/Brain localization p.10",
+   "quote": "In contrast with neural efficiency, Weber et al. (2020) and Mottarella, Yamasaki, and Prat (2021) provided evidence inconsistent with studies showing decreased activation outside the language network in high skilled individuals.",
+   "move": "Set rival theoretical accounts side by side to establish why one fails where the other succeeds.",
+   "why_it_works": "Instead of presenting the favoured theory as an unchallenged default, explicitly tests it against the strongest competing account (neural efficiency) to show why the data demand a spillover interpretation.",
+   "conditions": "Ideal in Discussion sections when findings could plausibly fit multiple existing models."
+  },
+  {
+   "id": "W4",
+   "page": 10,
+   "section": "discussion",
+   "where": "Discussion/Familiarity threshold p.10",
+   "quote": "Therefore, we assume that the higher consuming demand for neural resources in metaphor comprehension leads to increased RH activations but does not make a difference until the amount of neural resources demand reaches the threshold.",
+   "move": "Formulate a threshold hypothesis to explain why an experimental manipulation produces an effect in one condition but not another.",
+   "why_it_works": "Transforms a conditional null finding (no group difference in familiar metaphors) into a bounded theoretical principle.",
+   "conditions": "Useful when explaining non-linear effects across task difficulty gradients."
+  },
+  {
+   "id": "W5",
+   "page": 11,
+   "section": "discussion",
+   "where": "Discussion/Familiarity threshold p.11",
+   "quote": "We assume that the stronger links result in the same number of semantic neighbors of LSA activated by both high and low executive control individuals, which leads to negligible individual differences in metaphor comprehension.",
+   "move": "AVOID -- Stacking speculative computational assumptions to explain away a non-significant group difference.",
+   "why_it_works": "Teach by contrast. The sentence piles assumption upon assumption ('We assume that the stronger links result in...') to explain why high and low groups showed no difference, without empirical grounding from the LSA space itself.",
+   "conditions": "Avoid inventing untested mechanistic chains purely to rationalize a null result."
+  }
+ ],
+ "figure_pointers": [
+  {
+   "id": "TABLE 1",
+   "page": 5,
+   "use": "R1 -- Behavioral RTs and accuracy. Check that accuracy exceeds 83% across all cells, confirming comprehension, and examine the 155 ms RT gap specifically in low familiar metaphors."
+  },
+  {
+   "id": "FIGURE 1",
+   "page": 6,
+   "use": "R2, R3 -- Grand average ERP waveforms across 9 electrode sites and 2D voltage topographies. Compare N400 (300-500 ms) and P600 (600-900 ms) deflections between High and Low ECG groups."
+  },
+  {
+   "id": "FIGURE 2",
+   "page": 6,
+   "use": "R2 -- N400 mean amplitudes across anterior, central, and parietal clusters. Observe anterior positivity vs posterior negativity patterns across the three expressions."
+  },
+  {
+   "id": "FIGURE 3",
+   "page": 7,
+   "use": "R2 -- N400 mean amplitudes across left, middle, and right electrode groups, illustrating hemispheric distribution differences across groups."
+  },
+  {
+   "id": "FIGURE 4",
+   "page": 7,
+   "use": "R3 -- P600 mean amplitudes across anteriority regions. Note the selective collapse of positivity for low familiar metaphors in the Low ECG group."
+  },
+  {
+   "id": "FIGURE 5",
+   "page": 8,
+   "use": "R3 -- P600 mean amplitudes across laterality regions."
+  },
+  {
+   "id": "FIGURE 6",
+   "page": 8,
+   "use": "R4 -- sLORETA cortical activation images. Panel A shows right prefrontal hyperactivation in Low ECG at 450-500 ms; Panel B shows persistent right MFG/SFG activation at 850-900 ms."
+  },
+  {
+   "id": "TABLE 2",
+   "page": 9,
+   "use": "R4 -- MNI coordinates, Brodmann areas (BA 10/11), and log-F-ratio statistics for significant sLORETA clusters."
+  }
+ ]
+}

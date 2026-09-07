@@ -87,6 +87,13 @@
       "unclear": "No multiple-comparison correction is reported for the dozens of ANOVAs in Tables 2, 3, 6 and 7, and no correction is reported for the data-driven choice of measurement windows."
     }
   ],
+  "results_reporting": {
+    "convention": "Direction in the prose, every statistic in a table. The Results text states which wave changed and in which direction, then hands off with a pointer; no F value, df, p value or effect size appears in the running text anywhere in the paper. The tables carry F[4, 449] for the age factor and a p column, with no effect size and no correction column.",
+    "example": "The results of statistical analysis are presented in Table 3.",
+    "what_is_omitted": "No effect sizes of any kind (no eta squared, no Cohen's d). No confidence intervals. No correction for multiple comparisons across the dozens of ANOVAs. No count of trials retained per subject or per age band. Degrees of freedom appear only in the table header, so a reader skimming the prose never sees the sample the test ran on.",
+    "where": "Results p.4-10; the statistic tables are Tables 2, 3, 6 and 7",
+    "background_note": "BACKGROUND, NOT FROM THIS PAPER. The prose-plus-table split is common in ERP work but is not the only convention, and mixed-effects papers - which is where much of this field is moving - report inline instead: per fixed effect a beta with its SE, a t or z with its df, and a p, plus the random-effects structure stated separately and the fitting software named. A meta-analysis instead reports a pooled estimate with its confidence interval and a heterogeneity statistic. Match the convention of the journal being written for, not of the last paper read."
+  },
   "results": [
     {
       "id": "R1",
@@ -391,6 +398,36 @@
       "move": "AVOID -- an absolute adverb a cross-sectional design cannot earn.",
       "why_it_works": "Teach by contrast. 'Unequivocally' sits three pages from the authors' own statement that the study is descriptive and interpretive (see L3). Calibrated alternatives: 'are consistent with', 'support', 'provide converging evidence for'.",
       "conditions": "Reserve absolute adverbs for claims the design could in principle have falsified."
+    },
+    {
+      "id": "W7",
+      "page": 4,
+      "section": "results",
+      "where": "Results/Grand Average ERPs, and every statistical paragraph after it",
+      "quote": "The peak latencies of both N2Cue and P3Cue increase by age with approximately 4 ms per decade.",
+      "move": "Report a result as a direction plus a rate, and send the statistics to a table.",
+      "why_it_works": "The sentence carries what a reader needs to hold - which measure, which way, how much per decade - and nothing that would interrupt the sentence. The F values and p values live in Table 2, reached by a one-clause pointer. The prose stays readable across a Results section with dozens of tests.",
+      "conditions": "The cost is that prose and table can drift apart, and in this paper they did: the headline slowing rate is given three different ways across abstract, Results and Discussion, and the Conclusion contradicts the Results on behaviour. If you adopt this convention, the reconciliation between prose and table is a step you have to add, because nothing in the format enforces it."
+    },
+    {
+      "id": "W8",
+      "page": 11,
+      "section": "discussion",
+      "where": "Discussion/Compensation Hypothesis of Aging, opening",
+      "quote": "Two observations from our data should be mentioned with respect to this hypothesis.",
+      "move": "Cross from result to interpretation by naming the hypothesis first and then the observations that bear on it.",
+      "why_it_works": "The crossing is where a paper is most likely to smuggle. This sentence makes the direction explicit - here is a hypothesis, here is what our data say about it - rather than narrating results until an interpretation appears to emerge. The reader can see the claim and the evidence arriving separately, and can disagree with the join.",
+      "conditions": "It only helps if the observations really bear on the hypothesis. In this paper the compensation account needs the frontal increase to be doing work, and neither observation tests that - see the boundary on I2. The frame is honest; the content underneath still has to be checked."
+    },
+    {
+      "id": "W9",
+      "page": 2,
+      "section": "introduction",
+      "where": "Introduction, the paragraph before the aims",
+      "quote": "With respect to the ERP amplitudes, however, the findings are less consistent.",
+      "move": "Build the gap out of an inconsistency in prior work rather than out of an absence.",
+      "why_it_works": "The preceding sentence grants that the literature agrees on latency. This one turns, and the four contradictory amplitude findings that follow become the reason a new method is needed. Nobody is called wrong; the disagreement itself is the argument.",
+      "conditions": "The strongest gap-building move available when a field has a replication problem rather than a blank space. It requires that the contradictions be real and citable - list them, in order, agreement first so the disagreement lands as a contrast."
     }
   ],
   "figure_pointers": [

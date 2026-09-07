@@ -2,12 +2,12 @@
 
 **Sorsa, A., Tretow, A., Xu, W., Gerike, G., Lohvansuu, K., Hämäläinen, J. A., & Leppänen, P. H. T. (2026).**
 Development of brain responses to speech sounds and associations with reading and reading related skills in adults with childhood dyslexia.
-*International Journal of Psychophysiology, 222*, 113339.
+International Journal of Psychophysiology, 222, 113339.
 
-| | |
-|---|---|
-| **What it asks** | Finnish children whose brain responses to speech differed at 9.5 years are now 26–28. Are those differences still there — and do they still track how well the person reads? |
-| **What it found** | A group difference survives, but it has moved to a different speech feature. The link between brain response and reading ability has not survived at all. |
+|                       |                                                                                                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **What it asks**      | Finnish children whose brain responses to speech differed at 9.5 years are now 26–28. Are those differences still there — and do they still track how well the person reads?             |
+| **What it found**     | A group difference survives, but it has moved to a different speech feature. The link between brain response and reading ability has not survived at all.                                |
 | **Why it is unusual** | Two of the three headline results are absences, and the one positive result runs opposite to most of the dyslexia literature: responses in the dyslexia group are *larger*, not smaller. |
 
 **Two conventions used throughout.** `→ Fig. 5 · p. 9` marks a place to stop and open the PDF — figures are not reproduced here on purpose. Statistics appear as `F(2, 88) = 24.87` so they stay findable in the prose. Page numbers are **PDF pages**; the file opens with a repository cover sheet, so the article starts on PDF page 2.
@@ -243,3 +243,5 @@ Small-cell nulls and non-significant interactions carry less information than th
 ---
 
 *Sources are given as PDF page numbers. Statistics are reproduced as reported in the paper. Blockquotes labelled READER'S NOTES are this guide's own evaluation and are not claims the authors made; the block labelled BOUNDARIES THE AUTHORS STATE is theirs.*
+
+[^1]: claude评价式语言太多了
