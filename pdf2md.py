@@ -113,9 +113,14 @@ def index_figures(body_pages):
 
 def run(pdf_path, outroot, force=False):
     pdf_path = Path(pdf_path)
-    dest = Path(outroot) / slugify(pdf_path.stem)
-    meta_f = dest / "meta.json"
     digest = sha256(pdf_path)
+    # The slug alone collides: two papers whose titles agree for 60 characters land in
+    # the same folder and the second silently overwrites the first. That is not a corner
+    # case -- it cost 10 of 221 papers in one real library, with no error reported.
+    # The hash suffix also makes re-extraction of an edited PDF a new folder, not a
+    # half-overwritten one.
+    dest = Path(outroot) / f"{slugify(pdf_path.stem)[:52]}-{digest[:6]}"
+    meta_f = dest / "meta.json"
     if meta_f.exists() and not force:
         if json.loads(meta_f.read_text("utf-8")).get("pdf_sha256") == digest:
             print("cached", dest)
