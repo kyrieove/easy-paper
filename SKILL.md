@@ -66,12 +66,26 @@ Rules:
 
 1. Every substantive entry carries `page` (PDF page) and `where` (section, table or figure).
 2. Keep the layers in separate arrays and never merge them: what was measured, what the authors
-   concluded from it, what the authors admit as a limit, what you as analyst raise.
+   concluded from it, what the authors admit as a limit, what the paper does not state.
 3. Never invent a page, figure or number. Missing or unreliable → say so in `extraction_warnings`.
 4. Locating a source correctly does not mean the reading is correct. Check that the claim is
    actually supported by the evidence you attached to it.
 5. When a table's numbers survive extraction badly (detached superscripts, merged cells), record it
    in `extraction_warnings` and tell stage 3 to read those values off the PDF.
+
+### `unstated_by_the_paper[]` — the pointing test
+
+Every entry must be settleable by **pointing**: at two places in the paper that do not agree, at a
+number that does not match another number, at a citation that is missing, or at a thing the paper
+never states. `kind` is one of `contradiction`, `missing_method`, `number_mismatch`,
+`unsourced_claim`, `location` (a claim that appears only where a reader will miss it).
+
+If an entry cannot be settled by pointing, it is your opinion and it does not go in the card.
+**An empty array is a good outcome, not a gap.** This array used to be called
+`limitations_analyst_raised` and it produced nine entries on the first synthesis paper, several of
+which were verdicts about which sections were worth reading. That is the failure this rename exists
+to stop: a first-class container for opinions gets filled with opinions, and stage 3 then has
+nothing else to write with.
 
 ### Schema — primary data (`evidence-card/primary-data/v2`)
 
@@ -85,7 +99,7 @@ results[]                         id, layer:result, page, where, text, why_it_ma
 author_interpretations[]          id, layer:author_interpretation, page, where, text,
                                   rests_on[], boundary
 limitations_author_acknowledged[] id, page, where, text
-limitations_analyst_raised[]      id, text, targets[]
+unstated_by_the_paper[]           id, kind, text, targets[]   -- see the pointing test
 extraction_warnings[]             text, affects[]
 writing_samples[]                 see below
 figure_pointers[]                 id, page, use
@@ -101,7 +115,14 @@ claims[]  id, page, where, text,
           cited_as     (the citation this review gives for it; null for tier b),
           read_source  (true only if the original paper was actually opened)
 disagreements[]  id, text, sides[]
+structure_note   (optional string; only when the paper is not one voice)
 ```
+
+`structure_note` exists because the first synthesis paper run through this schema was a workshop
+write-up whose sections each had a different named author, and those authors contradicted each other
+in four places. Where that is true, tier (b) means *the position of that section's author*, not
+*the position of the review*, and stage 3 must attribute positions to sections rather than to
+"the authors". Multi-author reviews and edited collections are common enough to be worth the field.
 
 **The tier is the whole point of this branch.** A review adds a layer of interpretation on top of
 the papers it cites: original data → original authors' reading → this author's selection and
@@ -160,12 +181,15 @@ Two things — and only two — differ by branch:
 
 Everything else is identical. Do not build parallel templates per paper type.
 
-**Part three is quarantined and labelled.** Parts one and two report what the paper says; Part three
-is where you evaluate it. Evaluation woven through the narrative makes the reader absorb your
-judgment instead of forming their own — the exact failure this project exists to prevent. Three
-sub-headings: *Well supported* / *Supported, but reaching past the design* / *Interpretation, not
-result*, then a `> **BOUNDARIES THE AUTHORS STATE**` blockquote. Keep the authors' own admissions
-visibly separate from your objections.
+**Part three maps claims onto their evidence. It does not deliver a verdict.** Three sub-headings —
+*Well supported* / *Supported, but reaching past the design* / *Interpretation, not result* — then a
+`> **BOUNDARIES THE AUTHORS STATE**` blockquote. Under each claim, say what supports it and what the
+authors themselves say it does not establish, and stop. The reader draws the conclusion; that is the
+only way they build judgment of their own, which is the entire point of the project.
+
+Concretely: **never rank sections, authors, ideas or sentences against each other.** No "the most
+sceptical section", no "the strongest move in the paper", no "worth reading twice", no "in my view".
+See *Prose constraints*, which is not a style note — it is the rule this part most often breaks.
 
 **A primary-data paper's Introduction gets the synthesis treatment** in Part two. It is a
 mini-review and it is where the user most needs to learn. Do not compress it to background.
@@ -208,5 +232,61 @@ there.
   extraction warning and eight analyst notes
 - `output/reading-guides/sorsa-2026-reading-guide.md` — primary data, Elsevier
 
-`horowitz-kraus-2026-reading-guide.md` predates every rule above. **Do not use it as a model.**
-The synthesis branch has never been run end to end under these rules.
+- `output/reading-guides/horowitz-kraus-2026-reading-guide-r2.md` — synthesis, Elsevier, a
+  multi-author workshop review. Worked example of the **structure** only: it was written before
+  *Prose constraints* existed and breaks them thirteen times. Use it for the shape of Part two and
+  the disagreement table, not for the sentences.
+
+`horowitz-kraus-2026-reading-guide.md` (the un-suffixed one) predates every rule above.
+**Do not use it as a model.**
+
+## Prose constraints
+
+Applies to the card and the guide alike. The rules are borrowed from the `academic-ai-pattern`
+skill's S1–S16 catalogue (`~/.claude/skills/academic-ai-pattern/ai_pattern.md`).
+**Borrow the rules; never invoke the skill.** Its scanner, report schema and validator are built for
+auditing a manuscript you intend to submit — 15–20k tokens per run, and the output is an audit
+report nobody here asked for.
+
+The governing sentence, from S8, states this project's thesis better than the design doc does:
+
+> A scholar does not decide importance on the reader's behalf. Whether the argument holds and the
+> evidence suffices, the reader can see for themselves.
+
+### Never write these
+
+1. **Evaluative sentences and superlatives (S8).** No "the most sceptical section", "the strongest
+   move", "the paper's hardest fact", "worth reading twice", "in my view", "deserves to be quoted".
+   Delete the evaluation and keep the content. *Evidence ranking is not evaluation* — "primary
+   outcome" is information when the paper established that hierarchy; "important finding" is not.
+2. **Verb and list stacking (S1)**, **enumeration that argues by count (S2)**, **abstraction with no
+   referent (S3)**.
+3. **Colon-plus-expansion used for rhythm (S4)**; **`that` pointing at nothing specific (S5)**.
+4. **Template scaffolding (S13)**, **self-answered rhetorical questions (S15)**, **navigational
+   meta-talk (S16)** — "in this section we will", "as noted above", "it is worth noting that".
+
+Measured on the first synthesis guide: thirteen S8 violations in 3,553 words, and S8's own keyword
+grep caught one of the thirteen. **They hide in superlatives, so a scan will not save you** — this
+has to be obeyed while writing.
+
+### Check against the card as you write — the card is already open, so this is free
+
+- **Term identity (S10).** Use the paper's own term, never a synonym you prefer. This is a hard
+  requirement, not a style preference: the reader is here to learn the vocabulary, and a swapped
+  word teaches them the wrong one.
+- **Epistemic strength (S11).** The tier licenses the verb. Never give a tier-(b) position the
+  grammar of a tier-(c) consensus.
+- **Attribution (S12).** Carry the citation the paper gave (`cited_as`), or carry none and say so.
+- **No phantom opposition (S9).** Do not manufacture a contrast the paper does not make.
+
+### Read the finished guide back once
+
+You just wrote it, so it costs almost nothing. Check three things only: the same functional slot
+filled the same way twice (S6), paragraph joins that do not hold (S7), abstractions given dramatic
+verbs (S14).
+
+### Do not chase these — the manual's §7 says they make writing worse
+
+Three-item lists, sentences over 35 words, passive voice, nominalisation, first-person plural,
+`however` / `moreover`, metaphor as such, questions as such, punctuation patterns.
+**Methods prose is passive by genre and stays passive.**

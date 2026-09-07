@@ -411,22 +411,37 @@
     {
       "id": "D1",
       "text": "Is EF one process or a set of components? Section 2 argues at length for a singular managerial process (RPM) and lists the componential model's unresolved problems. Section 4 then frames its own empirical programme in exactly that componential model (inhibition, working memory, cognitive flexibility as separate predictors), and section 8 uses components too. Neither cites the other's position. The Discussion calls this a theme rather than a disagreement.",
-      "sides": ["C6, C7 (Cirino, section 2)", "C13, C14 (Cutting and Hughes-Berheim, section 4)", "C38 (Discussion, does not resolve)"]
+      "sides": [
+        "C6, C7 (Cirino, section 2)",
+        "C13, C14 (Cutting and Hughes-Berheim, section 4)",
+        "C38 (Discussion, does not resolve)"
+      ]
     },
     {
       "id": "D2",
       "text": "Does training EF transfer to academic outcomes? Section 4.1 says integration has been tried and success is elusive. Section 8 says cognitive training shows near transfer only. Section 7.2 reports the same no-far-transfer meta-analyses, then argues they do not apply to children with disabilities and presents an RCT in which a working-memory intervention did improve math word problems, with mediation in both directions. The review never adjudicates; the Discussion adopts the optimistic reading.",
-      "sides": ["C17 (Cutting), C36 (Rosch): elusive / near transfer only", "C30, C31, C32 (Barnes): the meta-analyses do not license that conclusion for this population", "C39 (Discussion): adopts Barnes's reading without noting the conflict"]
+      "sides": [
+        "C17 (Cutting), C36 (Rosch): elusive / near transfer only",
+        "C30, C31, C32 (Barnes): the meta-analyses do not license that conclusion for this population",
+        "C39 (Discussion): adopts Barnes's reading without noting the conflict"
+      ]
     },
     {
       "id": "D3",
       "text": "Is the useful construct domain-general EF or domain-specific EF? Section 4.1 reports that reading-specific EF measures outperform general ones. Section 6 shows individual differences tracking task-specific target regions rather than domain-general EF regions, and argues the interaction is the object of study. Section 2's definition keeps EF domain-general by construction. This is the most substantive open question in the paper and it is not named as one.",
-      "sides": ["C17, C25, C26: context-specific", "C6, C27: domain-general by definition"]
+      "sides": [
+        "C17, C25, C26: context-specific",
+        "C6, C27: domain-general by definition"
+      ]
     },
     {
       "id": "D4",
       "text": "Can neurocognitive profiles be diagnostic or predictive? Section 4 hopes for early biomarkers of reading difficulty from EF connectivity measures. Section 8 states flatly that the analogous hope for ADHD and LD failed, because deficits are dimensional and probabilistic and heterogeneity within a diagnosis is well established. Section 6 adds the largest dyscalculia imaging study finding nothing at group level. The three sit in the same paper without cross-reference.",
-      "sides": ["C16 (Cutting): biomarkers may be possible", "C35 (Rosch): the mapping does not exist", "C24 (Wilkey): group-level differences may not be detectable at all"]
+      "sides": [
+        "C16 (Cutting): biomarkers may be possible",
+        "C35 (Rosch): the mapping does not exist",
+        "C24 (Wilkey): group-level differences may not be detectable at all"
+      ]
     }
   ],
   "limitations_author_acknowledged": [
@@ -473,69 +488,117 @@
       "text": "Mechanisms remain unclear, it is unclear whether and when incorporating EF into educational interventions helps, and it is 'somewhat early days' for cognitive neuroscience of EF and academics."
     }
   ],
-  "limitations_analyst_raised": [
+  "unstated_by_the_paper": [
     {
       "id": "A1",
-      "text": "There is no method. This is an invited write-up of a workshop in which each speaker summarised their own talk, and it inherits that structure: no search strategy, no inclusion criteria, no coverage claim, and no attempt to weigh studies against each other. Section 4's evidence is Cutting's lab, section 5's is Horowitz-Kraus's lab, section 7's is Barnes's, section 8's is Rosch's. That is not a flaw to hold against the paper - it is an invited review and says so - but nowhere does it tell the reader that the literature reaching them has been selected by the person who produced it.",
-      "targets": ["C13", "C15", "C19", "C20", "C21", "C28", "C37"]
+      "kind": "missing_method",
+      "text": "Sections 2 through 8 each carry one author's name in the heading and cite predominantly that author's own work: section 4 cites Aboud 2018, Burgess and Cutting 2023, Spencer 2020, Hughes-Berheim in preparation and Hughes-Berheim 2024; section 5 cites Horowitz-Kraus on ten occasions plus Taran and Farah; section 7 cites Barnes 2023 and Barnes and Peng 2025; section 8 cites Rosch 2025 and Hawk 2018. The paper states no search strategy, no inclusion criteria and no coverage claim anywhere.",
+      "targets": [
+        "C13",
+        "C15",
+        "C19",
+        "C20",
+        "C21",
+        "C28",
+        "C37"
+      ]
     },
     {
       "id": "A2",
-      "text": "The paper contains no numbers that let you judge any of it. Sixteen pages, zero figures, zero tables, and not one effect size, confidence interval or p value anywhere. Sample sizes appear three times in the whole review (271, 68, 546). Claims are carried by verbal grading - 'robust', 'strongly relates', 'consistent', 'significant but smaller' - which cannot be checked and cannot be compared across sections.",
-      "targets": ["C13", "C20", "C27", "C28", "C31"]
+      "kind": "missing_method",
+      "text": "No effect size, confidence interval or p value appears anywhere in sixteen pages. Three sample sizes appear in total: 271 (section 4), 68 and 546 (both section 6). There are no figures and no tables.",
+      "targets": [
+        "C13",
+        "C20",
+        "C27",
+        "C28",
+        "C31"
+      ]
     },
     {
       "id": "A3",
-      "text": "The Discussion does not synthesise; it lists. Four real disagreements run through sections 2 to 8 (see disagreements D1-D4), and section 9.1 converts the largest of them into 'the consistent theme was that we need a better understanding of how all the approaches fit together'. A reader who reads only the abstract, introduction and discussion will come away believing the field is converging. Reading the middle sections against each other is the only way to see that it is not.",
-      "targets": ["C38", "C39"]
+      "kind": "contradiction",
+      "text": "Sections 2, 4 and 6 take incompatible positions on what EF is (disagreements D1 and D3). Section 9.1 states that the consistent theme was the need to understand how the approaches fit together, and does not state that the sections of this paper disagree.",
+      "targets": [
+        "C6",
+        "C13",
+        "C25",
+        "C38"
+      ]
     },
     {
       "id": "A4",
-      "text": "The strongest negative results are placed where they do least damage. That EF-plus-reading integration has failed appears as a subordinate clause in section 4.1. That the largest dyscalculia imaging study found nothing appears mid-paragraph in section 6. That cognitive profiles never became diagnostic appears in section 8. None of the three reaches the Discussion, the Conclusion or the abstract, all of which are framed around EF as a promising lever.",
-      "targets": ["C17", "C24", "C35", "C38"]
+      "kind": "location",
+      "text": "Three negative findings appear only inside their own sections, and in none of the abstract, Discussion or Conclusion: that EF-plus-reading integration has been tried without success (section 4.1, p. 5), that the largest dyscalculia fMRI study found no group differences (section 6, p. 7), and that neurocognitive profiles did not become diagnostic (section 8, p. 9).",
+      "targets": [
+        "C17",
+        "C24",
+        "C35"
+      ]
     },
     {
       "id": "A5",
-      "text": "Two claims rest on evidence a reader cannot obtain. C14's developmental shift is from a manuscript 'in preparation'. C8's psychometric properties are the section author's report of his own new instrument. Both are flagged honestly in the text; both are still load-bearing for their sections.",
-      "targets": ["C8", "C14"]
+      "kind": "unsourced_claim",
+      "text": "Two load-bearing claims cite evidence a reader cannot obtain. C14's developmental shift cites Hughes-Berheim et al., in preparation. C8's psychometric properties are the section author's report of an instrument he co-developed (Cirino et al., 2026).",
+      "targets": [
+        "C8",
+        "C14"
+      ]
     },
     {
       "id": "A6",
-      "text": "Section 5's inferential chain is the longest and the least marked. Cortical arrival latencies of 30 and 70 ms (from Heil et al., 1999) become an asynchrony account of dyslexia, which becomes a rationale for rhythmic training, which is then supported almost entirely by the section author's own intervention studies - reported without control conditions, sample sizes or effect sizes. Each link is plausible; the chain is presented as if it were one finding.",
-      "targets": ["C18", "C19", "C20", "C21"]
+      "kind": "missing_method",
+      "text": "Section 5 reports intervention outcomes for eight cited studies (Cancer 2020 and 2022, Horowitz-Kraus et al. 2014a and 2014b, Horowitz-Kraus and Breznitz 2014, Horowitz-Kraus and Holland 2015, Taran et al. 2022 and 2023) and gives no sample size, control condition or effect size for any of them.",
+      "targets": [
+        "C19",
+        "C20",
+        "C21"
+      ]
     },
     {
       "id": "A7",
-      "text": "Correlational evidence is repeatedly reported in causal language. C34 is a variance decomposition in a twin sample; section 8's conclusion renders it as co-occurrence 'due in part to' shared EF and processing-speed deficits. C15 is cross-sectional connectivity predicting later growth; section 4 renders it as a step toward identifying children who will struggle. Watch the verbs.",
-      "targets": ["C15", "C16", "C34"]
+      "kind": "unsourced_claim",
+      "text": "Correlational designs are described with causal verbs. C34 is a variance decomposition in a twin sample; section 8's conclusion renders it as co-occurrence due in part to shared deficits. C15 is cross-sectional connectivity predicting later growth; section 4 renders it as a step toward identifying children who will struggle.",
+      "targets": [
+        "C15",
+        "C16",
+        "C34"
+      ]
     },
     {
       "id": "A8",
-      "text": "Section 6 and section 7 are the two sections that argue rather than summarise, and they are the two worth reading twice. Wilkey takes a meta-analytic convergence everyone else would report as progress and shows why it does not license the inference. Barnes states which analysis answers which question - moderation for 'for whom', mediation for 'by what mechanism' - before reporting any result. If the reader takes one methodological habit from this paper, take one of those two.",
-      "targets": ["C23", "C24", "C26", "C28", "C29", "C30"]
-    },
-    {
-      "id": "A9",
-      "text": "The two sections that contradict each other most directly (4 and 8, on whether neurocognitive measures can identify at-risk children before difficulty appears) never cite each other, and section 8's negative verdict concerns exactly the population section 4 hopes to screen. This is a structural consequence of the one-speaker-per-section format: nobody had the job of reading the whole thing.",
-      "targets": ["C16", "C35"]
+      "kind": "contradiction",
+      "text": "Sections 4 and 8 reach opposite conclusions about whether neurocognitive measures can identify children before difficulty appears (C16 against C35), and section 8's negative verdict concerns the population section 4 proposes to screen. Neither section cites the other.",
+      "targets": [
+        "C16",
+        "C35"
+      ]
     }
   ],
   "extraction_warnings": [
     {
       "text": "Stage 1 emitted 'no figures or tables indexed'. Checked against the PDF text: this is a true negative. The paper genuinely contains no figures and no tables. Stage 3 must not use the figure-pointer convention at all for this paper, and must not invent one.",
-      "affects": ["figure_pointers"]
+      "affects": [
+        "figure_pointers"
+      ]
     },
     {
       "text": "Stage 1 emitted 'has_primary_data is False; confirm by hand'. Confirmed: headings are Introduction, seven named narrative sections, Discussion, Conclusion. No Methods, no Participants, no Results, no pooled statistics. Synthesis branch is correct.",
-      "affects": ["branch"]
+      "affects": [
+        "branch"
+      ]
     },
     {
       "text": "Hyphenated line-break debris is heavy in this extraction ('un abilities derstanding', 'devel opment', 'Colo rado'). It affects readability of quotes only; every writing_samples quote below was reassembled and checked against the surrounding sentence. Verify any additional verbatim quote before using it.",
-      "affects": ["writing_samples"]
+      "affects": [
+        "writing_samples"
+      ]
     },
     {
       "text": "The Introduction on page 1 interleaves two columns in the extracted text (a sentence about career potential runs into a sentence about 4th-grade proficiency). Read page 1 from the PDF if the exact wording of the opening paragraph matters.",
-      "affects": ["page 1"]
+      "affects": [
+        "page 1"
+      ]
     }
   ],
   "writing_samples": [

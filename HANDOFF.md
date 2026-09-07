@@ -93,6 +93,27 @@ All are already written into the design doc; sections given for the reasoning.
 
 10. **Decisions 6 and 8 contradicted each other on Part 4; resolved while writing SKILL.md (2026-09-07).** Decision 8 assigns Methods/Results moves to primary-data papers, decision 6 says a primary-data paper's Introduction is a mini-review and the place the user most needs to learn. The card-only run then produced a Part 4 that taught Introduction moves on a primary-data paper, which read fine and violated 8. **The ruling in SKILL.md: the branch sets the emphasis, it does not ban a section.** A primary-data paper may teach a gap-building move from its Introduction, but a Part 4 that is *only* Introduction phrases is wrong, because Methods and Results are what the user cannot learn from a review. This has not been checked against user reading feedback.
 
+11. **The guide was reading as a peer review, and the cause was a container in the card schema (user feedback, 2026-09-07).** The user's words: 产出包含了大量 AI 评价，有点沾边 review 而不是客观的学习材料. Measured, not asserted — superlative/verdict phrases per guide:
+
+    | | AI verdicts | words |
+    |---|---|---|
+    | horowitz-kraus r2 (synthesis) | **13** | 3,553 |
+    | kropotov (primary data) | **1** | 3,243 |
+
+    Thirteen to one. The synthesis branch invites ranking because Part three's job for that branch — *established vs this author's claim* — reads as an invitation to rank the eight authors against each other. The root cause is upstream of the prose: SKILL.md made `limitations_analyst_raised[]` a first-class array, so nine opinions were produced to fill it, and stage 3 had little else to write with.
+
+    Fixed: the array is now **`unstated_by_the_paper[]`** and every entry must pass a **pointing test** — settleable by pointing at two places that disagree, a number that does not match, a missing citation, or something the paper never states. `kind` ∈ contradiction / missing_method / number_mismatch / unsourced_claim / location. An empty array is a good outcome. Both existing cards migrated: Kropotov's 8 entries all passed unchanged (a real signal that the primary-data branch was never the problem); the synthesis card lost one entry outright — *"sections 6 and 7 are worth reading twice"* — and the other 8 were rewritten from judgments into pointings.
+
+    Part three's job in SKILL.md changed from *evaluate it* to *map claims onto their evidence, and stop*.
+
+12. **Prose rules borrowed from `academic-ai-pattern`; the skill itself is never invoked (decided with the user, 2026-09-07).** User's ruling: 只借用规则，而不是调用. Running the skill costs 15–20k tokens per paper (loads `quick-rules.md` + `report-schema.md`, runs a python scanner, writes a versioned report, runs a validator) and produces an audit report nobody wants — it is built for a manuscript you intend to submit.
+
+    Of its S1–S16: **9 became write-time prohibitions** (S8 evaluative sentences, S1, S2, S3, S4, S5, S13, S15, S16); **4 are checked against the card while writing**, free because the card is already open (S10 term identity, S11 epistemic strength, S12 attribution, S9 phantom opposition); **3 need one read-back of the finished guide** (S6, S7, S14), also cheap because you just wrote it.
+
+    ⚠ **Its keyword scanner is nearly useless here.** S8's own grep found 1 of the 13 verdicts in the synthesis guide. AI evaluation in this corpus hides in **superlatives** (`the most sceptical section`, `the strongest move`, `worth reading twice`, `in my view`), which no regex catches. The value is entirely in the judgment criteria, not the tooling.
+
+    Its **§7 假信号** section is protective as well as restrictive, and that matters here: it forbids treating three-item lists, >35-word sentences, passive voice, nominalisation, `however`, metaphor-as-such or questions-as-such as problems. **Methods prose is passive by genre and stays passive** — which protects the methodology detail the user asked for. One unresolved conflict: ponytail mode says replace metaphor with literal action, `ai_pattern` §7 measured humans using metaphor 2.4× more than models and narrows S14 to abstractions given dramatic verbs. Currently following `ai_pattern`, because it has a corpus behind it.
+
 ## Measured numbers
 
 - **Bytes per token, measured from a real transcript** (not estimated): prose in `body.md` **2.47 B/tok**; `evidence-card.json` **2.03 B/tok**. JSON is denser than prose — braces, quotes and repeated keys all cost. Do not use the generic ~4 B/tok for either.
@@ -173,6 +194,35 @@ guide's Part 4 teaches Introduction/Discussion moves on a primary-data paper, wh
 design decision 8. Judged from its headings only — worth a proper look before it is used as the
 worked example for SKILL.md.
 
+## User feedback still unactioned (2026-09-07)
+
+Six problems were raised. Two are fixed (decisions 11 and 12 above). **Four are agreed and not yet
+built** — the user said 先不用改 and has approved only the prose-rules change so far:
+
+1. **Length is unbounded and varies ±30%** (2,900–4,000 words across four guides). The user calls
+   this the biggest technical problem. My view: the fixed 2,900–3,250 target is the wrong
+   instrument — it made me shave a coherent guide to hit a number calibrated on two single-experiment
+   papers. Replace with a ceiling, not a target. Cutting the verdicts frees ~700 words on the
+   synthesis paper, which is roughly what item 2 will spend.
+2. **Primary-data papers need real methodology detail** — how data were collected, how they were
+   processed. This is the largest *content* gap and the most expensive fix: the card's `design[]`
+   array currently stores *why it matters*, not *what was done*, so stage 3 has no material to write
+   detail from even if told to. **Requires a schema change**, not a prompt tweak. The user marked
+   this 很重要.
+3. **Be faithful to the original wording; quote the paper rather than paraphrase it.** Also better
+   for the writing-learning goal — the user learns English from the authors' sentences, not mine.
+   One caveat to settle first: pushed to the limit this becomes a quote anthology that is no easier
+   to read than the paper. Proposed line — quote claims, definitions, hedges and numbers; paraphrase
+   connective narrative. Non-OA papers also have a hard ceiling on quoted volume.
+4. **Drop the fixed counts** — "4 writing moves", "5 takeaways" are arbitrary. A paper offering two
+   good sentences should not be padded to four. Cheapest of the four to fix.
+
+One thing the user did not raise that belongs with these: **removing evaluation entirely costs a
+low-confidence reader their calibration.** The replacement is not softer verdicts, it is an evidence
+map — claim → what supports it → what the authors say it does not establish — which is factual and
+checkable, and leaves the conclusion to the reader. Part three's rewrite (decision 11) is the first
+half of this.
+
 ## Next task
 
 **Run the synthesis branch end to end, following `SKILL.md` and nothing else.** It is the largest
@@ -190,10 +240,17 @@ Also pending, cheaper: stages 2–3 for Rieger 2016 (meta-analysis, `out/15-year
 — it is the case decision 1's branching rule was written for, and stage 1 flags that its references
 were never split, so budget ~40% wasted tokens or fix trap 8 first.
 
-Worked examples of the output spec, both current:
+Worked examples of the output spec:
 
 - `sorsa-2026-reading-guide.md` — primary-data branch, Elsevier
-- `kropotov-2016-reading-guide.md` — primary-data branch, Frontiers, includes an extraction warning and eight analyst notes
+- `kropotov-2016-reading-guide.md` — primary-data branch, Frontiers, includes an extraction warning and eight `unstated_by_the_paper` entries
+- `horowitz-kraus-2026-reading-guide-r2.md` — synthesis branch, multi-author workshop review. **Structure only.** It was written before *Prose constraints* existed and breaks them thirteen times
+
+⚠ **Two cards outside this session's work still carry the old `limitations_analyst_raised` key** and
+are uncommitted: `out/1-s2-0-s0911604424000216-main/` (v2) and
+`out/development-of-brain-responses-.../` (Sorsa, still v1, also missing `writing_samples`).
+Deliberately not touched — they are someone else's in-progress work. Migrate them when that work
+lands. There is also an untracked `output/reading-guides/zhu-2024-reading-guide.md`.
 
 ## File map
 
