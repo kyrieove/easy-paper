@@ -1,5 +1,5 @@
 {
-  "schema": "evidence-card/primary-data/v2",
+  "schema": "evidence-card/primary-data/v3",
   "note": "Internal artifact for stage 3. Pages are PDF pages of body.md. v2 adds writing_samples so stage 3 needs no re-read of body.md.",
   "paper": {
     "cite": "Kropotov, J., Ponomarev, V., Tereshchenko, E. P., Muller, A., & Jancke, L. (2016). Frontiers in Aging Neuroscience, 8, 69.",
@@ -15,54 +15,76 @@
       "note": "Framed as testing two hypotheses against each other, but they are not mutually exclusive and the paper ends up supporting both."
     }
   ],
-  "design": [
+  "methods": [
     {
       "id": "M1",
-      "layer": "method",
+      "stage": "participants",
       "page": 2,
-      "where": "Introduction end; Methods/Subjects p.2-3",
-      "text": "N=454 healthy adults in five bands: 18-23 (114), 24-33 (70), 34-50 (125), 51-60 (70), 61-89 (75). Recruited in Chur (Switzerland) and St Petersburg. Screened out neurological/psychiatric problems; older subjects checked for MCI and dementia; all required at least average cognitive skills.",
-      "why_it_matters": "Large for an ERP study, and that size is the paper's main claim to authority. It is also cross-sectional: every age effect is a between-person comparison, not a change measured in anyone."
+      "where": "Materials and Methods/Subjects, p. 2-3; bands stated at the end of the Introduction",
+      "what_was_done": "Four hundred fifty four healthy subjects (age range: 18-89) participated in the study. Subjects were recruited from Chur (Switzerland) during the database collection project headed by Dr. Andreas Muller, from students of St. Petersburg State University and staff of the Institute of the Human Brain of Russian Academy of Sciences.",
+      "parameters": "N = 454. Five age bands: 18-23 (N = 114), 24-33 (N = 70), 34-50 (N = 125), 51-60 (N = 70), 61-89 (N = 75). Inclusion: free of obvious neurological and psychiatric problems, at least average cognitive skills, no vision or hearing problems, and scoring below clinical significance on a symptom checklist (Franke, 2000). Exclusion: neurological or systemic medical disease. Older subjects were additionally screened for mild cognitive impairment and dementia with a standard cognitive test. Handedness by self-report: 17 left-handed, 10 ambidextrous, the rest right-handed. Declaration of Helsinki; informed consent; approved by the local ethics committee of the canton Graubunden, district of Grison, Switzerland (EK 20/07).",
+      "why_it_matters": "The screening criteria are the reason behavioural performance is flat across age bands, and flat behaviour is the premise the compensation account is inferred from."
     },
     {
       "id": "M2",
-      "layer": "method",
-      "page": 3,
-      "where": "Construction of Trials",
-      "text": "Cued GO/NOGO with paired stimuli s1-s2, 1000 ms apart. Animal (a) and plant (p) images. a-a = GO (press), a-p = NOGO (withhold), p-p and p-h = NonCue (no action). 400 trials in four blocks. Novel sounds occasionally paired with human images to hold alertness.",
-      "why_it_matters": "The s1 comparison (Cue vs NonCue) isolates proactive control; the s2 comparison (NOGO vs GO) isolates reactive control. Two contrasts, one task."
+      "stage": "materials",
+      "page": 2,
+      "where": "Materials and Methods/Construction of Trials",
+      "what_was_done": "The pictures were selected from textbooks for children in such a way that the overall luminance and the image sizes of animals and plants were approximately equal.",
+      "parameters": "Three image categories: animal (a), plant (p), human (h). 20 different images of each category, presented in varying random combinations to avoid habituation. Novel sounds occasionally presented simultaneously with human images on ignore trials, to maintain alertness; these produced an orientation reaction confirmed by a P3 novelty wave."
     },
     {
       "id": "M3",
-      "layer": "method",
-      "page": 3,
-      "where": "Data Recording",
-      "text": "19-channel EEG, 0.3-50 Hz, 250 Hz sampling, linked-ears reference re-referenced to common average. Blink artefacts removed by zeroing ICA components; epochs with excessive amplitude or slow/fast activity excluded automatically.",
-      "why_it_matters": "19 electrodes is sparse. It is adequate for waveform analysis and is the stated reason the source localisation stays coarse."
+      "stage": "procedure",
+      "page": 2,
+      "where": "Materials and Methods/Construction of Trials",
+      "what_was_done": "The trials consisted of the presentations of paired stimuli s1-s2 with inter-stimulus intervals of 1000 ms and inter-trial intervals of 3000 ms.",
+      "parameters": "Stimulus duration 100 ms; ISI 1000 ms; ITI 3000 ms. Four trial types: a-a (GO, press), a-p (NOGO, withhold), p-p, and p-h with a novel sound (ignore). Cue = trial beginning with an animal; NonCue = trial beginning with a plant. Speed and accuracy equally emphasised. Blocks of trials with a unique set of five a, five p and five h stimuli per block, pseudo-randomised to equal numbers across the four categories. Practice before recording; a few minutes rest after every 200 trials. Seated upright, 17-inch CRT at 1.5 m, stimuli subtending 3.8 degrees of visual field. Presented with Psytask, written by one of the authors (Ponomarev).",
+      "unclear": "Trial and block counts are stated twice and do not agree - see unstated_by_the_paper A9. Total trials per subject cannot be determined from the text."
     },
     {
       "id": "M4",
-      "layer": "method",
+      "stage": "acquisition",
       "page": 3,
-      "where": "Decomposition of Collection of ERPs into Latent Components",
-      "text": "ERPs modelled as a linear mixture of latent signals with a mixing matrix assumed identical across subjects. Blind source separation on second-order statistics. Component count chosen by BIC; split-half reliability estimated over 1000 random halves. Seven reliable components for s1, six for s2; together explaining over 90% of signal variance.",
-      "why_it_matters": "This is the paper's methodological contribution. It converts scalp waves, which are sums of overlapping sources, into components that can each be given a location and an age trajectory. The shared-mixing-matrix assumption is what makes group comparison possible and is not tested against age."
+      "where": "Materials and Methods/Data Recording",
+      "what_was_done": "EEG was recorded from 19 scalp sites according to the 10-20-system, bandpass-filtered between 0.3 and 50 Hz, and digitized at a rate of 250 samples per second per channel. The EEG was recorded referentially to linked ears, allowing computational re-referencing of the data (re-montaging).",
+      "parameters": "19 channels, 10-20 system. Online bandpass 0.3-50 Hz. Sampling rate 250 Hz per channel. Reference: linked ears. Amplifier: Mitsar-201 (CE 0537), Mitsar Co. Ltd, Russia. Caps: Electro-Cap International, tin recessed electrodes, ECI ELECTRO-GEL. Acquisition and quantification in WinEEG (Ponomarev and Kropotov, 2013). Button presses made with the right hand and recorded on a separate channel."
     },
     {
       "id": "M5",
-      "layer": "method",
+      "stage": "processing",
       "page": 3,
-      "where": "Imaging of Latent Components",
-      "text": "sLORETA on 19 electrodes, 2394 voxels at 7 mm. The authors state explicitly that they wanted rough localisation, not a precise inverse solution.",
-      "why_it_matters": "Every anatomical label in the Discussion (medial frontal gyrus, fusiform, precuneus) rests on this. The authors later concede a component is uniquely characterised by its topography, so the sLORETA image adds no information beyond it."
+      "where": "Materials and Methods/Data Recording, second half",
+      "what_was_done": "Eye blink artifacts were corrected by zeroing the activation curves of individual independent components corresponding to eye blinks. In addition, epochs with excessive amplitude of filtered EEG and/or excessive faster and/or slower frequency activity were automatically marked and excluded from further analysis.",
+      "parameters": "Re-referenced computationally to common average montage before decomposition. Blink correction: ICA on raw EEG fragments, blink components zeroed (method of Jung et al.; compared against EOG regression in Tereshchenko et al., 2009). Epoch rejection thresholds: 100 microvolts for unfiltered EEG; 50 microvolts for slow waves in the 0-1 Hz band; 35 microvolts for fast waves in the 20-35 Hz band.",
+      "unclear": "No epoch window, baseline-correction interval, or trial-retention count is reported anywhere. How many trials survived rejection, and per age band, is not stated."
     },
     {
       "id": "M6",
-      "layer": "method",
-      "page": 4,
-      "where": "Statistical Analysis",
-      "text": "One-way ANOVA for behaviour. Two-way repeated-measures ANOVA (Age non-repeated x Location repeated) for waves and for components. Difference-wave amplitudes compared between age groups in windows chosen from local peaks of the difference curves.",
-      "why_it_matters": "Time windows were selected from the observed difference curves rather than fixed in advance, and no multiple-comparison correction is reported across the dozens of tests in Tables 2, 3, 6 and 7."
+      "stage": "analysis",
+      "page": 3,
+      "where": "Materials and Methods/Decomposition of Collection of ERPs into Latent Components",
+      "what_was_done": "To separate the latent components hidden in ERPs we used a method of blind source separation based on second-order statistics (see Yeredor, 2010) and adapted for the transient responses (Ponomarev and Kropotov, 2013).",
+      "parameters": "ERP at each electrode modelled as a linear mixture of K latent signals with mixing matrix A, plus additive stationary isotropic noise independent of the signals. A is assumed identical for all subjects. Number of components chosen by the minimum of BIC as a function of k, computed separately for the s1 collection (Cue/NonCue plus the s1-s2 interval) and the s2 collection (GO/NOGO plus 1.1 s after s2).",
+      "why_it_matters": "The assumption that one mixing matrix fits all 454 subjects across a 66-year age range is stated in the sentence that introduces the model, not in the limitations. Every component-level age effect depends on it."
+    },
+    {
+      "id": "M7",
+      "stage": "analysis",
+      "page": 3,
+      "where": "Materials and Methods/Imaging of Latent Components",
+      "what_was_done": "sLORETA applied to the component topographies for rough localisation.",
+      "parameters": "19 electrodes, 2394 voxels at 7 mm resolution.",
+      "why_it_matters": "The authors state that the image is a linear transformation of the topography and therefore adds no information beyond it, and that they wanted a rough approximation rather than a precise inverse solution."
+    },
+    {
+      "id": "M8",
+      "stage": "analysis",
+      "page": 3,
+      "where": "Materials and Methods/Statistical Analysis",
+      "what_was_done": "Intervals were chosen for each latent component separately on the basis of local peaks of the difference curves.",
+      "parameters": "One-way ANOVA over the five age bands for behavioural measures. Two-way repeated-measures ANOVA (Age, non-repeated, five levels x Location, repeated) for wave amplitudes and for component amplitudes; F values reported as F[4, 449] for the age factor. Amplitudes measured in the selected windows of the difference waves.",
+      "unclear": "No multiple-comparison correction is reported for the dozens of ANOVAs in Tables 2, 3, 6 and 7, and no correction is reported for the data-driven choice of measurement windows."
     }
   ],
   "results": [
@@ -271,7 +293,7 @@
       "kind": "missing_method",
       "text": "Analysis windows were chosen from the observed difference curves, and no correction is reported across the dozens of ANOVAs in Tables 2, 3, 6 and 7. With N=454 the F values are large enough that this is unlikely to overturn the main gradients, but individual component-level claims are less secure than their p values suggest.",
       "targets": [
-        "M6",
+        "M8",
         "R5",
         "R6"
       ]
@@ -283,6 +305,14 @@
       "targets": [
         "M1"
       ]
+    },
+    {
+      "id": "A9",
+      "kind": "number_mismatch",
+      "text": "Trial counts contradict each other inside one paragraph of Construction of Trials, p. 2. One sentence says the trials were grouped into four blocks with one hundred trials each, which is 400 trials in total. The next sentence says each block consisted of a pseudo-random presentation of 400 trials with 100 trials within each trial category, which is 1600. Total trials per subject cannot be recovered from the text.",
+      "targets": [
+        "M3"
+      ]
     }
   ],
   "extraction_warnings": [
@@ -293,6 +323,13 @@
         "Table 3 p.6",
         "Table 6 p.9",
         "Table 7 p.10"
+      ]
+    },
+    {
+      "text": "Microvolt signs are lost in extraction. The epoch rejection thresholds read 100 mV, 50 mV and 35 mV in body.md; the units are microvolts. Same class of loss as the p-value exponents. Do not copy any unit out of body.md for this paper without checking the PDF.",
+      "affects": [
+        "M5",
+        "Materials and Methods/Data Recording p.3"
       ]
     }
   ],

@@ -1,5 +1,5 @@
 {
-  "schema": "evidence-card/synthesis/v2",
+  "schema": "evidence-card/synthesis/v3",
   "note": "Internal artifact for stage 3. Not shown to the reader. Pages are PDF pages of body.md. read_source is false throughout: no cited original was opened, so every tier-a entry is this review's account of that study, not independent verification.",
   "paper": {
     "cite": "Horowitz-Kraus, T., Cirino, P. T., Cutting, L. E., Hughes-Berheim, S. S., Wilkey, E. D., Barnes, M. A., Rosch, K. S., & Church, J. A. (2026). The interplay between executive function and learning disabilities: Developmental cognitive neuroscience perspectives on reading, math, and ADHD. Developmental Cognitive Neuroscience, 79, 101722.",

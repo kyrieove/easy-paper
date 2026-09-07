@@ -72,6 +72,37 @@ Rules:
    actually supported by the evidence you attached to it.
 5. When a table's numbers survive extraction badly (detached superscripts, merged cells), record it
    in `extraction_warnings` and tell stage 3 to read those values off the PDF.
+6. **Carry the paper's own wording.** Where the paper states something in one sentence, the card's
+   `text` / `what_was_done` **is that sentence**, not your restatement of it. Paraphrase only when
+   you are compressing several sentences, and mark those entries `"paraphrase": true`. Stage 3
+   cannot quote what stage 2 did not keep, and it will not re-read the body to find it — a card full
+   of restatements forces a guide written entirely in your voice, which is the failure the user
+   named as 大量 AI 评价. Hyphenation debris from extraction may be repaired silently; nothing else.
+
+### `methods[]` — the part the reader cannot get anywhere else
+
+This array replaces the old `design[]`, which stored *why a choice mattered* and almost nothing
+about *what was actually done*. The reader is running their own experiments and analysing their own
+data; the methods section is the most directly usable part of any paper they will read, and the part
+a summary destroys most completely. **Harvest it in detail. This is the one place where more is
+better.**
+
+`stage` is one of `participants`, `materials`, `procedure`, `acquisition`, `processing`, `analysis`.
+A paper without an acquisition step simply has no entries at that stage — do not invent buckets.
+
+- **`what_was_done`** — the paper's own sentence wherever it states the thing in one sentence.
+- **`parameters`** — the actual numbers, in the paper's own units. Sample sizes per group and how
+  they were recruited; inclusion and exclusion criteria; trial counts, timings, stimulus durations;
+  equipment, sampling rate, electrode count, montage, scanner sequence; filter cutoffs, artifact
+  rejection thresholds, epoch windows, baseline correction, referencing, interpolation; the
+  statistical model with its factors, the correction applied, the software and version.
+  **A parameter the paper gives and the card drops is gone** — stage 3 will never re-read for it.
+- **`unclear`** — a step the paper does not specify well enough to reproduce. State what is missing,
+  do not guess, and do not turn it into a criticism; if it is genuinely a hole, it belongs in
+  `unstated_by_the_paper[]` as `missing_method`.
+
+Order the entries as the study ran, not as the paper presents them. Papers routinely put
+preprocessing after analysis or bury acquisition in a figure caption.
 
 ### `unstated_by_the_paper[]` — the pointing test
 
@@ -87,14 +118,15 @@ which were verdicts about which sections were worth reading. That is the failure
 to stop: a first-class container for opinions gets filled with opinions, and stage 3 then has
 nothing else to write with.
 
-### Schema — primary data (`evidence-card/primary-data/v2`)
+### Schema — primary data (`evidence-card/primary-data/v3`)
 
 Worked example: `out/effect-of-aging-on-erp-components-of-cognitive-control/evidence-card.json`.
 
 ```
 schema, note, paper{cite, doi, branch, sample}
 questions[]                       id, text, page, note
-design[]                          id, layer:method, page, where, text, why_it_matters
+methods[]                         id, stage, page, where, what_was_done, parameters,
+                                  why_it_matters (optional), unclear (optional)
 results[]                         id, layer:result, page, where, text, why_it_matters, supports[]
 author_interpretations[]          id, layer:author_interpretation, page, where, text,
                                   rests_on[], boundary
@@ -105,9 +137,11 @@ writing_samples[]                 see below
 figure_pointers[]                 id, page, use
 ```
 
-### Schema — synthesis (`evidence-card/synthesis/v2`)
+### Schema — synthesis (`evidence-card/synthesis/v3`)
 
-Same envelope; `design` / `results` / `author_interpretations` collapse into one array:
+Same envelope; `methods` / `results` / `author_interpretations` collapse into one array. A synthesis
+paper has no methods of its own — if it turns out to have any (a stated search strategy, inclusion
+criteria, a coding scheme), that is a systematic review and it keeps `methods[]` as well:
 
 ```
 claims[]  id, page, where, text,
@@ -132,9 +166,11 @@ second-hand summary pass as independent verification.
 
 ### `writing_samples[]` — harvest while the body is open
 
-5–6 entries. `id`, `page`, `section`, `where`, `quote` (verbatim), `move`, `why_it_works`,
-`conditions` (optional). At least one marked `AVOID` — teaching by contrast is cheap and the
-failure modes are what the user needs to see.
+`id`, `page`, `section`, `where`, `quote` (verbatim), `move`, `why_it_works`, `conditions`
+(optional). **As many as the paper actually offers — 3 to 6 is typical, and two good ones beat six
+padded ones.** Mark any that is a failure mode `AVOID`: teaching by contrast is cheap and the
+failure modes are what the user needs to see. But only if the paper contains one — **do not
+manufacture a bad example to fill a slot.**
 
 **Store the move, not a template.** Record what the author *did* ("report a null result as a
 licence, not as an absence"). Stage 3 derives any transferable pattern from that. A card full of
@@ -167,16 +203,20 @@ Title (short, not the paper's own title) · full citation · a three-row table: 
 | Part | Job |
 |---|---|
 | **Before You Read** | What the paper studies, and the background it assumes you already have |
-| **Understanding the Paper** | The body. Concepts, argument, method, findings, in prose |
-| **What the Evidence Supports** | See the branch table. All evaluation lives here |
-| **Learning to Write** | 4 moves from this paper, with their conditions |
+| **Understanding the Paper** | The body. Concepts, argument, what was actually done, findings |
+| **What the Evidence Supports** | See the branch table. Claims mapped onto their evidence, no verdicts |
+| **Learning to Write** | The moves this paper actually offers, with their conditions |
 | **Key Takeaways** | Bolded one-line claims, each with 2–3 sentences under it |
+
+**No section has a fixed item count.** Write the moves the paper offers and the takeaways that
+survive — two of each is a correct outcome for a thin paper, and padding to a number is how a guide
+starts inventing content. Typical is 2–5 moves and 3–5 takeaways; neither is a target.
 
 Two things — and only two — differ by branch:
 
 | | Understanding the Paper, spine | What the Evidence Supports, job |
 |---|---|---|
-| primary data | question → theoretical expectation → design logic → what was observed → how the authors explain it | separate result from interpretation; state where the conclusions stop |
+| primary data | question → theoretical expectation → design logic → **how the data were collected and processed** → what was observed → how the authors explain it | separate result from interpretation; state where the conclusions stop |
 | synthesis | core question → conceptual frame → the evidence on each side → where they disagree → the author's own position | what is established against what is this author's claim |
 
 Everything else is identical. Do not build parallel templates per paper type.
@@ -194,6 +234,18 @@ See *Prose constraints*, which is not a style note — it is the rule this part 
 **A primary-data paper's Introduction gets the synthesis treatment** in Part two. It is a
 mini-review and it is where the user most needs to learn. Do not compress it to background.
 
+**A primary-data paper gets a full sub-section on how the data were collected and processed**, built
+from `methods[]` and running in the order the study ran: who the participants were and how they were
+selected, what they were shown and for how long, what was recorded and with what equipment and
+settings, then every processing step in sequence — filters, referencing, artifact rejection,
+epoching, baseline — then the statistical model with its factors and correction.
+
+Give the numbers. `0.1–30 Hz`, `±100 µV`, `−200 to 800 ms`, `N = 17 / 37 / 37`, `p < .05 FDR` are
+the content of this sub-section, not decoration on it. The reader is designing their own experiments
+and analysing their own data: this is the part of a paper they can use directly and the part a
+summary destroys. Where the paper does not specify a step well enough to reproduce, say so plainly
+in one clause and move on. **When the guide runs long, this sub-section is the last thing you cut.**
+
 **Part four follows the branch, but the Introduction is always fair game.** Primary data → Methods
 and Results moves: reporting a statistic, reporting a null as a licence, stating a data-driven
 choice without defending it, bounding a conclusion. Synthesis → Introduction and Discussion moves:
@@ -202,9 +254,12 @@ is weakest on Introduction and Discussion, so reviews are the *main* source of w
 not the secondary one — but never write a Part four for a primary-data paper that only collects
 Introduction phrases, because its Methods and Results are the part they cannot learn elsewhere.
 
-Per move: name it, point at `§Section, p. N`, quote **at most one sentence** verbatim, say what it
-does and when it applies. Any sentence frame you invent goes in a blockquote labelled
-`> **PATTERN — my example, not the authors'**`. Never let an example be mistaken for a finding.
+Per move: name it, point at `§Section, p. N`, quote the sentence verbatim in a blockquote labelled
+`> **THE AUTHORS' SENTENCE** — §N, p. N`, then say what it does and when it applies. One sentence
+per move is the norm; two only when the move *is* the pair, as when a null result and its
+attribution are split across consecutive sentences. Any sentence frame you invent goes in a
+separate blockquote labelled `> **PATTERN — my example, not the authors'**`. Never let an example be
+mistaken for a finding.
 
 ### Conventions
 
@@ -223,8 +278,44 @@ Markdown cannot set fonts or sizes. Seven levers do the work:
 - Page numbers are **PDF pages**, stated once in the front matter.
 
 English throughout, readable but not dumbed down — keep the technical terms. Background goes where
-it is needed, not stacked at the front. Target **2,900–3,250 words**; both worked examples land
-there.
+it is needed, not stacked at the front.
+
+### Use the paper's words
+
+The reader is here to learn the field's vocabulary and the field's English. Your restatement teaches
+them neither.
+
+**Quote, do not paraphrase:** the claim itself, definitions, hedges and epistemic verbs, every
+number and statistic, and the sentence in which a limitation is stated. These are the places where
+the exact wording *is* the content — `may reflect` and `demonstrates` are different findings.
+
+**Paraphrase:** connective narrative, background the reader needs supplied, and anything you are
+compressing from several sentences into one.
+
+**If you replaced one of the paper's terms with a synonym you preferred, you have broken S10** and
+taught the wrong word. See *Prose constraints*.
+
+Keep total verbatim quotation to a small fraction of the source — roughly a sentence per section,
+never a whole paragraph, never a table, never a run of figure captions. This is a study aid that
+sends the reader to the paper, not a replacement for it.
+
+### Length
+
+**Ceiling: 3,000 words. No target, and no lower bound.** A short guide for a thin paper is correct
+output. Padding to a number is how a guide starts inventing content, and the earlier
+2,900–3,250 *target* — calibrated on two single-experiment papers — did exactly that, then made a
+coherent synthesis guide worse when it was shaved to fit.
+
+When you are over the ceiling, cut in this order:
+
+1. Part four, down to two moves.
+2. Part one, anything the reader can get from the paper's own Introduction.
+3. Part three's prose, compressed into a claim → evidence → boundary table.
+4. Part two's narrative, but never its content.
+
+**Never cut:** the methods parameters, the figure and section pointers, the extraction warnings, or
+the authors' stated boundaries. Those four are why the guide is trustworthy; the prose around them
+is negotiable.
 
 ### Worked examples
 
