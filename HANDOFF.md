@@ -15,7 +15,8 @@ Full requirements: [paper-learning-skill-design-for-review.md](paper-learning-sk
 | Stage 1 — local preprocessing | **Done**, run on 4 papers, self-checked. Now emits `warnings` — read them |
 | Stage 2 — evidence card | **Done by hand** (model pass), 2 papers, no automation |
 | Stage 3 — English guide | **Done by hand**, 2 papers |
-| SKILL.md | **Written 2026-09-07** — 212 lines, all three stages. Never executed as a skill |
+| SKILL.md | **Written 2026-09-07**, then revised twice the same day (decisions 11–13). All three stages, plus *Prose constraints*. Never executed as an installed skill |
+| Card schema | **v3** both branches. Two cards migrated; two others still on the old key — see the warning under *Next task* |
 | End-to-end token cost | **Measured** in a clean session, 2026-09-07 (see Verification of the card-only route) |
 
 ## The pipeline
@@ -114,6 +115,26 @@ All are already written into the design doc; sections given for the reasoning.
 
     Its **§7 假信号** section is protective as well as restrictive, and that matters here: it forbids treating three-item lists, >35-word sentences, passive voice, nominalisation, `however`, metaphor-as-such or questions-as-such as problems. **Methods prose is passive by genre and stays passive** — which protects the methodology detail the user asked for. One unresolved conflict: ponytail mode says replace metaphor with literal action, `ai_pattern` §7 measured humans using metaphor 2.4× more than models and narrows S14 to abstractions given dramatic verbs. Currently following `ai_pattern`, because it has a corpus behind it.
 
+13. **Card v3 — the other four user problems, all built and verified 2026-09-07.** Schema is now `evidence-card/primary-data/v3` and `evidence-card/synthesis/v3`.
+
+    - **`design[]` → `methods[]`** with `stage` ∈ participants / materials / procedure / acquisition / processing / analysis, ordered *as the study ran*, not as the paper presents it. `what_was_done` holds the paper's own sentence; **`parameters` holds the actual numbers** — filter cutoffs, rejection thresholds, sampling rate, trial timings, viewing distance, the model and its factors. `unclear` records a step too vague to reproduce. A parameter the card drops is gone: stage 3 does not re-read the body. Part two of the guide gains a required sub-section built from this array, and it is **the last thing cut** when the guide runs long.
+    - **Length: a 3,000-word ceiling with a cut order, not a target.** No lower bound — a short guide for a thin paper is correct output. Cut order: Part four to two moves → Part one background → Part three prose to a table → Part two narrative. Never cut the methods parameters, the pointers, the extraction warnings, or the authors' stated boundaries.
+    - **No fixed item counts anywhere.** Writing moves and takeaways are as many as the paper offers; `writing_samples` no longer demands 5–6 or a mandatory AVOID. Padding to a number is how a guide starts inventing content.
+    - **Carry the paper's wording** (new stage-2 rule 6). Where the paper states something in one sentence, the card's `text` / `what_was_done` **is that sentence**. Stage 3 quotes claims, definitions, hedges, numbers and limitation sentences; it paraphrases connective narrative only. Stage 3 cannot quote what stage 2 did not keep.
+
+    **Verified by regenerating the Kropotov guide from the v3 card** (`kropotov-2016-reading-guide-r2.md`):
+
+    | | words | headings | verdicts | S8 hits |
+    |---|---|---|---|---|
+    | old guide | 3,243 | 25 | 1 | 1 |
+    | r2 | **2,758** | 24 | **0** | **0** |
+
+    **Adding a full methods sub-section made the guide 485 words shorter.** Detail and length do not trade against each other — the verdicts were the length. That is the single most useful number from this session.
+
+    Re-harvesting Kropotov's methods also turned up two things the old card had missed: the trial counts contradict themselves inside one paragraph (four blocks of one hundred trials, then each block consisting of 400), and the micro signs are lost in extraction, so the rejection thresholds read `100 mV` when they are microvolts.
+
+    Cost: the card grew **15.6 KB → 27.3 KB** (~+5.8k tokens to read). Pay it. The guide has a ceiling; the card does not.
+
 ## Measured numbers
 
 - **Bytes per token, measured from a real transcript** (not estimated): prose in `body.md` **2.47 B/tok**; `evidence-card.json` **2.03 B/tok**. JSON is denser than prose — braces, quotes and repeated keys all cost. Do not use the generic ~4 B/tok for either.
@@ -194,51 +215,24 @@ guide's Part 4 teaches Introduction/Discussion moves on a primary-data paper, wh
 design decision 8. Judged from its headings only — worth a proper look before it is used as the
 worked example for SKILL.md.
 
-## User feedback still unactioned (2026-09-07)
-
-Six problems were raised. Two are fixed (decisions 11 and 12 above). **Four are agreed and not yet
-built** — the user said 先不用改 and has approved only the prose-rules change so far:
-
-1. **Length is unbounded and varies ±30%** (2,900–4,000 words across four guides). The user calls
-   this the biggest technical problem. My view: the fixed 2,900–3,250 target is the wrong
-   instrument — it made me shave a coherent guide to hit a number calibrated on two single-experiment
-   papers. Replace with a ceiling, not a target. Cutting the verdicts frees ~700 words on the
-   synthesis paper, which is roughly what item 2 will spend.
-2. **Primary-data papers need real methodology detail** — how data were collected, how they were
-   processed. This is the largest *content* gap and the most expensive fix: the card's `design[]`
-   array currently stores *why it matters*, not *what was done*, so stage 3 has no material to write
-   detail from even if told to. **Requires a schema change**, not a prompt tweak. The user marked
-   this 很重要.
-3. **Be faithful to the original wording; quote the paper rather than paraphrase it.** Also better
-   for the writing-learning goal — the user learns English from the authors' sentences, not mine.
-   One caveat to settle first: pushed to the limit this becomes a quote anthology that is no easier
-   to read than the paper. Proposed line — quote claims, definitions, hedges and numbers; paraphrase
-   connective narrative. Non-OA papers also have a hard ceiling on quoted volume.
-4. **Drop the fixed counts** — "4 writing moves", "5 takeaways" are arbitrary. A paper offering two
-   good sentences should not be padded to four. Cheapest of the four to fix.
-
-One thing the user did not raise that belongs with these: **removing evaluation entirely costs a
-low-confidence reader their calibration.** The replacement is not softer verdicts, it is an evidence
-map — claim → what supports it → what the authors say it does not establish — which is factual and
-checkable, and leaves the conclusion to the reader. Part three's rewrite (decision 11) is the first
-half of this.
-
 ## Next task
 
-**Run the synthesis branch end to end, following `SKILL.md` and nothing else.** It is the largest
-open risk in the project (open question 3) and the only test of the rules that were written for it:
-the (a)/(b)/(c) tier tagging, the synthesis card schema — which `SKILL.md` specifies but which has
-never been written even once — and the review spine for Part two.
+**Regenerate the synthesis guide under v3 and *Prose constraints*.** The synthesis branch has been
+run once end to end, but that run happened *before* decisions 11–13, and it is the guide that
+carried all thirteen verdicts. `horowitz-kraus-2026-reading-guide-r2.md` is a worked example of the
+**structure** only — do not copy its sentences. The card
+(`out/the-interplay-between-executive-function-and-learning-disabi/evidence-card.json`) is already
+migrated to v3 and its `unstated_by_the_paper` entries already pass the pointing test, so this is a
+stage-3-only run: read the card, write `-r3.md`, and check the same four numbers Kropotov was
+checked on (words / headings / verdicts / S8). **Expect it to come in well under 2,758 words**, since
+a synthesis paper has no methods sub-section to spend words on. If it does not, the ceiling is
+wrong rather than the guide.
 
-Paper to use: `The interplay between executive function and learning disabilities.pdf`
-(Horowitz-Kraus 2026, Elsevier, `has_primary_data=False`). Stage 1 already done:
-`out/the-interplay-between-executive-function-and-learning-disabi/`. There is an old guide for it
-(`horowitz-kraus-2026-reading-guide.md`) that predates every current rule — do not read it before
-writing, and do not overwrite it; the never-clobber rule sends the new one to `-r2.md`.
-
-Also pending, cheaper: stages 2–3 for Rieger 2016 (meta-analysis, `out/15-years-of-microstate-.../`)
-— it is the case decision 1's branching rule was written for, and stage 1 flags that its references
-were never split, so budget ~40% wasted tokens or fix trap 8 first.
+Then, cheaper: stages 2–3 for Rieger 2016 (meta-analysis, `out/15-years-of-microstate-.../`) — the
+case decision 1's branching rule was written for, and still the only untested paper type. Stage 1
+flags that its references were never split, so budget ~40% wasted stage-2 tokens or fix trap 8
+first. It is primary-data by the branching rule, so it is also the second test of `methods[]`, on a
+paper whose methods are a search strategy and a pooling model rather than an EEG montage.
 
 Worked examples of the output spec:
 
