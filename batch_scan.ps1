@@ -66,7 +66,7 @@ $rows = Get-ChildItem -Path $Out -Directory | ForEach-Object {
   foreach ($x in $m.warnings) {
     if     ($x -like "references were not split*") { $w += "REFS" }
     elseif ($x -like "no figures*")                { $w += "NOFIG" }
-    elseif ($x -like "has_primary_data is False*") { $w += "BRANCH?" }
+    elseif ($x -like "*branch*")                   { $w += "BRANCH?" }
     elseif ($x -like "*shredded*")                 { $w += "SHRED" }
   }
   if ($m.pdf_kind -ne "text_based") { $w += "SCANNED" }

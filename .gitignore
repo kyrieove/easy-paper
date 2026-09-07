@@ -3,9 +3,14 @@
 
 # Stage-1 output is regenerated from the PDF in ~2s. The evidence card is not:
 # it costs a full-text model pass, so it is kept.
+# Two paths because pdf2md.py's default --out moved to output/extracted; out/ is the
+# older location and still holds four cards.
 out/**
 !out/*/
 !out/*/evidence-card.json
+output/extracted/**
+!output/extracted/*/
+!output/extracted/*/evidence-card.json
 
 .agy-staff/
 __pycache__/

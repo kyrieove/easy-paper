@@ -37,6 +37,13 @@ PRIMARY = re.compile(r"^(?:\d+\.)*\s*(methods?|participants|materials|results)\b
 # "MA D ME TH ODS", "FIG URE 1", "UL TS". Body prose is unaffected. Matching
 # against the de-spaced form recovers the heading without touching any text.
 PRIMARY_FLAT = re.compile(r"(methods|participants|results)", re.I)
+# Consent, recruitment and ethics approval are what a paper that collected its own data
+# says and a review does not. Needed because some publishers never emit section headings
+# as bold runs at all, so `headings` comes back holding journal names and table cells.
+COLLECTED = re.compile(
+    r"informed consent|written consent|ethics committee|institutional review board|"
+    r"approved by the (?:local )?ethic|(?:participants|subjects) were recruited|"
+    r"were recruited (?:from|for)|(?:participants|subjects) gave", re.I)
 # Bibliography-entry shape, for when the References heading is shredded or absent.
 YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
 NUMBERED = re.compile(r"^\s*[\[(]?\d{1,3}[\].)]\s+[A-Z]")
@@ -188,6 +195,22 @@ def split_at_shape(pages):
     return pages, ""
 
 
+def is_primary(headings, shredded, body):
+    """Did the authors collect the data? Headings first, prose as the fallback.
+
+    Same two-tier shape as split_refs, and for the same reason: the heading path
+    fails silently on whole publishers, and a per-file success line hides it.
+    Returns (primary, from_headings) so the caller can say which evidence decided.
+    """
+    if any(PRIMARY.match(h) for h in headings):
+        return True, True
+    if shredded and any(PRIMARY_FLAT.search(h.replace(" ", "")) for h in headings):
+        # Only when the clean path already failed, so normal papers keep the
+        # stricter anchored test.
+        return True, True
+    return bool(COLLECTED.search(body)), False
+
+
 def index_figures(body_pages):
     """Locate figures and tables by caption -- no image is extracted.
 
@@ -252,11 +275,7 @@ def run(pdf_path, outroot, force=False):
             if m and not CAPTION.match(m.group(1)):
                 headings.append(m.group(1).strip())
     shredded = [h for h in headings if SHRED.search(h)]
-    primary = any(PRIMARY.match(h) for h in headings)
-    if not primary and shredded:
-        # Only when the clean path already failed, so normal papers keep the
-        # stricter anchored test.
-        primary = any(PRIMARY_FLAT.search(h.replace(" ", "")) for h in headings)
+    primary, from_headings = is_primary(headings, shredded, body)
 
     warnings = []
     if not refs.strip():
@@ -264,8 +283,13 @@ def run(pdf_path, outroot, force=False):
                         "still carries them (~30-40% more tokens in stage 2)")
     if not figures:
         warnings.append("no figures or tables indexed")
-    if not primary:
-        warnings.append("has_primary_data is False; confirm by hand before trusting the branch")
+    if primary and not from_headings:
+        warnings.append("no methods heading, but the body reports consent or recruitment; "
+                        "the branch was decided on prose, so every heading-derived field "
+                        "is unreliable here")
+    elif not primary and not headings:
+        warnings.append("no headings and no data-collection prose; the synthesis branch "
+                        "rests on nothing -- confirm by hand")
     # A stray one or two is normal noise; a real font problem hits a quarter of them.
     if len(shredded) >= 3 and len(shredded) > 0.15 * len(headings):
         warnings.append(f"{len(shredded)} of {len(headings)} headings look shredded by the "
