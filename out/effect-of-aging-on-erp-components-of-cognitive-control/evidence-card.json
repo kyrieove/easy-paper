@@ -417,17 +417,17 @@
     {
       "id": "FIGURE 2",
       "page": 6,
-      "use": "M4 -- the BIC curves that set the number of components. The minimum is the whole argument for seven and six."
+      "use": "M6 -- the BIC curves that set the number of components. The minimum is the whole argument for seven and six."
     },
     {
       "id": "FIGURE 3",
       "page": 7,
-      "use": "M4, R4 -- what the components look like. Left column topographies, blue traces the Cue-NonCue and NOGO-GO differences."
+      "use": "M6, R4 -- what the components look like. Left column topographies, blue traces the Cue-NonCue and NOGO-GO differences."
     },
     {
       "id": "TABLE 5",
       "page": 8,
-      "use": "M5, R4 -- component to brain region mapping. Every anatomical claim in the Discussion is read off this table."
+      "use": "M7, R4 -- component to brain region mapping. Every anatomical claim in the Discussion is read off this table."
     },
     {
       "id": "FIGURE 4",
