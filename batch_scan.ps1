@@ -98,6 +98,12 @@ $usable  = $rows | Where-Object { $_.Flags -notlike "*SCANNED*" }
 
 ""
 Write-Host "extracted        $($rows.Count)" -ForegroundColor Cyan
+if ($rows.Count -lt $pdfs.Count) {
+  # Caught a real bug: 10 of 221 papers had been silently overwritten because their
+  # slugs collided. Every per-file call had exited 0, so nothing else would have noticed.
+  Write-Host ("  !! $($pdfs.Count - $rows.Count) PDFs produced no folder of their own. " +
+              "Delete $Out and re-run; if the gap persists, it is not slug collision.") -ForegroundColor Red
+}
 Write-Host "  ready to run   $($ready.Count)   no blocker, no wasted references"
 Write-Host "  scanned        $($scanned.Count)   cannot process, no OCR path"
 Write-Host "  refs not split $($refs.Count)   each costs ~35% more in stage 2"
