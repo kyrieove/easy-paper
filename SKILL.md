@@ -1,16 +1,17 @@
 ---
-name: paper-reading-guide
+name: easy-paper
 description: Turn a local academic PDF into an English close-reading guide plus a short academic-writing lesson. Three stages - a local script extracts text, figures and metadata at zero token cost; the model builds an evidence card; the guide is written from the card. Use when the user points at a PDF and wants to understand it, study how it is written, or build domain judgment. Not a summarizer, not a translator, not a reference manager.
 ---
 
 # Paper → English reading guide
 
-Reader profile this is built for: writing a paper in developmental cognitive neuroscience,
-~200 local PDFs, low domain confidence, does not sit down and read the originals. The product
-is **their** judgment, not a report that looks complete. Everything below serves that.
+Built for a reader who has a large local PDF library, limited confidence in the field, and does not
+sit down and read the originals — a graduate student or early-career researcher writing their first
+papers. **The product is their judgment, not a report that looks complete.** Everything below serves
+that, and several rules exist specifically to stop the guide from handing them a verdict instead.
 
-Install: this folder is the skill. Copy it to `~/.claude/skills/paper-reading-guide/`, or run
-the stages from the repo.
+Install: copy this folder to `~/.claude/skills/easy-paper/`, or run the stages from a clone.
+Stage 1 needs `pip install pdf-inspector` and nothing else.
 
 ## Do not
 
@@ -23,13 +24,28 @@ the stages from the repo.
 ## Stage 1 — extract (script, 0 model tokens)
 
 ```bash
-"/d/2/software/python.exe" pdf2md.py "<paper>.pdf" --out out
+python pdf2md.py "<paper>.pdf"
 ```
 
-**That interpreter path is not optional.** `python` on PATH is LibreOffice's bundled build and
-has none of the dependencies. `D:\2\software\python.exe` (3.10.11) has `pdf-inspector`.
+**On the first run, the script checks its own dependency.** If `pdf-inspector` is missing it exits
+with the interpreter path it is running under and the exact `pip install` line for that interpreter.
+Relay that message to the user and stop — do not try to install it yourself, and do not fall back to
+reading the PDF directly, which sends the whole document into context and defeats the pipeline.
 
-Writes `out/<slug>/`:
+The usual cause is not a missing package but the wrong Python: LibreOffice, Anaconda and the Windows
+Store stub all shadow the one on `PATH`. The error message says which interpreter ran, so compare it
+against the one the user installed into before advising a reinstall.
+
+Everything the skill produces lives under one `output/` folder:
+
+```
+output/
+  extracted/<slug>/      stage 1 -- body.md, refs.md, figures.json, meta.json
+                         stage 2 -- evidence-card.json lands here too
+  reading-guides/        stage 3 -- the deliverable
+```
+
+`output/extracted/<slug>/` holds:
 
 | File | Contents |
 |---|---|
@@ -54,7 +70,7 @@ primary-data; there is no third branch.
 
 ## Stage 2 — evidence card
 
-Read `body.md` in full, once. Write `out/<slug>/evidence-card.json`. This is an internal artifact;
+Read `body.md` in full, once. Write `output/extracted/<slug>/evidence-card.json`. This is an internal artifact;
 the reader never sees it.
 
 **It exists for accuracy, not for token savings.** Writing fluent English and holding citation
@@ -77,7 +93,8 @@ Rules:
    you are compressing several sentences, and mark those entries `"paraphrase": true`. Stage 3
    cannot quote what stage 2 did not keep, and it will not re-read the body to find it — a card full
    of restatements forces a guide written entirely in your voice, which is the failure the user
-   named as 大量 AI 评价. Hyphenation debris from extraction may be repaired silently; nothing else.
+   named: a guide that reads as an opinion piece. Hyphenation debris from extraction may be
+   repaired silently; nothing else.
 
 ### `methods[]` — the part the reader cannot get anywhere else
 
@@ -119,8 +136,6 @@ to stop: a first-class container for opinions gets filled with opinions, and sta
 nothing else to write with.
 
 ### Schema — primary data (`evidence-card/primary-data/v3`)
-
-Worked example: `out/effect-of-aging-on-erp-components-of-cognitive-control/evidence-card.json`.
 
 ```
 schema, note, paper{cite, doi, branch, sample}
@@ -223,7 +238,7 @@ the card is genuinely short of something — never in full. Measured: card 7.7k 
 Write to `output/reading-guides/<author>-<year>-reading-guide.md`.
 
 **If that file already exists, write `<name>-r2.md` instead.** The reader's own notes live in the
-guide (`> [!note] 我` under a paragraph, and a `## My Notes` section they append at the end, in
+guide (a `> [!note]` callout under the paragraph it answers, and a `## My Notes` section at the end, in
 Obsidian). Regeneration is cheap and will happen often. Never clobber their thinking.
 
 ### Front matter
@@ -384,11 +399,14 @@ boundaries. Those are why the guide is trustworthy; the prose around them is neg
 
 ## Prose constraints
 
-Applies to the card and the guide alike. The rules are borrowed from the `academic-ai-pattern`
-skill's S1–S16 catalogue (`~/.claude/skills/academic-ai-pattern/ai_pattern.md`).
-**Borrow the rules; never invoke the skill.** Its scanner, report schema and validator are built for
-auditing a manuscript you intend to submit — 15–20k tokens per run, and the output is an audit
-report nobody here asked for.
+Applies to the card and the guide alike. The rules below are borrowed, with thanks, from the
+S1–S16 catalogue in the [academic-ai-pattern](https://github.com/topics/academic-ai-pattern) skill,
+which audits academic manuscripts for AI-writing signals. **They are reproduced here in full, so
+this skill has no dependency on it.**
+
+If you do have that skill installed, still do not invoke it from here: its scanner, report schema
+and validator are built for auditing a manuscript you intend to submit, cost 15–20k tokens per run,
+and produce an audit report nobody in this workflow asked for. Borrow the rules, not the pipeline.
 
 The governing sentence, from S8, states this project's thesis better than the design doc does:
 

@@ -12,3 +12,6 @@ __pycache__/
 tmp/
 tmp_deck_inspect/
 output/skill-maintenance/
+
+# 221-PDF library, local only
+01_classified_pdfs/
