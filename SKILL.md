@@ -244,8 +244,24 @@ Obsidian). Regeneration is cheap and will happen often. Never clobber their thin
 ### Front matter
 
 Title (short, not the paper's own title) · full citation · a three-row table: **What it asks** /
-**What it found** / **What is new** · the conventions sentence · the evaluation-quarantine sentence
-· any `> ⚠ **EXTRACTION WARNING**` · `---`.
+**What it found** / **What is new** · `---`.
+
+**Nothing else.** The top of the page is where the reader is paying most attention, and it is spent
+on the paper. Anything that is about *the pipeline* rather than about the paper moves out:
+
+- **The conventions sentence and the evaluation-quarantine sentence** go in a short
+  `## About this guide` footer after Key Takeaways. They are identical in every guide, so the reader
+  learns them once and skips them forever after. At the top they are boilerplate standing between
+  the reader and the first sentence about the paper.
+- **Extraction warnings** are recorded in the card's `extraction_warnings[]` — that is their
+  permanent home — and appear in the guide **only inline, attached to the number, table or figure
+  they affect**. One clause at the point of use, never a block at the top. A warning about scrambled
+  table columns, met before the reader knows what the table contains, teaches nothing; the same
+  warning beside the cell they were about to quote stops the mistake.
+
+The one exception: if extraction damaged the **body prose** rather than a table or a heading, so that
+the whole guide is suspect, say that in one line under the citation. Nothing less earns front-matter
+space.
 
 ### The five parts
 
@@ -365,7 +381,8 @@ sends the reader to the paper, not a replacement for it.
 ### Length
 
 **Ceiling: 3,300 words for a primary-data paper, 3,000 for a synthesis paper. No target, and no
-lower bound.** A short guide for a thin paper is correct output. Padding to a number is how a guide
+lower bound.** The `## About this guide` footer does not count — the ceiling exists to stop the guide
+inventing content about the paper, and the footer contains none. A short guide for a thin paper is correct output. Padding to a number is how a guide
 starts inventing content, and the original 2,900–3,250 *target* — calibrated on two single-experiment
 papers — did exactly that, then made a coherent synthesis guide worse when it was shaved to fit.
 

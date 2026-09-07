@@ -160,6 +160,14 @@ All are already written into the design doc; sections given for the reasoning.
 
     Cost: the card grew **15.6 KB → 27.3 KB** (~+5.8k tokens to read). Pay it. The guide has a ceiling; the card does not.
 
+14. **The front matter was spending the reader's best attention on the pipeline (user feedback, 2026-09-07).** The user, pointing at the top of the Rieger guide: 和论文不相关的东西 不需要放到 card 里面，可以记录到别的地方. Three blocks stood between the citation and the first sentence about the paper — the conventions sentence, the evaluation-quarantine sentence, and a five-line extraction warning about scrambled table columns. None of them is about the paper, and the first two are byte-identical in every guide the skill will ever produce.
+
+    **The rule now:** front matter is title · citation · the three-row table · `---`, and nothing else. The two boilerplate sentences go in a `## About this guide` footer after Key Takeaways, where the reader learns them once. Extraction warnings live permanently in the card's `extraction_warnings[]` and appear in the guide **only inline, attached to the number, table or figure they affect** — the Table 1 warning now sits directly under the Table 1 pointer, where it stops the mistake instead of describing it in advance. The single exception that still earns front-matter space is extraction damage to the **body prose**, which makes the whole guide suspect.
+
+    Side effect worth keeping: the footer does not count toward the length ceiling, because the ceiling exists to stop the guide inventing content about the paper and the footer contains none. Rieger is 3,280 words of paper content plus a 112-word footer.
+
+    The older guides were written before this rule and still carry the old shape (`sorsa`, `zhu` have the quarantine sentence at the top; `kropotov` has a front-matter extraction-warning block). **The user ruled: leave them.** 已经产生的不用改. The rule applies to what the skill produces from here; do not spend a stage-3 run on retrofitting.
+
 ## Measured numbers
 
 - **Bytes per token, measured from a real transcript** (not estimated): prose in `body.md` **2.47 B/tok**; `evidence-card.json` **2.03 B/tok**. JSON is denser than prose — braces, quotes and repeated keys all cost. Do not use the generic ~4 B/tok for either.
@@ -303,12 +311,12 @@ Guide numbers, against the four Kropotov was checked on:
    the paper is, and a 7-page meta-analysis is almost entirely method. SKILL.md already says the card
    "exists for accuracy, not for token savings"; this is the number that proves it. **Do not sell the
    card as a token saving anywhere.**
-2. **3,368 words against a 3,300 ceiling, after cut rules 1 and 4 were applied.** Going further would
-   have hit the never-cut list. A meta-analysis carries a full methods sub-section *and* a
-   results-reporting move (like primary data) *and* an inclusion-criteria argument that a lab study
-   does not have. Either the primary-data ceiling wants ~3,500 for this sub-type, or the ceiling is
-   right and 2% is inside the noise. One paper is not enough to decide; record the second before
-   changing the number.
+2. ~~**3,368 words against a 3,300 ceiling.**~~ **Resolved by decision 14** (below): the front-matter
+   boilerplate moved to a footer that does not count toward the ceiling, and the guide lands at
+   **3,280** of paper content plus a 112-word footer. The ceiling was not wrong; it was being charged
+   for pipeline boilerplate. A meta-analysis does carry a full methods sub-section *and* a
+   results-reporting move *and* an inclusion-criteria argument, so it sits near the ceiling either
+   way — watch the second one before touching the number.
 
 ## Next task
 

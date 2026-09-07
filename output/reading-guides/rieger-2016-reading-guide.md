@@ -10,19 +10,6 @@ doi:10.3389/fpsyt.2016.00022**
 | **What it found** | Two of four microstate classes differ between patients and controls with medium effect sizes: class C is more frequent and covers more time, class D covers less time and is shorter. Class A shows nothing. |
 | **What is new** | Fifteen years of separate small studies get one pooled number each, and that number is placed against the published effect sizes for spectral EEG and for ERP markers of schizophrenia. |
 
-Statistics appear in code spans so they stay findable. Figures and tables are pointed at, never
-reproduced — `→ FIGURE 2 · p. 4` means the fourth PDF page. All page numbers are PDF pages.
-
-**Evaluation is confined to Part 3, and even there the job is to map each claim onto its evidence,
-not to judge it.** Parts 1 and 2 report what the paper says.
-
-> ⚠ **EXTRACTION WARNING** — Table 1 came out of the PDF as two disconnected fragments with
-> scrambled columns; the header reads `R eference | | n | ender C hannels | R ecruitment area` and
-> the last study's row is out of order. Every per-study number quoted below is marked, and you should
-> read those cells off the PDF before using them. Five section headings are shredded by the font
-> encoding (`MA D ME TH ODS`, `UL TS`); the prose is unaffected. The paper's closing paragraph — which
-> carries its limitations — was dropped into the middle of the reference list on p. 6.
-
 ---
 
 ## Part 1 — Before You Read
@@ -90,9 +77,13 @@ we decided to include this study despite this fact."
 **Who is in the pooled sample.** → **TABLE 1 · p. 3.** Seven rows. Read down the channel-count
 column and the mean-age column: as extracted, channel counts run `16` to `204` and mean ages run
 `16.5` to `34.5`, and the medication column reads No for four studies and Yes for three. One included
-sample is an at-risk group (22q11.2 deletion syndrome) rather than a diagnosed one. *Verify these
-cells against the PDF — see the extraction warning.* The pooled number of patients and the pooled
-number of controls are stated nowhere in the paper.
+sample is an at-risk group (22q11.2 deletion syndrome) rather than a diagnosed one. The pooled number
+of patients and the pooled number of controls are stated nowhere in the paper.
+
+> ⚠ **READ THIS TABLE OFF THE PDF.** Table 1 came out of the extraction as two disconnected fragments
+> with scrambled columns — the header reads `R eference | | n | ender C hannels | R ecruitment area`
+> and the last study's row is out of order. The spread quoted above is reliable; any individual cell
+> is not.
 
 **What was extracted.** "From all of these studies, mean and standard deviation (SD) of patient and
 control data were available for most of the typical microstate parameters and thus collected for the
@@ -220,6 +211,9 @@ One arithmetic point: the Methods count `12` tests and correct with a factor of 
 coverage on the grounds that it is derivable from occurrence and duration — and the Results then
 report a corrected p for coverage itself, in both class C and class D.
 
+Most of these sentences sit in the paper's closing paragraph, at the foot of p. 6, under no heading
+of its own — the paper has no Conclusion section, so the limitations are easy to walk past.
+
 > **BOUNDARIES THE AUTHORS STATE**
 > "Given the small number of studies that has been done so far, an enlargement of the sample size in
 > future studies is essential." · "Furthermore, the heterogeneity of the included subjects in terms
@@ -329,3 +323,16 @@ inverse-variance weighting with no between-study variance term and no `I²`.
 **An effect size means something once it has neighbours.** Placing `g ≈ 0.76` between spectral EEG at
 `0.42`–`0.46` and ERP markers at `0.82`–`1.56` tells the reader what the measure buys, which the word
 "medium" does not.
+
+---
+
+## About this guide
+
+Statistics sit in code spans so they stay findable in prose. Figures and tables are pointed at and
+never reproduced — `→ FIGURE 2 · p. 4` means the fourth PDF page, and all page numbers are PDF pages.
+Evaluation is confined to Part 3, where the job is to map each claim onto its evidence rather than to
+judge it; Parts 1 and 2 report what the paper says.
+
+Two smaller extraction faults affected nothing quoted above: five section headings are shredded by
+the PDF font encoding (`MA D ME TH ODS`, `UL TS`), and references 1–14 remain interleaved in the body
+text on p. 6. The prose itself is intact.
