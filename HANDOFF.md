@@ -69,7 +69,16 @@ Model reads the card (plus targeted re-reads of `body.md`), writes `output/readi
 5. **`git add -A` swept in `output/skill-maintenance/`** (1.3 MB zip from an unrelated tool). Now gitignored.
 6. **agy delegation failed on this kind of task** — 20 minutes, 0 files, only exploration narration. It did install the deps. Do not re-delegate script-writing here without a much tighter brief; writing it directly took ~15 minutes.
 7. **Some PDFs shred their small-caps headings, and it looks like success.** Rieger 2016 (Frontiers) emits `MA D ME TH ODS`, `UL TS`, `RE` + `FERENCES`, `FIG URE 1` — letters spaced and runs out of order. **Body prose is completely unaffected**; only heading-styled runs break. First run reported `figs_indexed=0 primary=False` on a *meta-analysis* and printed a normal success line. Fixed in `index_figures` and the `has_primary_data` fallback by probing the de-spaced form of the line (`line.replace(" ", "")`); the delimiter guard after the figure number still blocks in-text mentions, so this adds no false positives. **The deeper fix is that `meta.json` now carries a `warnings` list** (empty refs / zero figures / not primary / shredded headings) and `pdf2md.py` prints them with `!!`. Third time a silent stage-1 failure has cost real time — see traps 2 and 3. Check the warnings before spending stage-2 tokens.
-8. **Reference splitting still fails on Rieger 2016** and is not fixed. The `REFERENCES` heading is shredded into `RE` (line 135) and `FERENCES` (line 168) across a two-column layout, and the reference list starts *before* both. `refs.md` is 0 bytes, so `body.md` (41.6 KB) still carries them — roughly 30-40% of stage-2 tokens wasted on that paper. Fixing it needs a content-shaped detector (a long run of numbered citation lines), not another heading regex. Warned about, deliberately not built.
+8. ~~**Reference splitting still fails** when the `REFERENCES` heading is shredded.~~ **FIXED 2026-09-07** — and it was never an edge case. Deferred twice as "one awkward two-column paper"; on the real 221-paper library it was **74 papers, 35%, about 800k wasted stage-2 tokens**. `split_refs` now tries the heading first and falls back to a content-shaped detector: a long run of citation-shaped lines in the back half of the paper. Result across all 221 — 56 newly split, 2 partial heading splits completed, 21 still failing, 142 untouched, **0 papers lost body text**. Measured after re-extraction: refs-unsplit 74 → 21, waste 797k → 210k.
+
+   The three thresholds are corpus-derived and the reasoning matters more than the numbers:
+   - **Count citation-shaped LINES, never citations within a line.** Counting inside lines was tried first, to catch bibliographies that extraction merges into one 4,000-character line — and it ate real prose from **23 papers**, because a Discussion paragraph citing five works scores five. Those merged-line papers are most of the 21 that still fail; they still get the stage-1 warning.
+   - **Density ≥ 0.35**, because real lists here bottom out at 0.39: wrapped continuation lines carry no year and dilute the run. The 0.60 first tried rejected 19 genuine lists and prevented nothing.
+   - **The run must start in the back half.**
+
+   Two papers that looked like false positives were real: the heading matched once, the list restarted after a page break, and the tail stayed in the body. `split_refs` is now two-pass for that reason.
+
+11. **`slugify` silently overwrote 10 of 221 papers.** Found by the batch scan: 221 PDFs in, 211 folders out, every per-file call exited 0. The slug truncates the title to 60 characters, so two papers agreeing that far shared a folder and the second won. All 10 were distinct files by sha256 — not duplicate copies. **Fixed**: the folder is now `<slug[:52]>-<sha256[:6]>`, verified collision-free across 221. This is the **fourth** silent stage-1 failure (see 2, 3, 7), and the pattern never changes: a per-file success line hides a whole-corpus problem. `batch_scan.ps1` now compares folder count against PDF count and says so in red.
 9. **Do not swap `pdf2md.py` for a different PDF converter without checking its engine.** Evaluated firecrawl/anydoc (2026-09-07): its text-PDF path *is* pdf-inspector, the same library `pdf2md.py` already imports. Same extraction, and switching would drop the paper-specific work on top (reference split, running-head removal, figure index, page markers, `has_primary_data`). More basic: **stage 1 costs 0 model tokens** — the PDF never enters context — so no converter can save tokens there; see the closing paragraph of §6.4 in the design doc. `body.md` has ~1.3% short-line debris, so there is nothing left to compress either. anydoc's one real use would be OCR fallback for scanned PDFs (Firecrawl Parse, API key, paid); `pdf2md.py` already flags those via `pages_needing_ocr`. Bolt on OCR if a scanned paper appears; do not replace stage 1 for it.
 10. **`pdf_inspector.extract_structure_elements` exists and is unused.** Tested: the two Elsevier PDFs are tagged (real `H2`/`H3` roles, `TD`/`TH` table cells, ~800 elements); the Frontiers one returns 2 elements, i.e. nothing. Deliberately not adopted — the `BOLD_HEAD` regex extracts Kropotov's 36 headings correctly and no failure has been observed. Reach for this only when heading detection actually breaks.
 
@@ -214,6 +223,37 @@ No quality gap I can detect from structure and content coverage. **Side finding:
 guide's Part 4 teaches Introduction/Discussion moves on a primary-data paper, which contradicts
 design decision 8. Judged from its headings only — worth a proper look before it is used as the
 worked example for SKILL.md.
+
+## Shipped, and the real corpus
+
+**Published:** https://github.com/kyrieove/easy-paper — MIT, public, 6 files, no examples
+(removed at the user's request along with everything machine-specific). Installed locally at
+`~/.claude/skills/easy-paper/`; it loads without restarting the session.
+
+**The library is real now:** `01_classified_pdfs/`, **221 papers** in 9 topic folders, gitignored.
+This is the first time the project has had a corpus rather than four papers, and it immediately
+falsified two "edge case" judgements (traps 8 and 11).
+
+`batch_scan.ps1` runs stage 1 over the whole library for **0 tokens** (~10 min) and prints a triage
+table plus `output/triage.csv`. Current state of the 221:
+
+| | |
+|---|---|
+| usable | 220 (1 scanned, no OCR path) |
+| primary / synthesis | 127 / 94 |
+| refs still unsplit | 21 — merged-giant-line cases, see trap 8 |
+| shredded headings | 15 — branch flag unreliable, confirm by hand |
+| **stage 2 for everything** | **~5.36M tokens** |
+
+That last number is the decision the project now faces. Processing the whole library is not a
+sensible default; the triage exists so the user can spend on a chosen subset. The cheapest 15 ready
+papers are listed at the end of every scan run.
+
+**Batch architecture, agreed but not built.** One subagent per paper, each starting cold, doing
+stage 2 and stage 3 back-to-back in the same context — the card read then costs nothing extra, and
+the orchestrator's context stays flat. Do *not* batch by looping in one long session: the user's own
+measurements put 74% of spend above 200k of context, so a single growing session is worse than N
+cold ones. Stage 2 must not be delegated to a cheaper model; everything downstream trusts the card.
 
 ## Next task
 
