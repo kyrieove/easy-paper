@@ -3,8 +3,8 @@ shape-based reference detection."""
 from pdf2md import index_figures, split_refs, strip_running
 
 pages = [f"Dev Cogn Neurosci 79 (2026)\nbody line {i}\n101722" for i in range(10)]
-pages[3] += "\nrare line"
-pages[7] += "\nrare line"
+pages[3] = pages[3].replace("\n101722", "\nrare line\n101722")
+pages[7] = pages[7].replace("\n101722", "\nrare line\n101722")
 
 out, junk = strip_running(pages)
 

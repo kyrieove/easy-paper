@@ -13,17 +13,23 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-try:
-    import pdf_inspector as pi
-except ImportError:
-    sys.exit(
-        "pdf-inspector is not installed for this interpreter.\n\n"
-        f"  interpreter: {sys.executable}\n"
-        f"  fix:         \"{sys.executable}\" -m pip install pdf-inspector\n\n"
-        "If you believe it is installed, you are running a different Python than you "
-        "think. LibreOffice, Anaconda and the Windows Store stub all shadow the one on "
-        "PATH -- use the full path to the interpreter you installed it into."
-    )
+
+def load_extractor():
+    try:
+        import pdf_inspector
+        return pdf_inspector
+    except ImportError as error:
+        raise SystemExit(
+            "pdf-inspector is not installed for this interpreter.\n\n"
+            f"  interpreter: {sys.executable}\n"
+            f"  fix:         \"{sys.executable}\" -m pip install pdf-inspector\n\n"
+            "If you believe it is installed, you are running a different Python than you "
+            "think. LibreOffice, Anaconda and the Windows Store stub all shadow the one on "
+            "PATH -- use the full path to the interpreter you installed it into."
+        ) from error
+
+
+PIPELINE_VERSION = 2
 
 # pdf-inspector emits section headings as bold runs (**3. Results**), not ATX headings.
 REF_HEAD = re.compile(r"(?:^|(?<=\s))(?:#{1,4}\s*|\*\*)(references|bibliography|literature cited)\**\b", re.I)
@@ -64,16 +70,24 @@ def sha256(path):
 
 
 def strip_running(pages, thresh=0.6):
-    """Drop short lines that appear on more than `thresh` of pages (running heads/feet)."""
+    """Remove repeated edge lines, retaining short documents and interior prose."""
     n = len(pages)
+    if n < 3:
+        return list(pages), set()
     seen = Counter()
     for md in pages:
-        for line in {l.strip() for l in md.splitlines() if l.strip()}:
+        lines = [l.strip() for l in md.splitlines() if l.strip()]
+        for line in set(lines[:1] + lines[-1:]):
             seen[line] += 1
     junk = {l for l, c in seen.items() if c > thresh * n and len(l) < 200}
-    return [
-        "\n".join(l for l in md.splitlines() if l.strip() not in junk) for md in pages
-    ], junk
+    cleaned = []
+    for md in pages:
+        lines = md.splitlines()
+        occupied = [i for i, line in enumerate(lines) if line.strip()]
+        edges = set(occupied[:1] + occupied[-1:])
+        cleaned.append("\n".join(line for i, line in enumerate(lines)
+                                 if not (i in edges and line.strip() in junk)))
+    return cleaned, junk
 
 
 def cite_count(line):
@@ -168,12 +182,7 @@ def split_at_heading(pages):
         for j, line in enumerate(lines):
             m = REF_HEAD.search(line)
             if m:
-                before = line[:m.start()].strip()
-                after = line[m.start():].strip()
-                body_last = lines[:j] + ([before] if before else [])
-                body = pages[:i] + ["\n".join(body_last)]
-                refs = after + "\n" + "\n".join(lines[j + 1:]) + "\n" + "\n".join(pages[i + 1:])
-                return body, refs
+                return partition_references(pages, i, j, m.start())
     return pages, ""
 
 
@@ -181,11 +190,48 @@ def split_at_shape(pages):
     found = refs_by_shape(pages)
     if found:
         i, j = found
-        lines = pages[i].splitlines()
-        body = pages[:i] + (["\n".join(lines[:j])] if j else [])
-        refs = "\n".join(lines[j:]) + "\n" + "\n".join(pages[i + 1:])
-        return body, refs
+        return partition_references(pages, i, j)
     return pages, ""
+
+
+def partition_references(pages, start_page, start_line, start_col=0):
+    """Keep original page positions and restore recognizable post-reference content.
+
+    Unrecognized trailing content remains recoverable from raw.md; this heuristic
+    is not proof that everything assigned to refs.md is a bibliography.
+    """
+    body = list(pages)
+    refs = []
+    ended = False
+    for pno in range(start_page, len(pages)):
+        kept, removed = [], []
+        for lno, line in enumerate(pages[pno].splitlines()):
+            if pno == start_page and lno < start_line:
+                kept.append(line)
+                continue
+            first = pno == start_page and lno == start_line
+            plain = line.replace("*", "").lstrip("# ").strip()
+            if not first and (CAPTION.match(plain) or re.match(
+                r"^(appendix|appendices|supplement(?:ary|al)?(?:\s|$)|"
+                r"supporting information|figure legends?|table legends?|tables?\s*$|figures?\s*$)",
+                plain, re.I,
+            )):
+                ended = True
+            if ended:
+                kept.append(line)
+            elif first:
+                kept.append(line[:start_col])
+                removed.append(line[start_col:])
+            else:
+                removed.append(line)
+        body[pno] = "\n".join(kept)
+        if removed:
+            refs.append(f"<!-- Page {pno + 1} -->\n" + "\n".join(removed))
+    return body, "\n\n".join(refs)
+
+
+def page_markdown(pages):
+    return "\n\n".join(f"<!-- Page {i} -->\n{md}" for i, md in enumerate(pages, 1))
 
 
 def index_figures(body_pages):
@@ -226,23 +272,33 @@ def run(pdf_path, outroot, force=False):
     # half-overwritten one.
     dest = Path(outroot) / f"{slugify(pdf_path.stem)[:52]}-{digest[:6]}"
     meta_f = dest / "meta.json"
+    extractor_hash = sha256(Path(__file__))
+    required = ("raw.md", "body.md", "refs.md", "figures.json")
     if meta_f.exists() and not force:
-        if json.loads(meta_f.read_text("utf-8")).get("pdf_sha256") == digest:
+        cached = json.loads(meta_f.read_text("utf-8"))
+        if (cached.get("pdf_sha256") == digest
+                and cached.get("extractor_sha256") == extractor_hash
+                and cached.get("pipeline_version") == PIPELINE_VERSION
+                and all((dest / name).is_file() for name in required)):
             print("cached", dest)
+            for warning in cached.get("warnings", []):
+                print(f"  !! {warning}")
             return dest
+    pi = load_extractor()
     dest.mkdir(parents=True, exist_ok=True)
 
     cls = pi.classify_pdf(str(pdf_path))
     res = pi.extract_pages_markdown(str(pdf_path))
     raw_pages = [p.markdown for p in res.pages]
+    (dest / "raw.md").write_text(page_markdown(raw_pages), "utf-8")
     pages, junk = strip_running(raw_pages)
     body_pages, refs = split_refs(pages)
 
-    body = "\n\n".join(f"<!-- Page {i} -->\n{md}" for i, md in enumerate(body_pages, 1))
+    body = page_markdown(body_pages)
     (dest / "body.md").write_text(body, "utf-8")
     (dest / "refs.md").write_text(refs, "utf-8")
 
-    figures = index_figures(body_pages)
+    figures = index_figures(raw_pages)
     (dest / "figures.json").write_text(json.dumps(figures, ensure_ascii=False, indent=1), "utf-8")
 
     headings = []
@@ -259,19 +315,26 @@ def run(pdf_path, outroot, force=False):
         primary = any(PRIMARY_FLAT.search(h.replace(" ", "")) for h in headings)
 
     warnings = []
+    if cls.pages_needing_ocr:
+        warnings.append("pages need OCR; inspect meta.json and the PDF before making claims of missing content")
+    if not any(page.strip() for page in body_pages):
+        warnings.append("body text is empty; do not build an evidence card until extraction is repaired")
+    if refs.strip():
+        warnings.append("reference split is heuristic; inspect the boundary and raw.md tail for tables, figures and appendices")
     if not refs.strip():
         warnings.append("references were not split; refs.md is empty and body.md "
                         "still carries them (~30-40% more tokens in stage 2)")
     if not figures:
         warnings.append("no figures or tables indexed")
     if not primary:
-        warnings.append("has_primary_data is False; confirm by hand before trusting the branch")
+        warnings.append("no empirical headings detected; classify the paper from its content, not this flag")
     # A stray one or two is normal noise; a real font problem hits a quarter of them.
     if len(shredded) >= 3 and len(shredded) > 0.15 * len(headings):
         warnings.append(f"{len(shredded)} of {len(headings)} headings look shredded by the "
                         "PDF font encoding; every heading-derived field is unreliable")
 
     meta = {
+        "pipeline_version": PIPELINE_VERSION, "extractor_sha256": extractor_hash,
         "pdf_path": str(pdf_path), "pdf_sha256": digest,
         "n_pages": cls.page_count, "pdf_kind": cls.pdf_type,
         "confidence": round(cls.confidence, 3),
