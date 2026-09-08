@@ -78,6 +78,10 @@ figure_pointers[]: id, locations[], comparison, inspected
 extraction_warnings[]: text, affected_ids[]
 ```
 
+Use valid JSON. Array notation `[]` means an array; the named envelope fields are objects.
+Represent a multi-page source with separate integer-page locations, never an expression such as
+`10-12`. Preserve the v4 field names and keep results separate from interpretations.
+
 A location is `{page: <1-based PDF page>, where: <section/table/figure>}`. Each number in
 `numbers[]` records its value, measure, group/condition/model and location. `parameters` preserves
 reported units and links to the relevant method location. `attribution` distinguishes authors'
@@ -118,7 +122,8 @@ explanation, and a focused writing lesson; use more or fewer sections when neede
 five-part template, fixed heading density, item quota or word target.
 
 Open with the verified full citation and a short account of the question and bounded answer.
-Mark pages as PDF pages once. Include extraction limitations that affect interpretation. Avoid a
+State the PDF-page convention in a short footer. Attach extraction limitations to the affected
+claim or figure; put a warning at the opening only if the whole reading is compromised. Avoid a
 separate novelty claim unless supported by the source; attribute priority claims to the authors.
 The opening must be no stronger than the detailed evidence permits.
 

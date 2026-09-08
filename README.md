@@ -60,3 +60,10 @@ checks in `SKILL.md` remain necessary, and a revised guide should be judged on a
 ## Credits and license
 
 PDF extraction uses [pdf-inspector](https://github.com/firecrawl/pdf-inspector). MIT; see `LICENSE`.
+
+## Historical files
+
+Earlier design notes, handoff logs, sample guides and `check_guides.py` are retained from
+the previous repository history. They describe v3, not the current v4 workflow. In particular,
+`check_guides.py` enforces the old five-part template and must not validate v4 guides.
+`SKILL.md` is the current specification; existing sample outputs have not been regenerated.

@@ -1,0 +1,538 @@
+{
+ "schema": "evidence-card/primary-data/v3",
+ "note": "Meta-analysis. Branch decided by the rule in decision 1: the authors pooled and analysed data themselves, so this is the primary-data branch even though no participant was recorded by these authors. methods[] here describes a search strategy and a pooling model rather than an EEG montage.",
+ "paper": {
+  "cite": "Rieger K, Diaz Hernandez L, Baenninger A, Koenig T (2016). 15 Years of Microstate Research in Schizophrenia - Where Are We? A Meta-Analysis. Front. Psychiatry 7:22.",
+  "doi": "10.3389/fpsyt.2016.00022",
+  "branch": "primary-data",
+  "sample": "7 published studies, identified by PubMed search plus one in-press paper known to the authors. Per-study patient n runs 9-30 (Table 1, p. 3); the pooled patient and control totals are never stated anywhere in the paper."
+ },
+
+ "questions": [
+  {
+   "id": "Q1",
+   "text": "To obtain an overall estimate of the effect size of these microstate abnormalities, we present a systematic meta-analysis over all studies available to date relating EEG microstates to schizophrenia.",
+   "page": 1,
+   "note": "Abstract. The question is an estimation question, not a hypothesis test - the paper asks how large, not whether."
+  },
+  {
+   "id": "Q2",
+   "text": "Schizophrenia is a psychiatric disorder showing a broad range of deficits across a multitude of task demands (1). Therefore, an explanation common to all these abnormalities has to be sought independently of any particular task but instead during baseline states, i.e., before a task takes place or during rest.",
+   "page": 1,
+   "note": "Introduction, opening. This is the argument that licenses a resting-state measure at all, and it is doing the work of a gap statement."
+  },
+  {
+   "id": "Q3",
+   "text": "In addition, and under the scope of the “disconnection hypothesis” of schizophrenia (2), it does not seem reasonable to assume that an isolated local system can account for these deficits, but rather, a dysfunctional integration among neural systems.",
+   "page": 1,
+   "note": "The second half of the licence: breadth of deficit implies task-free, disconnection implies whole-brain rather than local. Microstates satisfy both, which is why they are the measure."
+  }
+ ],
+
+ "methods": [
+  {
+   "id": "M1",
+   "stage": "materials",
+   "page": 2,
+   "where": "Materials and Methods, first paragraph",
+   "what_was_done": "To identify the relevant literature, we conducted a PubMed search with the terms “schizophrenia” and “microstate.”",
+   "parameters": "One database (PubMed). Two search terms, combined. No date range, no date of search, no language restriction, and no second database are stated. No screening procedure, second rater or inter-rater agreement is described.",
+   "unclear": "The paper does not give the search date, the number of records returned, or who screened them. The counts exist only in Figure 1 and the excluded-paper list only in Table S1 (Supplementary Material)."
+  },
+  {
+   "id": "M2",
+   "stage": "materials",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "In addition of the papers identified by the PubMed search, we were aware of, and included one more study that met the above criteria and had been accepted for publication, but was not yet registered in PubMed (28).",
+   "parameters": "1 of the 7 included studies entered outside the search - Tomescu et al. (28), in press at the time.",
+   "why_it_matters": "A hand-added study is a deviation from the stated search, and the paper states it rather than hiding it. It is also the study that contributes the at-risk 22q11.2 sample the Discussion later leans on."
+  },
+  {
+   "id": "M3",
+   "stage": "procedure",
+   "page": 2,
+   "where": "Materials and Methods, inclusion criteria",
+   "what_was_done": "The resulting papers were then reviewed for particular criteria chosen to assure a sufficient comparability of the extracted microstate parameters across studies.",
+   "parameters": "Four criteria, all required: (1) the paper reported original findings; (2) the electrode array used for the analysis covered at least the area of the standard 10-20 system; (3) four microstate classes were fitted to the data (being the most frequently used number of microstate classes across studies); (4) subjects were recorded in a task-free resting-state condition. Plus: “Care was taken to exclude the duplicate reporting of data in different papers.” Result: 7 studies, 1999 to 2015.",
+   "why_it_matters": "Criterion (3) is the one that shapes every later claim: it makes the four-class solution an entry condition rather than a finding."
+  },
+  {
+   "id": "M4",
+   "stage": "procedure",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "Note that the justification of the choice of these criteria was purely pragmatic; it identified the broadest common ground to compare studies on microstates in schizophrenia at the time of this paper being written. We do not imply that these criteria are the optimal choice to investigate microstates in general.",
+   "parameters": "No parameter. This is a stated fence around the criteria, placed in Methods rather than in Limitations."
+  },
+  {
+   "id": "M5",
+   "stage": "participants",
+   "page": 3,
+   "where": "Table 1, Studies included",
+   "what_was_done": "The included papers are shown in Table 1, together with the central characteristics of the studied population.",
+   "parameters": "Seven studies. As extracted (SEE EXTRACTION WARNING W1 - verify every number against the PDF before quoting): Koenig et al. (23) n=9, 6 female, 19 channels, Switzerland; Lehmann et al. (21) n=27, 9 female, 16-21 channels, Japan/Italy/Germany; Kikuchi et al. (13) n=21, 10 female, 18 channels, Japan; Nishida et al. (33) n=18, 10 female, 19 channels, Japan; Andreou et al. (26) n=18, 2 female, 64 channels, Germany; Tomescu et al. (27) n=30, 17 female, 204 channels, Switzerland; Tomescu et al. (28) n=27, 13 female, 64 channels, Georgia. Mean ages across the seven: 24.82 (range +/- 6.67), 23.9 (SD 4.5), 28.1, 24.50 (SD 6.3), 23.67 (SD 4.4), 16.5 (range +/- 2.5), 34.5 (range +/- 9.5). Diagnoses are DSM-IV 295.x subtypes except one row of “High risk patients”; medication status is No for four studies and Yes for three.",
+   "why_it_matters": "This is where the heterogeneity of the pooled sample is visible and nowhere else: electrode counts span 16 to 204, mean ages span 16.5 to 34.5, and one included sample is an at-risk rather than a diagnosed group."
+  },
+  {
+   "id": "M6",
+   "stage": "participants",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "Note, however, that the multicenter-study by Lehmann et al. (21) included a small (six patients and six controls) subset of subjects where the midline electrodes were interpolated. Since the data were only presented across all study centers and since there were many more subjects from other centers, we decided to include this study despite this fact.",
+   "parameters": "6 patients and 6 controls with interpolated midline electrodes, inside a study contributing n=27 patients.",
+   "why_it_matters": "A stated, reasoned deviation from criterion (2), written into Methods at the point the criterion is set."
+  },
+  {
+   "id": "M7",
+   "stage": "processing",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "Importantly, all of these studies were based on a topographically consistent set of four prototypical microstate classes that were labeled from A to D according to the similarity of the obtained microstate classes with the microstate prototype maps reported in the first study of this kind (23).",
+   "parameters": "Four classes, A-D. Class identity across studies rests on topographic similarity to the prototype maps of Koenig et al. (23), 1999. No quantitative similarity threshold is given.",
+   "unclear": "The paper does not state how similarity to the 1999 prototypes was judged, or by whom, or with what criterion. Class labels are taken as given from each source paper."
+  },
+  {
+   "id": "M8",
+   "stage": "processing",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "these papers were coherent and largely complete in the microstate parameters they reported, namely, coverage (percent total analysis time covered by each microstate class), occurrence (number of microstates observed per second for each microstate class), and mean duration (average duration of microstates of a given class).",
+   "parameters": "Three features per class: coverage (percent of analysis time), occurrence (microstates per second), mean duration (average length). Three features x four classes = the 12 cells the analysis fills.",
+   "why_it_matters": "These three definitions are the vocabulary of the whole literature and the paper states all three in one sentence."
+  },
+  {
+   "id": "M9",
+   "stage": "processing",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "From all of these studies, mean and standard deviation (SD) of patient and control data were available for most of the typical microstate parameters and thus collected for the meta-analysis. Where data before and after medication were available, the data obtained before medication were used.",
+   "parameters": "Input to the pooling is group-level mean and SD per study, per group, per feature, per class. Pre-medication values preferred where a study reported both.",
+   "unclear": "“available for most of the typical microstate parameters” - the paper does not say which cells were missing, for which studies, or how a missing cell was handled in the pooling."
+  },
+  {
+   "id": "M10",
+   "stage": "analysis",
+   "page": 2,
+   "where": "Materials and Methods",
+   "what_was_done": "The means and SDs of each study were used to compute hedges-g and its SD as standardized measure of within-study effect size. This computation was conducted using the package “compute.es” (34) of the R-software (35).",
+   "parameters": "Effect size: Hedges' g (the small-sample-corrected standardised mean difference). Software: R, package compute.es. No version numbers given for either."
+  },
+  {
+   "id": "M11",
+   "stage": "analysis",
+   "page": 3,
+   "where": "Materials and Methods",
+   "what_was_done": "The obtained within-study effect sizes were then weighted by their inverse variance to obtain a weighted mean effect size across studies, and the standard error of these mean effect sizes was extracted.",
+   "parameters": "Inverse-variance weighting. The model is never named as fixed-effect or random-effects, and no between-study variance component (tau-squared) is estimated or reported.",
+   "why_it_matters": "Inverse-variance weighting with no between-study variance term is a fixed-effect meta-analysis, which assumes one true effect underlies all seven studies. Given the spread in Table 1 that assumption is doing real work, and the paper never states it."
+  },
+  {
+   "id": "M12",
+   "stage": "analysis",
+   "page": 3,
+   "where": "Materials and Methods",
+   "what_was_done": "In order to test the significance of the obtained overall mean effect sizes, a Z-test was conducted, and the upper and lower confidence intervals were computed. This yielded a total of 12 tests, each one assessing a potential difference between patients and controls in one of the three microstate features and in one of the four microstate classes.",
+   "parameters": "Z-test on each pooled mean effect. 12 tests = 3 features x 4 classes. Confidence intervals computed but reported only in the forest plots of Figure 2, never in the prose."
+  },
+  {
+   "id": "M13",
+   "stage": "analysis",
+   "page": 3,
+   "where": "Materials and Methods",
+   "what_was_done": "In order to correct for potential false positives due to multiple testing, a Bonferroni correction was applied with a factor of 8. This factor was chosen because all studies reported four microstate classes, and all studies reported two independent features (occurrence and mean duration) per microstate class. The sometimes additionally reported coverage can be computed from occurrence and mean duration and was thus not considered as an additional independent test.",
+   "parameters": "Bonferroni factor 8, not 12. Argument: coverage = occurrence x mean duration, so only 2 of the 3 features per class are independent.",
+   "why_it_matters": "The correction factor is argued from the dependency structure of the measures rather than taken from the number of tests run. That argument is stated explicitly, which is what makes it checkable."
+  },
+  {
+   "id": "M14",
+   "stage": "analysis",
+   "page": 3,
+   "where": "Materials and Methods",
+   "what_was_done": "Significant overall mean effects were tested for potential confounding effects of medication by excluding studies that had investigated patients under medication.",
+   "parameters": "Sensitivity analysis: re-pool the significant effects using only the four unmedicated-sample studies. Applied to significant effects only, not to all 12 cells."
+  },
+  {
+   "id": "M15",
+   "stage": "analysis",
+   "page": 3,
+   "where": "Materials and Methods",
+   "what_was_done": "Since the single-subject data were not available, it was not possible to extend the analysis to a multifactorial level that would assess the overall significance of group by microstate class interactions.",
+   "parameters": "No individual-participant data. Consequence: no group x class interaction test, so the paper cannot test its own central claim - that C and D move in opposite directions - as a single statistical statement.",
+   "why_it_matters": "The imbalance interpretation in the Discussion is built from two separate one-cell tests, because the test that would assess it directly was not available. The paper says so, in Methods."
+  }
+ ],
+
+ "results_reporting": {
+  "convention": "A pooled Hedges' g, then two p values in the same parenthesis - uncorrected and Bonferroni-corrected - inline in the prose. Effects that fail are reported in the same sentence as the effects that hold, using “whereas”, with g and the uncorrected p only. Confidence intervals are computed but appear only in the forest plots, never in the text. Direction is carried by the sign of g plus a verb (“occur more frequently”, “last shorter”).",
+  "example": "Namely, microstates of class C were found to occur more frequently in schizophrenia (g = 0.760, uncorrected p = 0.0003, and corrected p = 0.0024) and to cover more percent of time (g = 0.569, uncorrected p = 0.011, and corrected p = 0.088), whereas no significant effect was found for mean duration (g = 0.176 and uncorrected p = 0.39).",
+  "what_is_omitted": "No confidence interval anywhere in the prose, for any pooled effect. No heterogeneity statistic (Q, I-squared, tau-squared) anywhere in the paper, including Figure 2's caption. No publication-bias assessment - no funnel plot, no Egger test, no statement that bias was considered. No pooled N of patients or controls. No per-study weights. A 2016 meta-analysis in psychiatry would normally carry at least I-squared and a funnel plot; that this one carries neither is a property of the paper, not of the field.",
+  "where": "Results, p. 3; Figure 2 caption, p. 4"
+ },
+
+ "results": [
+  {
+   "id": "R1",
+   "layer": "result",
+   "page": 3,
+   "where": "Results",
+   "text": "microstates of class C were found to occur more frequently in schizophrenia (g = 0.760, uncorrected p = 0.0003, and corrected p = 0.0024)",
+   "why_it_matters": "The strongest effect in the paper and the only one whose corrected p is below 0.01. It carries the class C half of the imbalance story.",
+   "supports": ["A4", "A6"]
+  },
+  {
+   "id": "R2",
+   "layer": "result",
+   "page": 3,
+   "where": "Results",
+   "text": "and to cover more percent of time (g = 0.569, uncorrected p = 0.011, and corrected p = 0.088)",
+   "why_it_matters": "Corrected p = 0.088 does not clear 0.05. This is a class C effect that did not survive correction, and the Abstract's “medium size effects for two classes” rests partly on it.",
+   "supports": ["A4"]
+  },
+  {
+   "id": "R3",
+   "layer": "result",
+   "page": 3,
+   "where": "Results",
+   "text": "whereas no significant effect was found for mean duration (g = 0.176 and uncorrected p = 0.39)",
+   "why_it_matters": "Class C is more frequent but not longer. The abnormality is in how often the state is entered, not in how long it is held.",
+   "supports": []
+  },
+  {
+   "id": "R4",
+   "layer": "result",
+   "page": 3,
+   "where": "Results",
+   "text": "Contrary to that, microstates of class D were found to cover less percent time (g = -0.759, uncorrected p = 0.0008, and corrected p = 0.0064) and to last shorter in the mean (g = -0.712, uncorrected p = 0.0007, and corrected p = 0.0056)",
+   "why_it_matters": "Both class D effects survive correction. This is the most robust pair of numbers in the paper.",
+   "supports": ["A1", "A2", "A4"]
+  },
+  {
+   "id": "R5",
+   "layer": "result",
+   "page": 3,
+   "where": "Results",
+   "text": "whereas no consistent change in occurrence could be identified (g = -0.351 and uncorrected p = 0.090)",
+   "why_it_matters": "Class D mirrors class C exactly backwards: D is shorter but not rarer, C is more frequent but not longer. The paper does not remark on that symmetry.",
+   "supports": []
+  },
+  {
+   "id": "R6",
+   "layer": "result",
+   "page": 3,
+   "where": "Results, medication sensitivity analysis",
+   "text": "When excluding studies with medicated patients, these effects were preserved and mostly showed increased effect sizes (contribution class C: g = 0.393, occurrence class C: g = 0.800, contribution class D: g = -0.821, and duration class D: g = -0.970), which makes it unlikely that these effects can be attributed to medication.",
+   "why_it_matters": "Three of the four grow; contribution of class C falls from 0.569 to 0.393, which the word “mostly” covers. No p values are given for the unmedicated-only estimates.",
+   "supports": ["A5"]
+  },
+  {
+   "id": "R7",
+   "layer": "result",
+   "page": 3,
+   "where": "Results",
+   "text": "In addition, the meta-analysis showed a small, but significant, effect size for a shortening of microstate class B (g = -0.435 and p = 0.037) that also increased when only unmedicated patients were considered (g = -0.679 and p = 0.017). However, this effect was not significant after Bonferroni correction.",
+   "why_it_matters": "Reported, then withdrawn in the next sentence. The Discussion withdraws it a second time.",
+   "supports": []
+  },
+  {
+   "id": "R8",
+   "layer": "result",
+   "page": 3,
+   "where": "Results, closing sentence",
+   "text": "The meta-analyses did not identify any consistent effects in microstate class A.",
+   "why_it_matters": "A one-line null, stated plainly and not explained away. Two of four classes carry the whole finding.",
+   "supports": []
+  }
+ ],
+
+ "author_interpretations": [
+  {
+   "id": "A1",
+   "layer": "author_interpretation",
+   "page": 5,
+   "where": "Discussion, What Is Known about the Function of the Affected Microstate Classes",
+   "text": "Microstates of class D have been attributed to flexible aspects of attention, such as switching and reorientation of attention to relevant information, because it has been associated with the frontoparietal attention network found in fMRI-BOLD data (19).",
+   "rests_on": ["Britz et al. (19), an EEG-fMRI study outside this meta-analysis"],
+   "boundary": "“have been attributed” - the attribution is the field's, imported, not established here."
+  },
+  {
+   "id": "A2",
+   "layer": "author_interpretation",
+   "page": 5,
+   "where": "Discussion",
+   "text": "This leads to the assumption that microstates of class D might be related to the updating of mental content based on internal and external information that is close to reality.",
+   "rests_on": ["R4", "reduced class D in hypnosis (44), sleep (31) and acute hallucination (37) - all outside this meta-analysis"],
+   "boundary": "“leads to the assumption”, “might be related”. Two hedges in one sentence; the claim is offered as an inference, not a finding."
+  },
+  {
+   "id": "A3",
+   "layer": "author_interpretation",
+   "page": 5,
+   "where": "Discussion",
+   "text": "Associating the increased occurrence of microstates of class C in schizophrenia with salience-related processes dovetails with the view that schizophrenia is a state of aberrant assignment of salience “at a mind level” (46).",
+   "rests_on": ["R1", "class C overlap with the salience network in Britz et al. (19)", "the aberrant-salience account (46)"],
+   "boundary": "“dovetails with” - a consistency claim, not a test. The paper does not claim to have tested the salience account."
+  },
+  {
+   "id": "A4",
+   "layer": "author_interpretation",
+   "page": 5,
+   "where": "Discussion",
+   "text": "We may thus interpret the overall picture of our findings as an imbalance between attentional and saliency-related processes in schizophrenia patients.",
+   "rests_on": ["R1", "R2", "R4", "A1", "A3"],
+   "boundary": "“We may thus interpret”. This is the paper's headline reading, and by M15 it could not be tested as an interaction - it is assembled from separate one-cell tests."
+  },
+  {
+   "id": "A5",
+   "layer": "author_interpretation",
+   "page": 4,
+   "where": "Discussion",
+   "text": "These effects could not reasonably be explained as side effects of medication upon the EEG, because they persisted when studies with medicated patients were excluded.",
+   "rests_on": ["R6"],
+   "boundary": "“could not reasonably be explained”. The sensitivity analysis rests on the four unmedicated-sample studies, and no p values are given for it."
+  },
+  {
+   "id": "A6",
+   "layer": "author_interpretation",
+   "page": 5,
+   "where": "Discussion, Comparison with Other Electrophysiological Indices",
+   "text": "Our intermediate effect size result may indicate that compared to frequency domain EEG indices, microstate analysis succeeds better in distinguishing between brain processes that are, or are not relevant for schizophrenia, but not to the same degree as some of the averaged evoked potentials do.",
+   "rests_on": ["R1", "R4", "published meta-analytic effect sizes elsewhere: delta 0.46 and theta 0.42 for spectral EEG (38); P50 -0.93 (39) to -1.56 (40); mismatch negativity 0.99 (41); P300 -0.83 (42); N400 latency 0.82 (43)"],
+   "boundary": "“may indicate”. The comparison is across separate meta-analyses with different samples and paradigms; no statistical comparison of effect sizes is performed."
+  },
+  {
+   "id": "A7",
+   "layer": "author_interpretation",
+   "page": 5,
+   "where": "Discussion",
+   "text": "Resting-state abnormalities may thus be causally “up-stream” of task-state abnormalities and hence become particularly interesting for an integral understanding of the observed psychopathology.",
+   "rests_on": ["A6", "the task-free argument in Q2"],
+   "boundary": "“may thus be”, and “up-stream” is in scare quotes. A causal direction offered as a possibility from cross-sectional group differences."
+  },
+  {
+   "id": "A8",
+   "layer": "author_interpretation",
+   "page": 4,
+   "where": "Discussion, second paragraph",
+   "text": "This study showed the same microstate abnormalities in these individuals as in schizophrenia patients. This supports the view that microstate analysis can provide information of potential clinical value and could be considered useful for monitoring neuropsychiatric disorders.",
+   "rests_on": ["the single 22q11.2 at-risk study (27) inside the pooled set"],
+   "boundary": "One study of the seven, carrying an at-risk rather than a diagnosed sample. The clinical-value claim rests on that one study."
+  },
+  {
+   "id": "A9",
+   "layer": "author_interpretation",
+   "page": 4,
+   "where": "Discussion, first paragraph",
+   "text": "The fact that the meta-analysis across those studies yielded evidence for consistent effects suggests that using four microstate classes has empirical justification and that these should be considered in future studies.",
+   "rests_on": ["the consistency of R1 and R4 across the seven included studies"],
+   "boundary": "See U4. Every included study was required by criterion (3) to have fitted four classes, so the set contains no case that could have come out otherwise."
+  },
+  {
+   "id": "A10",
+   "layer": "author_interpretation",
+   "page": 6,
+   "where": "Discussion, class B paragraph",
+   "text": "In its role in schizophrenia patients, however, the results so far are inconsistent: two papers (21, 33) found a significant shorter duration, whereas one study (26) has reported significant more coverage of microstates of class B in patients compared to healthy controls, which would counteract an effect of shortening.",
+   "rests_on": ["R7", "the disagreement among three of the included studies"],
+   "boundary": "The paper resolves a disagreement among its own inputs by declining to draw a conclusion, and says why."
+  }
+ ],
+
+ "limitations_author_acknowledged": [
+  {
+   "id": "L1",
+   "page": 6,
+   "where": "closing paragraph (no Conclusion heading; see W3)",
+   "text": "Given the small number of studies that has been done so far, an enlargement of the sample size in future studies is essential."
+  },
+  {
+   "id": "L2",
+   "page": 6,
+   "where": "closing paragraph",
+   "text": "Furthermore, the heterogeneity of the included subjects in terms of medication and diagnosis gives reason to a cautious interpretation of the presented results."
+  },
+  {
+   "id": "L3",
+   "page": 3,
+   "where": "Materials and Methods",
+   "text": "Since the single-subject data were not available, it was not possible to extend the analysis to a multifactorial level that would assess the overall significance of group by microstate class interactions."
+  },
+  {
+   "id": "L4",
+   "page": 2,
+   "where": "Materials and Methods, inclusion criteria",
+   "text": "Note that the justification of the choice of these criteria was purely pragmatic; it identified the broadest common ground to compare studies on microstates in schizophrenia at the time of this paper being written. We do not imply that these criteria are the optimal choice to investigate microstates in general."
+  },
+  {
+   "id": "L5",
+   "page": 2,
+   "where": "Materials and Methods",
+   "text": "Note, however, that the multicenter-study by Lehmann et al. (21) included a small (six patients and six controls) subset of subjects where the midline electrodes were interpolated."
+  },
+  {
+   "id": "L6",
+   "page": 6,
+   "where": "Discussion, class B paragraph",
+   "text": "In addition, the fact that the findings in microstate where not significant after correcting for multiple testing casts further doubt on the relevance of this effect.",
+   "note": "“where” for “were” is the paper's own typo, carried verbatim."
+  },
+  {
+   "id": "L7",
+   "page": 6,
+   "where": "closing paragraph",
+   "text": "Nevertheless, despite small samples and heterogeneous subjects, we found consisting results with the included studies, which justifies further investigation of microstate classes C and D as state markers of acute schizophrenia and the attempt to modulate them (e.g., with help of NFB) as a possible add-on treatment.",
+   "note": "The boundary the authors set on their own conclusion: it justifies further investigation, not clinical use."
+  }
+ ],
+
+ "unstated_by_the_paper": [
+  {
+   "id": "U1",
+   "kind": "number_mismatch",
+   "text": "The Methods count 12 tests and then correct with a factor of 8, excluding coverage on the grounds that it is derivable from occurrence and mean duration (p. 3). The Results then report a Bonferroni-corrected p for coverage itself - class C corrected p = 0.088, class D corrected p = 0.0064 (p. 3). Corrected values are reported for the tests the correction factor excluded from its count.",
+   "targets": ["M12", "M13", "R2", "R4"]
+  },
+  {
+   "id": "U2",
+   "kind": "missing_method",
+   "text": "No heterogeneity statistic appears anywhere - not Q, not I-squared, not tau-squared - in Methods, Results, or the caption of Figure 2. The weighting scheme is inverse-variance (p. 3) and no between-study variance component is estimated, which is a fixed-effect model, but the paper never names the model. Table 1 (p. 3) shows electrode counts from 16 to 204 and mean ages from 16.5 to 34.5 across the seven studies.",
+   "targets": ["M11", "M5", "results_reporting"]
+  },
+  {
+   "id": "U3",
+   "kind": "missing_method",
+   "text": "No publication-bias assessment is reported or mentioned: no funnel plot, no Egger or Begg test, and no statement that bias was considered. The paper pools seven small studies of a single hypothesis.",
+   "targets": ["M11", "results_reporting"]
+  },
+  {
+   "id": "U4",
+   "kind": "unsourced_claim",
+   "text": "Criterion (3) admits only studies that fitted four microstate classes (p. 2). The Discussion offers the consistency of effects across those studies as evidence that four classes has empirical justification (p. 4). The comparison that could support that claim - studies fitting a different number of classes - was removed by the inclusion criteria, so the claim rests on evidence the design cannot supply.",
+   "targets": ["M3", "A9"]
+  },
+  {
+   "id": "U5",
+   "kind": "missing_method",
+   "text": "The pooled sample size is never stated. Neither the total number of patients nor the total number of controls appears in the Abstract, Methods, Results, Discussion or Figure 2's caption; the per-study n column of Table 1 (p. 3) is the only place the reader can recover it, and Table 1 gives n for patients only.",
+   "targets": ["M5", "results_reporting"]
+  },
+  {
+   "id": "U6",
+   "kind": "location",
+   "text": "The screening numbers exist only inside Figure 1 (p. 2) and the list of excluded papers only in Table S1 of the Supplementary Material. The prose says “The employed search and selection criteria are shown in Figure 1” and never states how many records the PubMed search returned or how many were excluded at each step, so a reader of the text alone cannot judge the search.",
+   "targets": ["M1", "F1"]
+  },
+  {
+   "id": "U7",
+   "kind": "missing_method",
+   "text": "The unmedicated-only sensitivity analysis (p. 3) reports four effect sizes and no p values, no confidence intervals and no statement of how many studies remained in it. Table 1 lists medication status as No for four of the seven studies, but the Results never say the re-pooling used four.",
+   "targets": ["M14", "R6"]
+  },
+  {
+   "id": "U8",
+   "kind": "missing_method",
+   "text": "Class identity across studies rests on “the similarity of the obtained microstate classes with the microstate prototype maps reported in the first study of this kind (23)” (p. 2). No similarity measure, threshold or procedure is given, and no check on the A-D labelling of each source paper is reported. Every pooled effect assumes that class C in 1999 and class C in 2015 are the same class.",
+   "targets": ["M7"]
+  }
+ ],
+
+ "extraction_warnings": [
+  {
+   "text": "W1 - Table 1 (p. 3) is extracted as two disconnected fragments with scrambled columns. The header row reads “R eference | | n | ender C hannels | R ecruitment area” and the final study's row appears out of order as “13 64 Georgia Tomescu et al. (28) 27d”. The diagnosis / comorbidity / medication / age fragment is separated from the reference / n / gender / channels fragment and the rows must be aligned by hand. Every per-study number in M5 must be read off the PDF before it is quoted.",
+   "affects": ["M5", "U2", "U5", "U7"]
+  },
+  {
+   "text": "W2 - 5 of 20 section headings are shredded by the PDF font encoding: “MA D ME TH ODS” and “TERIALS AN” are one heading, “UL TS” and “RES” are one heading, “RE” and “FERENCES” are one heading, plus “FIG URE 1” and “IN TR ODUC TI ON”. Body prose is unaffected and was read normally. Only heading-derived fields are unreliable.",
+   "affects": []
+  },
+  {
+   "text": "W3 - The reference split is partial. refs.md holds the tail, but references 1-14 remain interleaved in body.md on p. 6, and the two-column extraction dropped the paper's closing paragraph (“The present study gave an overview...”) into the middle of that reference list. That paragraph is the paper's conclusion and its limitations statement; in the PDF it sits at the foot of p. 6 with no Conclusion heading of its own.",
+   "affects": ["L1", "L2", "L7"]
+  },
+  {
+   "text": "W4 - figures.json truncates the Figure 2 caption mid-word at “duratio”. The full caption, including the note that panels A and E did not survive Bonferroni correction, is in body.md on p. 4.",
+   "affects": ["F2"]
+  }
+ ],
+
+ "writing_samples": [
+  {
+   "id": "S1",
+   "page": 1,
+   "section": "Abstract / Introduction",
+   "where": "opening two sentences of both",
+   "quote": "Schizophrenia patients show abnormalities in a broad range of task demands. Therefore, an explanation common to all these abnormalities has to be sought independently of any particular task, ideally in the brain dynamics before a task takes place or during resting state.",
+   "move": "Derive the method from the shape of the problem. The breadth of the deficit is stated as a fact about the disorder, and the task-free measure follows from it as a consequence rather than as a preference.",
+   "why_it_works": "The reader accepts resting-state EEG before it has been named, because the argument arrived first. Two sentences, one “Therefore”, and the paper has justified its entire design choice.",
+   "conditions": "Works when the breadth or generality of a phenomenon is itself the reason your measure has to be broad. Does not work when you are choosing a method for convenience."
+  },
+  {
+   "id": "S2",
+   "page": 2,
+   "section": "Materials and Methods",
+   "where": "immediately after the four inclusion criteria",
+   "quote": "Note that the justification of the choice of these criteria was purely pragmatic; it identified the broadest common ground to compare studies on microstates in schizophrenia at the time of this paper being written. We do not imply that these criteria are the optimal choice to investigate microstates in general.",
+   "move": "State the basis of a design choice, and then fence what the choice does not claim - in Methods, at the point the choice is made, not in a limitations paragraph at the end.",
+   "why_it_works": "A reviewer's objection is answered before it forms, and the fence costs the paper nothing: admitting the criteria are pragmatic does not weaken any result that follows. Placing it in Methods also means the reader carries the qualification through the Results instead of meeting it after the conclusions have landed.",
+   "conditions": "Use wherever a choice was made for tractability. The second sentence - naming what you are not claiming - is the part most drafts leave out."
+  },
+  {
+   "id": "S3",
+   "page": 3,
+   "section": "Results",
+   "where": "first paragraph of Results",
+   "quote": "Namely, microstates of class C were found to occur more frequently in schizophrenia (g = 0.760, uncorrected p = 0.0003, and corrected p = 0.0024) and to cover more percent of time (g = 0.569, uncorrected p = 0.011, and corrected p = 0.088), whereas no significant effect was found for mean duration (g = 0.176 and uncorrected p = 0.39).",
+   "move": "Report both p values, and put the effect that failed in the same sentence as the effects that held, joined by “whereas”.",
+   "why_it_works": "Carrying the uncorrected and corrected p side by side lets the reader see exactly what the correction cost - here, that coverage of class C at 0.088 does not clear the bar - without the paper having to comment on it. And the “whereas” clause means the null is not a separate paragraph the reader can skip: the shape of the finding, more frequent but not longer, arrives in one sentence.",
+   "conditions": "The pattern generalises to any corrected analysis. Reporting only the corrected p hides the cost of the correction; reporting only the uncorrected p hides the risk."
+  },
+  {
+   "id": "S4",
+   "page": 4,
+   "section": "Discussion",
+   "where": "first paragraph, immediately after the summary of the main findings",
+   "quote": "These effects could not reasonably be explained as side effects of medication upon the EEG, because they persisted when studies with medicated patients were excluded.",
+   "move": "Name the most obvious alternative explanation and close it in the same sentence, with the analysis that closes it.",
+   "why_it_works": "This is the Results-to-Discussion joint done in one move: the confound the reader is already thinking about is raised by the authors first, and the answer is an analysis that was planned in Methods (M14) rather than a rebuttal invented afterwards. The reader spends no time suspecting something the paper has already handled.",
+   "conditions": "Only available if the sensitivity analysis was actually run. The move is a Methods decision that pays out in the Discussion."
+  },
+  {
+   "id": "S5",
+   "page": 5,
+   "section": "Discussion",
+   "where": "Comparison with Other Electrophysiological Indices of Schizophrenia",
+   "quote": "The effect sizes estimated in this meta-analysis of the currently available studies on EEG resting-state microstates lay between those found for spectral changes in resting-state EEG, and those found for amplitudes and latencies of various event-related potential (ERP) components: based on a total of over 1000 patients and controls each, a meta-analysis of spectral EEG indices indicated an effect size of 0.46 for an increase of delta band activity and an effect of 0.42 for an increase of theta band activity (38).",
+   "move": "Give your effect size a scale by placing it among the field's other published effect sizes, instead of labelling it “medium” against a generic benchmark.",
+   "why_it_works": "“Medium” tells the reader nothing about whether a g of 0.76 is worth building an instrument on. Ranking it against spectral EEG at 0.42-0.46 and ERP markers at 0.82-1.56 answers the question the reader actually has, and it converts a number into a position in the literature. The whole sub-section is built from that one comparison.",
+   "conditions": "Needs published meta-analytic estimates in neighbouring measures. Give the sample sizes behind the comparison estimates, as this paper does, or the ranking is not interpretable."
+  },
+  {
+   "id": "S6",
+   "page": 4,
+   "section": "Discussion",
+   "where": "first paragraph",
+   "quote": "The fact that the meta-analysis across those studies yielded evidence for consistent effects suggests that using four microstate classes has empirical justification and that these should be considered in future studies.",
+   "move": "AVOID. Offer the consistency of a result as evidence for a choice that was an entry condition of the analysis.",
+   "why_it_works": "It reads as a legitimate inference and the sentence is well built - which is what makes it worth studying. Criterion (3) on p. 2 admitted only studies that had already fitted four classes, so no included study could have shown four classes failing. The claim needs a comparison the design removed. When you write a sentence of this shape - our result justifies the assumption our result was built on - check whether your inclusion rule already decided it.",
+   "conditions": "The test: ask what result would have counted against the claim, and then check whether your sampling or inclusion rule made that result impossible to observe."
+  }
+ ],
+
+ "figure_pointers": [
+  {
+   "id": "F1",
+   "page": 2,
+   "use": "Figure 1, the study-selection flow. This is the only place the screening numbers exist - how many records PubMed returned and how many fell at each criterion. The prose never gives them, so read the figure before judging the search."
+  },
+  {
+   "id": "F2",
+   "page": 4,
+   "use": "Figure 2, five forest plots (A-E). The only place the per-study effect sizes and their confidence intervals appear; the prose reports pooled estimates only. Look at the spread of the seven study estimates within each panel - that spread is the heterogeneity the paper never quantifies. The caption itself flags that panel A (contribution of class C) and panel E (duration of class B) did not survive Bonferroni correction."
+  },
+  {
+   "id": "F3",
+   "page": 3,
+   "use": "Table 1, the seven included studies. Read down the channel-count column (16 to 204) and the mean-age column (16.5 to 34.5), and note the medication column: four No, three Yes. This table is the paper's heterogeneity, in the only form the paper reports it. See extraction warning W1 before quoting any cell."
+  }
+ ]
+}

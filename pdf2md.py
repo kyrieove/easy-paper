@@ -43,6 +43,10 @@ PRIMARY = re.compile(r"^(?:\d+\.)*\s*(methods?|participants|materials|results)\b
 # "MA D ME TH ODS", "FIG URE 1", "UL TS". Body prose is unaffected. Matching
 # against the de-spaced form recovers the heading without touching any text.
 PRIMARY_FLAT = re.compile(r"(methods|participants|results)", re.I)
+COLLECTED = re.compile(
+    r"informed consent|written consent|ethics committee|institutional review board|"
+    r"approved by the (?:local )?ethic|(?:participants|subjects) were recruited|"
+    r"were recruited (?:from|for)|(?:participants|subjects) gave", re.I)
 # Bibliography-entry shape, for when the References heading is shredded or absent.
 YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
 NUMBERED = re.compile(r"^\s*[\[(]?\d{1,3}[\].)]\s+[A-Z]")
@@ -234,6 +238,22 @@ def page_markdown(pages):
     return "\n\n".join(f"<!-- Page {i} -->\n{md}" for i, md in enumerate(pages, 1))
 
 
+def is_primary(headings, shredded, body):
+    """Empirical-content hint only; classify the paper by reading its content.
+
+    Same two-tier shape as split_refs, and for the same reason: the heading path
+    fails silently on whole publishers, and a per-file success line hides it.
+    Returns (primary, from_headings) so the caller can say which evidence decided.
+    """
+    if any(PRIMARY.match(h) for h in headings):
+        return True, True
+    if shredded and any(PRIMARY_FLAT.search(h.replace(" ", "")) for h in headings):
+        # Only when the clean path already failed, so normal papers keep the
+        # stricter anchored test.
+        return True, True
+    return bool(COLLECTED.search(body)), False
+
+
 def index_figures(body_pages):
     """Locate figures and tables by caption -- no image is extracted.
 
@@ -308,11 +328,7 @@ def run(pdf_path, outroot, force=False):
             if m and not CAPTION.match(m.group(1)):
                 headings.append(m.group(1).strip())
     shredded = [h for h in headings if SHRED.search(h)]
-    primary = any(PRIMARY.match(h) for h in headings)
-    if not primary and shredded:
-        # Only when the clean path already failed, so normal papers keep the
-        # stricter anchored test.
-        primary = any(PRIMARY_FLAT.search(h.replace(" ", "")) for h in headings)
+    primary, from_headings = is_primary(headings, shredded, body)
 
     warnings = []
     if cls.pages_needing_ocr:
@@ -326,6 +342,8 @@ def run(pdf_path, outroot, force=False):
                         "still carries them (~30-40% more tokens in stage 2)")
     if not figures:
         warnings.append("no figures or tables indexed")
+    if primary and not from_headings:
+        warnings.append("empirical-content hint comes from consent/recruitment prose, not headings; confirm from the paper")
     if not primary:
         warnings.append("no empirical headings detected; classify the paper from its content, not this flag")
     # A stray one or two is normal noise; a real font problem hits a quarter of them.

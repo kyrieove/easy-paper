@@ -1,0 +1,485 @@
+{
+  "schema": "evidence-card/primary-data/v3",
+  "note": "Internal artifact for stage 3. Pages are PDF pages of body.md. v2 adds writing_samples so stage 3 needs no re-read of body.md.",
+  "paper": {
+    "cite": "Kropotov, J., Ponomarev, V., Tereshchenko, E. P., Muller, A., & Jancke, L. (2016). Frontiers in Aging Neuroscience, 8, 69.",
+    "doi": "10.3389/fnagi.2016.00069",
+    "branch": "primary_data",
+    "sample": "454 healthy adults, cross-sectional, five age bands from 18 to 89"
+  },
+  "questions": [
+    {
+      "id": "RQ",
+      "text": "Which of two accounts of cognitive ageing do ERP components of cognitive control support: a general slowing of processing speed, or compensation by other regions?",
+      "page": 2,
+      "note": "Framed as testing two hypotheses against each other, but they are not mutually exclusive and the paper ends up supporting both."
+    }
+  ],
+  "methods": [
+    {
+      "id": "M1",
+      "stage": "participants",
+      "page": 2,
+      "where": "Materials and Methods/Subjects, p. 2-3; bands stated at the end of the Introduction",
+      "what_was_done": "Four hundred fifty four healthy subjects (age range: 18-89) participated in the study. Subjects were recruited from Chur (Switzerland) during the database collection project headed by Dr. Andreas Muller, from students of St. Petersburg State University and staff of the Institute of the Human Brain of Russian Academy of Sciences.",
+      "parameters": "N = 454. Five age bands: 18-23 (N = 114), 24-33 (N = 70), 34-50 (N = 125), 51-60 (N = 70), 61-89 (N = 75). Inclusion: free of obvious neurological and psychiatric problems, at least average cognitive skills, no vision or hearing problems, and scoring below clinical significance on a symptom checklist (Franke, 2000). Exclusion: neurological or systemic medical disease. Older subjects were additionally screened for mild cognitive impairment and dementia with a standard cognitive test. Handedness by self-report: 17 left-handed, 10 ambidextrous, the rest right-handed. Declaration of Helsinki; informed consent; approved by the local ethics committee of the canton Graubunden, district of Grison, Switzerland (EK 20/07).",
+      "why_it_matters": "The screening criteria are the reason behavioural performance is flat across age bands, and flat behaviour is the premise the compensation account is inferred from."
+    },
+    {
+      "id": "M2",
+      "stage": "materials",
+      "page": 2,
+      "where": "Materials and Methods/Construction of Trials",
+      "what_was_done": "The pictures were selected from textbooks for children in such a way that the overall luminance and the image sizes of animals and plants were approximately equal.",
+      "parameters": "Three image categories: animal (a), plant (p), human (h). 20 different images of each category, presented in varying random combinations to avoid habituation. Novel sounds occasionally presented simultaneously with human images on ignore trials, to maintain alertness; these produced an orientation reaction confirmed by a P3 novelty wave."
+    },
+    {
+      "id": "M3",
+      "stage": "procedure",
+      "page": 2,
+      "where": "Materials and Methods/Construction of Trials",
+      "what_was_done": "The trials consisted of the presentations of paired stimuli s1-s2 with inter-stimulus intervals of 1000 ms and inter-trial intervals of 3000 ms.",
+      "parameters": "Stimulus duration 100 ms; ISI 1000 ms; ITI 3000 ms. Four trial types: a-a (GO, press), a-p (NOGO, withhold), p-p, and p-h with a novel sound (ignore). Cue = trial beginning with an animal; NonCue = trial beginning with a plant. Speed and accuracy equally emphasised. Blocks of trials with a unique set of five a, five p and five h stimuli per block, pseudo-randomised to equal numbers across the four categories. Practice before recording; a few minutes rest after every 200 trials. Seated upright, 17-inch CRT at 1.5 m, stimuli subtending 3.8 degrees of visual field. Presented with Psytask, written by one of the authors (Ponomarev).",
+      "unclear": "Trial and block counts are stated twice and do not agree - see unstated_by_the_paper A9. Total trials per subject cannot be determined from the text."
+    },
+    {
+      "id": "M4",
+      "stage": "acquisition",
+      "page": 3,
+      "where": "Materials and Methods/Data Recording",
+      "what_was_done": "EEG was recorded from 19 scalp sites according to the 10-20-system, bandpass-filtered between 0.3 and 50 Hz, and digitized at a rate of 250 samples per second per channel. The EEG was recorded referentially to linked ears, allowing computational re-referencing of the data (re-montaging).",
+      "parameters": "19 channels, 10-20 system. Online bandpass 0.3-50 Hz. Sampling rate 250 Hz per channel. Reference: linked ears. Amplifier: Mitsar-201 (CE 0537), Mitsar Co. Ltd, Russia. Caps: Electro-Cap International, tin recessed electrodes, ECI ELECTRO-GEL. Acquisition and quantification in WinEEG (Ponomarev and Kropotov, 2013). Button presses made with the right hand and recorded on a separate channel."
+    },
+    {
+      "id": "M5",
+      "stage": "processing",
+      "page": 3,
+      "where": "Materials and Methods/Data Recording, second half",
+      "what_was_done": "Eye blink artifacts were corrected by zeroing the activation curves of individual independent components corresponding to eye blinks. In addition, epochs with excessive amplitude of filtered EEG and/or excessive faster and/or slower frequency activity were automatically marked and excluded from further analysis.",
+      "parameters": "Re-referenced computationally to common average montage before decomposition. Blink correction: ICA on raw EEG fragments, blink components zeroed (method of Jung et al.; compared against EOG regression in Tereshchenko et al., 2009). Epoch rejection thresholds: 100 microvolts for unfiltered EEG; 50 microvolts for slow waves in the 0-1 Hz band; 35 microvolts for fast waves in the 20-35 Hz band.",
+      "unclear": "No epoch window, baseline-correction interval, or trial-retention count is reported anywhere. How many trials survived rejection, and per age band, is not stated."
+    },
+    {
+      "id": "M6",
+      "stage": "analysis",
+      "page": 3,
+      "where": "Materials and Methods/Decomposition of Collection of ERPs into Latent Components",
+      "what_was_done": "To separate the latent components hidden in ERPs we used a method of blind source separation based on second-order statistics (see Yeredor, 2010) and adapted for the transient responses (Ponomarev and Kropotov, 2013).",
+      "parameters": "ERP at each electrode modelled as a linear mixture of K latent signals with mixing matrix A, plus additive stationary isotropic noise independent of the signals. A is assumed identical for all subjects. Number of components chosen by the minimum of BIC as a function of k, computed separately for the s1 collection (Cue/NonCue plus the s1-s2 interval) and the s2 collection (GO/NOGO plus 1.1 s after s2).",
+      "why_it_matters": "The assumption that one mixing matrix fits all 454 subjects across a 66-year age range is stated in the sentence that introduces the model, not in the limitations. Every component-level age effect depends on it."
+    },
+    {
+      "id": "M7",
+      "stage": "analysis",
+      "page": 3,
+      "where": "Materials and Methods/Imaging of Latent Components",
+      "what_was_done": "sLORETA applied to the component topographies for rough localisation.",
+      "parameters": "19 electrodes, 2394 voxels at 7 mm resolution.",
+      "why_it_matters": "The authors state that the image is a linear transformation of the topography and therefore adds no information beyond it, and that they wanted a rough approximation rather than a precise inverse solution."
+    },
+    {
+      "id": "M8",
+      "stage": "analysis",
+      "page": 3,
+      "where": "Materials and Methods/Statistical Analysis",
+      "what_was_done": "Intervals were chosen for each latent component separately on the basis of local peaks of the difference curves.",
+      "parameters": "One-way ANOVA over the five age bands for behavioural measures. Two-way repeated-measures ANOVA (Age, non-repeated, five levels x Location, repeated) for wave amplitudes and for component amplitudes; F values reported as F[4, 449] for the age factor. Amplitudes measured in the selected windows of the difference waves.",
+      "unclear": "No multiple-comparison correction is reported for the dozens of ANOVAs in Tables 2, 3, 6 and 7, and no correction is reported for the data-driven choice of measurement windows."
+    }
+  ],
+  "results_reporting": {
+    "convention": "Direction in the prose, every statistic in a table. The Results text states which wave changed and in which direction, then hands off with a pointer; no F value, df, p value or effect size appears in the running text anywhere in the paper. The tables carry F[4, 449] for the age factor and a p column, with no effect size and no correction column.",
+    "example": "The results of statistical analysis are presented in Table 3.",
+    "what_is_omitted": "No effect sizes of any kind (no eta squared, no Cohen's d). No confidence intervals. No correction for multiple comparisons across the dozens of ANOVAs. No count of trials retained per subject or per age band. Degrees of freedom appear only in the table header, so a reader skimming the prose never sees the sample the test ran on.",
+    "where": "Results p.4-10; the statistic tables are Tables 2, 3, 6 and 7",
+    "background_note": "BACKGROUND, NOT FROM THIS PAPER. The prose-plus-table split is common in ERP work but is not the only convention, and mixed-effects papers - which is where much of this field is moving - report inline instead: per fixed effect a beta with its SE, a t or z with its df, and a p, plus the random-effects structure stated separately and the fitting software named. A meta-analysis instead reports a pooled estimate with its confidence interval and a heterogeneity statistic. Match the convention of the journal being written for, not of the last paper read."
+  },
+  "results": [
+    {
+      "id": "R1",
+      "layer": "result",
+      "page": 4,
+      "where": "Results/Behavioral Data, Table 1 p.4",
+      "text": "Omission and commission errors below 2.5% in every age band; mean reaction time between 385 and 407 ms with no systematic age trend. The authors conclude behaviour is roughly similar, so ERP differences cannot be attributed to performance differences.",
+      "why_it_matters": "This is load-bearing: it is what licenses reading every ERP difference as a difference in process rather than in effort or accuracy."
+    },
+    {
+      "id": "R2",
+      "layer": "result",
+      "page": 4,
+      "where": "Grand Average ERPs, Figure 1A, Table 2",
+      "text": "For s1: amplitudes of the central N2Cue and of the CNV increase with age, while the parietal P3Cue decreases. Peak latencies of N2Cue and P3Cue both increase by roughly 4 ms per decade.",
+      "supports": [
+        "I2",
+        "I3"
+      ]
+    },
+    {
+      "id": "R3",
+      "layer": "result",
+      "page": 6,
+      "where": "ERPs to Stimulus 2, Figure 1B, Table 3",
+      "text": "For s2: the parietal P3Go decreases with age; the frontal N2d NOGO decreases with age; the P3d NOGO shows the opposite trend. Latencies of the positive waves increase about 6 ms per decade, while N2d NOGO latency at Fz stays stable.",
+      "supports": [
+        "I2",
+        "I3",
+        "I4"
+      ]
+    },
+    {
+      "id": "R4",
+      "layer": "result",
+      "page": 6,
+      "where": "Decomposition, Figure 2, Figure 3, Tables 4 and 5",
+      "text": "Seven latent components for s1 and six for s2 passed reliability, with split-half topography similarity mostly above 0.90. Localisations span cuneus and fusiform (sensory), superior temporal and paracentral (parietal-temporal), and medial and superior frontal gyri (frontal).",
+      "why_it_matters": "The reliability table is the strongest quantitative support the decomposition gets."
+    },
+    {
+      "id": "R5",
+      "layer": "result",
+      "page": 6,
+      "where": "Age Dynamics of Latent Components (s1), Figure 4, Table 6",
+      "text": "The three components loading on P3Cue diverge by location: the temporal component drops sharply with age, the parietal one does not change, the frontal one increases. Frontal components C1.7 and C1.6 grow more negative before s2 (CNV), while components in superior temporal and superior frontal areas do not change.",
+      "supports": [
+        "I3",
+        "I4"
+      ],
+      "direction_note": "This divergence by location, inside a single scalp wave, is the paper's most distinctive observation and could not be seen without the decomposition."
+    },
+    {
+      "id": "R6",
+      "layer": "result",
+      "page": 10,
+      "where": "Age Dynamics of Latent Components (s2), Figure 5, Table 7",
+      "text": "P3Go splits into a parietal component that decreases with age and a frontal one that increases. Of the three components loading on N2d/P3d NOGO, all decrease in their N2 part with age, while their P3 parts diverge: the central one increases, the frontal one is flat, the parietal one falls sharply.",
+      "supports": [
+        "I3",
+        "I4"
+      ]
+    },
+    {
+      "id": "R7",
+      "layer": "result",
+      "page": 6,
+      "where": "Age Dynamics (s1) and Discussion/Processing Speed p.11",
+      "text": "Latency increase with age scales with a component's own peak latency: sensory components around 4-5 ms per decade, P3Cue-related components around 20 ms per decade.",
+      "supports": [
+        "I1"
+      ],
+      "direction_note": "See the discrepancy logged under A1: the abstract and conclusion state 8 and 20 ms per decade; the Discussion states 5-6 and 16."
+    }
+  ],
+  "author_interpretations": [
+    {
+      "id": "I1",
+      "layer": "author_interpretation",
+      "page": 11,
+      "where": "Discussion/Processing Speed Hypothesis",
+      "text": "The data unequivocally support the processing speed hypothesis: latency increase is independent of amplitude change and scales with the component's own latency. Speculatively attributed to myelin damage and fibre loss.",
+      "rests_on": [
+        "R2",
+        "R3",
+        "R7"
+      ],
+      "boundary": "Latency slowing is measured; the myelin account is imported from elsewhere and not tested here. The word chosen is unequivocally, which is stronger than a cross-sectional design can carry."
+    },
+    {
+      "id": "I2",
+      "layer": "author_interpretation",
+      "page": 11,
+      "where": "Discussion/Compensation Hypothesis of Aging",
+      "text": "Posterior components fall while frontal components rise, which is read as compensation: older brains recruit prefrontal resources to hold performance steady.",
+      "rests_on": [
+        "R1",
+        "R5",
+        "R6"
+      ],
+      "boundary": "Compensation requires that the frontal increase be doing work. The design shows an anticorrelated pattern plus flat behaviour; it never links component amplitude to performance in any individual."
+    },
+    {
+      "id": "I3",
+      "layer": "author_interpretation",
+      "page": 12,
+      "where": "Discussion/Posterior-Anterior Shift in Aging",
+      "text": "Parietal P3Cue falls about 0.2 microvolts per decade while centro-frontal N2 rises about 0.4 per decade, presented as the ERP counterpart of the posterior-anterior shift seen in fMRI.",
+      "rests_on": [
+        "R2",
+        "R5"
+      ],
+      "boundary": "A convergence claim across methods, resting on matching directions rather than on any joint measurement."
+    },
+    {
+      "id": "I4",
+      "layer": "author_interpretation",
+      "page": 11,
+      "where": "Discussion/Comparison to Working Memory, Inhibiting Prepotent Response",
+      "text": "Each component is assigned a psychological operation: C2.2 comparison with working memory, C2.6 conflict detection, C2.4 overriding a prepotent response. Declining C2.4 is read as supporting the inhibitory deficit theory of ageing.",
+      "rests_on": [
+        "R6"
+      ],
+      "boundary": "The authors themselves call the study descriptive and say the functional meaning of components rests on loose association with previous work. These labels are hypotheses carried in from other papers, not results."
+    }
+  ],
+  "limitations_author_acknowledged": [
+    {
+      "id": "L1",
+      "page": 12,
+      "where": "Limitations",
+      "text": "Blind source separation is one of several such methods, each resting on its own assumptions about ERP signals."
+    },
+    {
+      "id": "L2",
+      "page": 12,
+      "where": "Limitations",
+      "text": "sLORETA adds no information beyond the component's topography, since the image is a linear transformation of it. It is used only as a rough approximation."
+    },
+    {
+      "id": "L3",
+      "page": 12,
+      "where": "Limitations",
+      "text": "The study is descriptive. Little is known about the functional meaning of the components; interpretation is speculation based on loose association with earlier wave studies."
+    }
+  ],
+  "unstated_by_the_paper": [
+    {
+      "id": "A1",
+      "kind": "number_mismatch",
+      "text": "The paper reports three different values for its headline slowing rate. Abstract and Conclusion say 8 ms per decade for early components and 20 for late. The Results give about 4 ms per decade for sensory components and 20 for P3Cue-related ones. The Discussion says 5-6 ms per decade at 100-200 ms and about 16 at 400-500 ms. The figure quoted in the abstract appears nowhere in the Results.",
+      "targets": [
+        "R7",
+        "I1"
+      ]
+    },
+    {
+      "id": "A2",
+      "kind": "contradiction",
+      "text": "The Conclusion contradicts the Results on behaviour. Results and Abstract state that omissions and reaction times were similar across age groups, which is what licenses the whole interpretation. The Conclusion instead describes age differences in omissions (the older the fewer) and reaction times (the older the slower). Both cannot be true, and the interpretation only works if the Results version is.",
+      "targets": [
+        "R1",
+        "I2"
+      ]
+    },
+    {
+      "id": "A3",
+      "kind": "contradiction",
+      "text": "The N2Cue direction is stated inconsistently. The Grand Average section says N2Cue amplitude increases with age. The latent-component section says C1.6 and C1.5 decrease with age and calls this the same pattern as observed for the N2Cue wave. The Discussion says N2 amplitudes for both components increase with age. Sign conventions for a negative wave may explain part of this, but the text as written cannot all be right.",
+      "targets": [
+        "R2",
+        "R5"
+      ]
+    },
+    {
+      "id": "A4",
+      "kind": "unsourced_claim",
+      "text": "Cross-sectional design, developmental language. Every age effect compares different people; cohort differences in education, testing familiarity and screen exposure are unaddressed. Phrases like latencies increase with age describe a gradient across people, not a change within anyone.",
+      "targets": [
+        "I1",
+        "I2",
+        "I3"
+      ]
+    },
+    {
+      "id": "A5",
+      "kind": "unsourced_claim",
+      "text": "Healthy-survivor selection works in favour of the compensation story. Older participants were screened for MCI and dementia and required to show at least average cognitive skills. Flat behaviour across age is partly built in by that screening, and flat behaviour is the premise compensation is inferred from.",
+      "targets": [
+        "R1",
+        "I2"
+      ]
+    },
+    {
+      "id": "A6",
+      "kind": "missing_method",
+      "text": "Compensation is inferred without a link to performance. Neither correlation between component amplitude and reaction time or errors within the older group, nor any mediation, is reported. Anticorrelated posterior and frontal trajectories are equally consistent with dedifferentiation or with non-specific frontal noise.",
+      "targets": [
+        "I2"
+      ]
+    },
+    {
+      "id": "A7",
+      "kind": "missing_method",
+      "text": "Analysis windows were chosen from the observed difference curves, and no correction is reported across the dozens of ANOVAs in Tables 2, 3, 6 and 7. With N=454 the F values are large enough that this is unlikely to overturn the main gradients, but individual component-level claims are less secure than their p values suggest.",
+      "targets": [
+        "M8",
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "id": "A8",
+      "kind": "number_mismatch",
+      "text": "The stated age range is inconsistent across the paper: 18-84 in the abstract and conclusion, 18-89 in Methods, a top band labelled 61-89 in Table 1 and 61-84 in the figure legends.",
+      "targets": [
+        "M1"
+      ]
+    },
+    {
+      "id": "A9",
+      "kind": "number_mismatch",
+      "text": "Trial counts contradict each other inside one paragraph of Construction of Trials, p. 2. One sentence says the trials were grouped into four blocks with one hundred trials each, which is 400 trials in total. The next sentence says each block consisted of a pseudo-random presentation of 400 trials with 100 trials within each trial category, which is 1600. Total trials per subject cannot be recovered from the text.",
+      "targets": [
+        "M3"
+      ]
+    }
+  ],
+  "extraction_warnings": [
+    {
+      "text": "Tables 2, 3, 6 and 7 lose their p-value exponents in extraction: superscripts are detached onto their own rows, so a cell reading 4.85, 10 followed by a stray 3 means p < 10^-3. Do not read numeric p values out of body.md for this paper; open the PDF page instead.",
+      "affects": [
+        "Table 2 p.6",
+        "Table 3 p.6",
+        "Table 6 p.9",
+        "Table 7 p.10"
+      ]
+    },
+    {
+      "text": "Microvolt signs are lost in extraction. The epoch rejection thresholds read 100 mV, 50 mV and 35 mV in body.md; the units are microvolts. Same class of loss as the p-value exponents. Do not copy any unit out of body.md for this paper without checking the PDF.",
+      "affects": [
+        "M5",
+        "Materials and Methods/Data Recording p.3"
+      ]
+    }
+  ],
+  "writing_samples": [
+    {
+      "id": "W1",
+      "page": 4,
+      "section": "results",
+      "where": "Results/Behavioral Data",
+      "quote": "Thus, although the behavioral data are roughly similar the ERP differences reported below cannot be attributed to different behavioral performances.",
+      "move": "Report a null result as a licence, not as an absence.",
+      "why_it_works": "A flat behavioural result is not a disappointment here; it is what permits the rest of the paper. The sentence spends no words apologising and instead names what the null buys.",
+      "conditions": "Only when the null actually eliminates a rival explanation. If the measure was simply insensitive, that needs a different and more honest sentence."
+    },
+    {
+      "id": "W2",
+      "page": 4,
+      "section": "methods",
+      "where": "Materials and Methods/Statistical Analysis",
+      "quote": "Intervals were chosen for each latent component separately on the basis of local peaks of the difference curves.",
+      "move": "State a data-driven analysis choice plainly, without defending it.",
+      "why_it_works": "The choice was made after seeing the data and the Methods says so in one flat sentence. Burying it would be worse.",
+      "conditions": "Incomplete as written: no statement of how the resulting false-positive inflation was handled. Teach the sentence together with the correction sentence this paper omits."
+    },
+    {
+      "id": "W3",
+      "page": 11,
+      "section": "discussion",
+      "where": "Discussion/Processing Speed Hypothesis",
+      "quote": "Two observations from our data should be mentioned with respect to this hypothesis. First, ... Second, ...",
+      "move": "Announce the count before delivering the argument.",
+      "why_it_works": "The reader knows how long the argument is and can hold both halves at once. For two or three supporting points this beats a paragraph that merely accumulates."
+    },
+    {
+      "id": "W4",
+      "page": 11,
+      "section": "discussion",
+      "where": "Discussion/Processing Speed Hypothesis, closing sentences",
+      "quote": "However, although such structural damage may explain the reduction in amplitude and increase in latency for the parietally distributed P3 GO, it cannot directly explain the enhancement of the frontally distributed P3 NOGO wave.",
+      "move": "Use a concession to force in the second mechanism.",
+      "why_it_works": "Grant that explanation A covers part of the data, name precisely the part it does not cover, and let that gap require explanation B. The reader arrives at the compensation account feeling it was necessary rather than added. This is the pivot of the whole Discussion.",
+      "conditions": "The move is only as strong as the specificity of the finding A fails to cover."
+    },
+    {
+      "id": "W5",
+      "page": 12,
+      "section": "discussion",
+      "where": "Discussion/Limitations of the Study and Further Directions",
+      "quote": "And finally, this is a descriptive study. ... The first way to study the functional meaning of the components would be to manipulate the stimulus properties and task conditions. ... The second way would be to correlate the latent components with measures from neuropsychological tests",
+      "move": "Concede a limitation, then convert it into two concrete experiments.",
+      "why_it_works": "The admission is one short sentence, then becomes two routes forward, each with a citation showing the route is real. The paragraph ends stronger than it began without softening the concession."
+    },
+    {
+      "id": "W6",
+      "page": 11,
+      "section": "discussion",
+      "where": "Discussion/Processing Speed Hypothesis, opening sentence",
+      "quote": "Our data unequivocally support the processing speed hypothesis of aging (Salthouse, 1996).",
+      "move": "AVOID -- an absolute adverb a cross-sectional design cannot earn.",
+      "why_it_works": "Teach by contrast. 'Unequivocally' sits three pages from the authors' own statement that the study is descriptive and interpretive (see L3). Calibrated alternatives: 'are consistent with', 'support', 'provide converging evidence for'.",
+      "conditions": "Reserve absolute adverbs for claims the design could in principle have falsified."
+    },
+    {
+      "id": "W7",
+      "page": 4,
+      "section": "results",
+      "where": "Results/Grand Average ERPs, and every statistical paragraph after it",
+      "quote": "The peak latencies of both N2Cue and P3Cue increase by age with approximately 4 ms per decade.",
+      "move": "Report a result as a direction plus a rate, and send the statistics to a table.",
+      "why_it_works": "The sentence carries what a reader needs to hold - which measure, which way, how much per decade - and nothing that would interrupt the sentence. The F values and p values live in Table 2, reached by a one-clause pointer. The prose stays readable across a Results section with dozens of tests.",
+      "conditions": "The cost is that prose and table can drift apart, and in this paper they did: the headline slowing rate is given three different ways across abstract, Results and Discussion, and the Conclusion contradicts the Results on behaviour. If you adopt this convention, the reconciliation between prose and table is a step you have to add, because nothing in the format enforces it."
+    },
+    {
+      "id": "W8",
+      "page": 11,
+      "section": "discussion",
+      "where": "Discussion/Compensation Hypothesis of Aging, opening",
+      "quote": "Two observations from our data should be mentioned with respect to this hypothesis.",
+      "move": "Cross from result to interpretation by naming the hypothesis first and then the observations that bear on it.",
+      "why_it_works": "The crossing is where a paper is most likely to smuggle. This sentence makes the direction explicit - here is a hypothesis, here is what our data say about it - rather than narrating results until an interpretation appears to emerge. The reader can see the claim and the evidence arriving separately, and can disagree with the join.",
+      "conditions": "It only helps if the observations really bear on the hypothesis. In this paper the compensation account needs the frontal increase to be doing work, and neither observation tests that - see the boundary on I2. The frame is honest; the content underneath still has to be checked."
+    },
+    {
+      "id": "W9",
+      "page": 2,
+      "section": "introduction",
+      "where": "Introduction, the paragraph before the aims",
+      "quote": "With respect to the ERP amplitudes, however, the findings are less consistent.",
+      "move": "Build the gap out of an inconsistency in prior work rather than out of an absence.",
+      "why_it_works": "The preceding sentence grants that the literature agrees on latency. This one turns, and the four contradictory amplitude findings that follow become the reason a new method is needed. Nobody is called wrong; the disagreement itself is the argument.",
+      "conditions": "The strongest gap-building move available when a field has a replication problem rather than a blank space. It requires that the contradictions be real and citable - list them, in order, agreement first so the disagreement lands as a contrast."
+    }
+  ],
+  "figure_pointers": [
+    {
+      "id": "TABLE 1",
+      "page": 4,
+      "use": "R1 -- behaviour by age band. Check that errors stay under 2.5% and RT does not trend; this table is the licence for the whole interpretation."
+    },
+    {
+      "id": "FIGURE 1",
+      "page": 5,
+      "use": "R2, R3 -- the scalp waves. Panel A is s1 (Cue-NonCue), panel C is s2 (NOGO-GO). Follow one colour across panels; the five colours are the five age bands."
+    },
+    {
+      "id": "TABLE 2",
+      "page": 6,
+      "use": "R2 -- age effects on s1 wave amplitudes. Read exponents from the PDF, not from body.md."
+    },
+    {
+      "id": "TABLE 3",
+      "page": 6,
+      "use": "R3 -- same for the GO/NOGO waves. Note N2dNoGo is significant while P3dNoGo is not."
+    },
+    {
+      "id": "FIGURE 2",
+      "page": 6,
+      "use": "M6 -- the BIC curves that set the number of components. The minimum is the whole argument for seven and six."
+    },
+    {
+      "id": "FIGURE 3",
+      "page": 7,
+      "use": "M6, R4 -- what the components look like. Left column topographies, blue traces the Cue-NonCue and NOGO-GO differences."
+    },
+    {
+      "id": "TABLE 5",
+      "page": 8,
+      "use": "M7, R4 -- component to brain region mapping. Every anatomical claim in the Discussion is read off this table."
+    },
+    {
+      "id": "FIGURE 4",
+      "page": 9,
+      "use": "R5 -- THE result figure for proactive control. Panel C, the confidence intervals per age band, is where the divergence by location is visible."
+    },
+    {
+      "id": "FIGURE 5",
+      "page": 10,
+      "use": "R6 -- same for reactive control. Panels F and G carry the NOGO-GO difference."
+    },
+    {
+      "id": "TABLE 7",
+      "page": 10,
+      "use": "R6 -- age effects on s2 components. Note C2.1 has no significant effect in the difference, unlike every other component."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 """Self-checks for the non-trivial bits: running head/foot filter, figure index,
 shape-based reference detection."""
-from pdf2md import index_figures, split_refs, strip_running
+from pdf2md import index_figures, is_primary, split_refs, strip_running
 
 pages = [f"Dev Cogn Neurosci 79 (2026)\nbody line {i}\n101722" for i in range(10)]
 pages[3] = pages[3].replace("\n101722", "\nrare line\n101722")
@@ -63,5 +63,22 @@ assert refs == "", "a citation run before halfway must be rejected"
 body, refs = split_refs([prose] * 3 + [entries, "**References**\nAaron, A. (2001). Later list."])
 assert "Later list" in refs and "Author A1" in refs, "both blocks must end up in refs"
 assert "Author A1" not in "\n".join(body)
+
+# --- which branch the paper goes down --------------------------------------------
+clean = ["1. Introduction", "2. Methods", "3. Results"]
+assert is_primary(clean, [], "") == (True, True), "a methods heading decides it alone"
+
+# Brain and Cognition: the real headings never reached `headings`, only table cells did.
+junk = ["Brain and Cognition", "article info abstract", "Controls vs. ADHD", "F Value"]
+study = "Forty children took part. All parents gave written consent before testing."
+assert is_primary(junk, [], study) == (True, False), \
+    "consent prose must rescue the branch when the headings are junk, and say so"
+
+review = "This review summarises twenty years of microstate research in schizophrenia."
+assert is_primary(junk, [], review) == (False, False), \
+    "a review with no methods heading and no consent stays synthesis"
+
+# Shredded small caps: "MA D ME TH ODS". The de-spaced probe still runs first.
+assert is_primary(["MA D ME TH ODS"], ["MA D ME TH ODS"], "") == (True, True)
 
 print("ok")
