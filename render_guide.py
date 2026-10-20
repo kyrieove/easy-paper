@@ -57,8 +57,9 @@ def load_figures(path: Path | None) -> dict[str, dict]:
         if not image_path.is_file() or image_path.suffix.lower() not in ALLOWED:
             raise ValueError(f'Figure {name} image missing or unsupported: {image_path}')
         contents = image_path.read_bytes()
-        if not contents:
-            raise ValueError(f'Figure image is empty: {image_path}')
+        signatures = {'.png': contents.startswith(b'\x89PNG\r\n\x1a\n'), '.jpg': contents.startswith(b'\xff\xd8\xff'), '.jpeg': contents.startswith(b'\xff\xd8\xff'), '.webp': contents.startswith(b'RIFF') and contents[8:12] == b'WEBP'}
+        if not signatures[image_path.suffix.lower()]:
+            raise ValueError(f'Figure is not a valid {image_path.suffix} image: {image_path}')
         identifier = match.group(1).lower()
         if identifier in output:
             raise ValueError(f'Duplicate figure {name}')
@@ -94,6 +95,8 @@ def embed_figures(markup: str, figures: dict[str, dict]) -> str:
         if key not in by_key:
             return f'<p class="missing-figure">Original figure not embedded: {html.escape(key)}. Refer to the original PDF.</p>'
         number, fig = by_key[key]
+        if number in used:
+            return ''
         used.add(number)
         return figure_tag(fig)
     markup = explicit.sub(from_marker, markup)
@@ -118,7 +121,7 @@ def generate(markdown: str, figures: dict[str, dict] | None = None) -> str:
         raise ValueError('Empty Markdown guide: no HTML generated')
     md = mistune.create_markdown(escape=True, plugins=['table', 'strikethrough'])
     body = md(markdown)
-    if '<h1>' not in body.lower():
+    if not body.lstrip().lower().startswith('<h1>'):
         raise ValueError('Guide must start with an H1 title; do not invent paper identity')
     title_match = re.search(r'<h1>(.*?)</h1>', body, re.I | re.S)
     title = plain(title_match.group(1))
