@@ -48,7 +48,11 @@ def validate(card_path: Path, verification_path: Path | None = None) -> list[str
             if not isinstance(item, dict):
                 failures.append(f'{field}[{index}] must be an object')
                 continue
-            for j, loc in enumerate(item.get('locations', [])):
+            locations = item.get('locations', [])
+            if not isinstance(locations, list):
+                failures.append(f'{field}[{index}].locations must be an array')
+                continue
+            for j, loc in enumerate(locations):
                 page = loc.get('page') if isinstance(loc, dict) else None
                 if type(page) is not int or page < 1 or (n_pages and page > n_pages):
                     failures.append(f'{field}[{index}].locations[{j}].page is not a valid PDF page')

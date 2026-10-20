@@ -23,6 +23,8 @@ def render(html_path: Path, pdf_path: Path, browser_path: str | None = None) -> 
     if target.exists():
         raise FileExistsError(f'Output already exists; preserve previous guide: {target}')
     target.parent.mkdir(parents=True, exist_ok=True)
+    if target == source:
+        raise ValueError('PDF output must not replace the source HTML')
 
     with sync_playwright() as pw:
         launch = {'headless': True}
