@@ -203,3 +203,19 @@ The helper creates the base file or the next available `-r2`, `-r3`, ... using e
 It never overwrites an existing guide. Use an additional short title slug for different papers by
 the same author in the same year. Tell the user where the guide is and any material verification
 limits; keep implementation logs out of the guide.
+
+
+## 5. Optional deterministic HTML / PDF presentation
+
+After the complete v4 source audit and `verification.json` are finished, keep the verified Markdown as the **canonical full reading guide**. Do not ask another agent to condense or rewrite it for a visual layout. See [RENDERING.md](RENDERING.md) for setup, original-figure manifests and inspection checks.
+
+```bash
+python -m pip install "mistune>=3,<4" playwright
+python -m playwright install chromium
+python validate_v4.py output/extracted/<paper>/evidence-card.json --verification output/extracted/<paper>/verification.json
+python render_guide.py output/reading-guides/<paper>-reading-guide.md --pdf
+```
+
+`render_guide.py` embeds the shared HTML/CSS/JS template and produces standalone offline HTML and A4 PDF. Use `--figures <manifest.json>` only for original PDF figure crops **visually checked** against the source. The optional manifest is separate from `pdf2md.py`'s caption index. When a guide uses `[[FIG:figure_key]]` placeholders, supply the matching inspected manifest or leave an explicit missing-figure notice. Never invent a crop or figure interpretation. Keep one-based original-PDF page references and the full writing lesson.
+
+Use `validate_v4.py` only as a mechanical structure preflight; it cannot verify source truth, statistical reasoning or quotation fidelity. Inspect both final HTML and printed PDF for missing text, figures, clipped tables and bad pagination. If PDF export fails, deliver HTML and state the missing Chromium dependency; do not pretend the PDF exists. Existing files are versioned instead of overwritten. Markdown remains supported as before.
