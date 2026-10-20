@@ -36,13 +36,31 @@ class RendererTests(unittest.TestCase):
     def test_legacy_explicit_figure_marker(self):
         with TemporaryDirectory() as root:
             folder = Path(root)
-            (folder/'image.png').write_bytes(b'fake-png-not-decoded-here')
+            (folder/'image.png').write_bytes(b'\x89PNG\r\n\x1a\n' + b'example')
             manifest = folder/'figures.json'
             manifest.write_text(json.dumps({'schema':'easy-paper-figures/v1','figures':[
                 {'id':'Fig. 2','key':'sorsa_fig2','page':5,'path':'image.png','inspected':True}]}))
             page = render_guide.generate('# Guide\n\n→ Fig. 2 · p. 5.\n\n[[FIG:sorsa_fig2]]', render_guide.load_figures(manifest))
             self.assertEqual(page.count('class="paper-figure"'), 1)
             self.assertNotIn('[[FIG:', page)
+
+    def test_rejects_fake_image_payload(self):
+        with TemporaryDirectory() as root:
+            folder = Path(root)
+            (folder/'image.png').write_bytes(b'not an image')
+            manifest = folder/'figures.json'
+            manifest.write_text(json.dumps({'schema':'easy-paper-figures/v1','figures':[{'id':'Fig. 1','page':1,'path':'image.png','inspected':True}]}))
+            with self.assertRaises(ValueError):
+                render_guide.load_figures(manifest)
+
+    def test_repeated_explicit_marker_only_embeds_once(self):
+        with TemporaryDirectory() as root:
+            folder = Path(root)
+            (folder/'image.png').write_bytes(b'\x89PNG\r\n\x1a\nexample')
+            manifest = folder/'figures.json'
+            manifest.write_text(json.dumps({'schema':'easy-paper-figures/v1','figures':[{'id':'Fig. 2','key':'f2','page':5,'path':'image.png','inspected':True}]}))
+            page = render_guide.generate('# Guide\n\n[[FIG:f2]]\n\n[[FIG:f2]]', render_guide.load_figures(manifest))
+            self.assertEqual(page.count('class="paper-figure"'), 1)
 
     def test_refuses_uninspected_figures(self):
         with TemporaryDirectory() as root:
@@ -61,6 +79,12 @@ class RendererTests(unittest.TestCase):
             second,_=render_guide.run(guide)
             self.assertEqual(first.read_text(), 'My annotations')
             self.assertEqual(second.name, 'guide-r2.html')
+
+    def test_malformed_locations_returns_failure_not_exception(self):
+        with TemporaryDirectory() as folder:
+            card = Path(folder)/'card.json'
+            card.write_text(json.dumps({'schema':'evidence-card/v4','source':{'n_pages':2,'pdf_sha256':'x','extractor_sha256':'x'},'paper':{'title':'T'},'questions':[{'locations':None}]}))
+            self.assertTrue(any('locations must be an array' in x for x in validate_v4.validate(card)))
 
     def test_schema_validation_rejects_old_cards(self):
         with TemporaryDirectory() as folder:
