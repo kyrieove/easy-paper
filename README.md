@@ -17,6 +17,18 @@ python /path/to/easy-paper/pdf2md.py /path/to/paper.pdf --out output/extracted
 Then ask the agent to read the paper with easy-paper. Installation of the dependency is a user
 setup command, not a side effect of importing or testing the scripts.
 
+## HTML + PDF (optional, reproducible)
+
+The **complete v4 Markdown** remains the source of truth. A fixed, offline HTML template adds a sidebar, reading progress, responsive layout, source-checked original figures, and print-ready A4 CSS. The same renderer works in Codex, Antigravity, DSH or a regular terminal.
+
+```bash
+python -m pip install "mistune>=3,<4" playwright
+python -m playwright install chromium
+python render_guide.py output/reading-guides/paper-reading-guide.md --pdf
+```
+
+Use `--figures inspected-figures.json` to embed visually verified crops; see [RENDERING.md](RENDERING.md) for the manifest, checks, and browser setup. Output files are versioned, never overwritten. `validate_v4.py` checks card structure but **does not** replace source verification.
+
 ## Outputs
 
 - `output/extracted/<filename-hash>/raw.md`: untrimmed extracted text with PDF page markers.
